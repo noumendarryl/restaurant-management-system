@@ -10,4 +10,4 @@ Mise en place d'une application de gestion & supervision d'un restaurant en C#
 - ALLARAMADJI GHISLAIN
 
 ## Planning
-Trello [https://trello.com/b/cxF5I5xr/trello-planning]
+[Trello](https://trello.com/b/cxF5I5xr/trello-planning)
