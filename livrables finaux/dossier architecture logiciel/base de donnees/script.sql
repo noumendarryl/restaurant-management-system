@@ -1,28 +1,21 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     23/11/2022 19:11:34                          */
+/* Created on:     25/11/2022 12:31:17                          */
 /*==============================================================*/
 
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('realize') and o.name = 'FK_REALIZE_REALIZE_SUPPLIER')
+   where r.fkeyid = object_id('realize') and o.name = 'FK_REALIZE_REALIZE_ORDER')
 alter table realize
-   drop constraint FK_REALIZE_REALIZE_SUPPLIER
+   drop constraint FK_REALIZE_REALIZE_ORDER
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('realize') and o.name = 'FK_REALIZE_REALIZE2_ORDER')
+   where r.fkeyid = object_id('realize') and o.name = 'FK_REALIZE_REALIZE2_SUPPLIER')
 alter table realize
-   drop constraint FK_REALIZE_REALIZE2_ORDER
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('stock_com') and o.name = 'FK_STOCK_CO_STOCK_COM_COMMODIT')
-alter table stock_com
-   drop constraint FK_STOCK_CO_STOCK_COM_COMMODIT
+   drop constraint FK_REALIZE_REALIZE2_SUPPLIER
 go
 
 if exists (select 1
@@ -30,6 +23,13 @@ if exists (select 1
    where r.fkeyid = object_id('stock_com') and o.name = 'FK_STOCK_CO_STOCK_COM_ORDER')
 alter table stock_com
    drop constraint FK_STOCK_CO_STOCK_COM_ORDER
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('stock_com') and o.name = 'FK_STOCK_CO_STOCK_COM_COMMODIT')
+alter table stock_com
+   drop constraint FK_STOCK_CO_STOCK_COM_COMMODIT
 go
 
 if exists (select 1
@@ -154,8 +154,8 @@ go
 /*==============================================================*/
 create table Commodities (
    id_com               numeric              identity,
-   name                 varchar(200)         null,
-   state                bit                  null,
+   designation_com      varchar(200)         null,
+   storage_limit_time   datetime             null,
    constraint PK_COMMODITIES primary key nonclustered (id_com)
 )
 go
@@ -165,7 +165,7 @@ go
 /*==============================================================*/
 create table Materials (
    id_mat               numeric              identity,
-   name                 varchar(200)         null,
+   designation_mat      varchar(200)         null,
    constraint PK_MATERIALS primary key nonclustered (id_mat)
 )
 go
@@ -197,9 +197,9 @@ go
 /* Table: realize                                               */
 /*==============================================================*/
 create table realize (
-   id_sup               numeric              not null,
    id_ord               numeric              not null,
-   constraint PK_REALIZE primary key (id_sup, id_ord)
+   id_sup               numeric              not null,
+   constraint PK_REALIZE primary key (id_ord, id_sup)
 )
 go
 
@@ -207,7 +207,7 @@ go
 /* Index: realize_FK                                            */
 /*==============================================================*/
 create index realize_FK on realize (
-id_sup ASC
+id_ord ASC
 )
 go
 
@@ -215,7 +215,7 @@ go
 /* Index: realize2_FK                                           */
 /*==============================================================*/
 create index realize2_FK on realize (
-id_ord ASC
+id_sup ASC
 )
 go
 
@@ -223,12 +223,12 @@ go
 /* Table: stock_com                                             */
 /*==============================================================*/
 create table stock_com (
-   id_com               numeric              not null,
    id_ord               numeric              not null,
+   id_com               numeric              not null,
    price                float                null,
    initial_quantity     int                  null,
    remaining_quantity   int                  null,
-   constraint PK_STOCK_COM primary key (id_com, id_ord)
+   constraint PK_STOCK_COM primary key (id_ord, id_com)
 )
 go
 
@@ -236,7 +236,7 @@ go
 /* Index: stock_com_FK                                          */
 /*==============================================================*/
 create index stock_com_FK on stock_com (
-id_com ASC
+id_ord ASC
 )
 go
 
@@ -244,7 +244,7 @@ go
 /* Index: stock_com2_FK                                         */
 /*==============================================================*/
 create index stock_com2_FK on stock_com (
-id_ord ASC
+id_com ASC
 )
 go
 
@@ -278,23 +278,23 @@ id_mat ASC
 go
 
 alter table realize
-   add constraint FK_REALIZE_REALIZE_SUPPLIER foreign key (id_sup)
-      references Supplier (id_sup)
+   add constraint FK_REALIZE_REALIZE_ORDER foreign key (id_ord)
+      references "Order" (id_ord)
 go
 
 alter table realize
-   add constraint FK_REALIZE_REALIZE2_ORDER foreign key (id_ord)
+   add constraint FK_REALIZE_REALIZE2_SUPPLIER foreign key (id_sup)
+      references Supplier (id_sup)
+go
+
+alter table stock_com
+   add constraint FK_STOCK_CO_STOCK_COM_ORDER foreign key (id_ord)
       references "Order" (id_ord)
 go
 
 alter table stock_com
    add constraint FK_STOCK_CO_STOCK_COM_COMMODIT foreign key (id_com)
       references Commodities (id_com)
-go
-
-alter table stock_com
-   add constraint FK_STOCK_CO_STOCK_COM_ORDER foreign key (id_ord)
-      references "Order" (id_ord)
 go
 
 alter table stock_mat
