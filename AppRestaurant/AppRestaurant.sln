@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.33027.164
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppRestaurant", "AppRestaurant\AppRestaurant.csproj", "{F7EEEA96-6F23-47F2-ABBA-00879EF678AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppRestaurant", "AppRestaurant\AppRestaurant.csproj", "{CE53E745-362F-484F-8BD4-C3DF4F630B81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F7EEEA96-6F23-47F2-ABBA-00879EF678AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F7EEEA96-6F23-47F2-ABBA-00879EF678AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F7EEEA96-6F23-47F2-ABBA-00879EF678AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F7EEEA96-6F23-47F2-ABBA-00879EF678AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE53E745-362F-484F-8BD4-C3DF4F630B81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE53E745-362F-484F-8BD4-C3DF4F630B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE53E745-362F-484F-8BD4-C3DF4F630B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE53E745-362F-484F-8BD4-C3DF4F630B81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {223E2AED-92A8-4EE7-9744-8DFFBAB26821}
+		SolutionGuid = {67964246-4992-4AE2-B003-26F4359500D6}
 	EndGlobalSection
 EndGlobal
