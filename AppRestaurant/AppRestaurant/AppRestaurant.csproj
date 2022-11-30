@@ -59,11 +59,11 @@
     <Compile Include="Model\DiningRoom\Actors\Waiter.cs" />
     <Compile Include="Model\DiningRoom\Actors\Customer.cs" />
     <Compile Include="Model\DiningRoom\DiningRoomModel.cs" />
+    <Compile Include="Model\DiningRoom\Elements\Table.cs" />
+    <Compile Include="Model\DiningRoom\Elements\Square.cs" />
     <Compile Include="Model\DiningRoom\Move\IMove.cs" />
     <Compile Include="Model\DiningRoom\Move\IPosition.cs" />
     <Compile Include="Model\DiningRoom\Move\Position.cs" />
-    <Compile Include="Model\DiningRoom\Elements\Table.cs" />
-    <Compile Include="Model\DiningRoom\Elements\Square.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

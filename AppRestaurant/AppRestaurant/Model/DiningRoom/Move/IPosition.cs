@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Model.DiningRoom.Move
 {
-    interface Interface1
+    interface IPosition
     {
+        int PosX { get; set; }
+        int PosY { get; set; }
+
     }
 }

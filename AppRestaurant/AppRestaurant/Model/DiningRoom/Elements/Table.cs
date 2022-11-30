@@ -1,6 +1,6 @@
 ﻿using AppRestaurant.Model.Common;
 using AppRestaurant.Model.DiningRoom.Actors;
-using AppRestaurant.Model.DiningRoom.Position;
+using AppRestaurant.Model.DiningRoom.Move;
 
 namespace AppRestaurant.Model.DiningRoom.Elements
 {

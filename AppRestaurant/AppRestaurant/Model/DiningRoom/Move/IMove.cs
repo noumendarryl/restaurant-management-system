@@ -8,5 +8,7 @@ namespace AppRestaurant.Model.DiningRoom.Move
 {
     interface IMove
     {
+        void Move(int posX, int posY);
+
     }
 }

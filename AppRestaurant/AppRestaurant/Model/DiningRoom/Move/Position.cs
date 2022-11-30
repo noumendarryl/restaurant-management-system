@@ -7,7 +7,7 @@ using AppRestaurant.Model.DiningRoom.Move;
 
 namespace AppRestaurant.Model.DiningRoom.Move
 {
-    class Position : IPosition
+    public class Position : IPosition
     {
         private int posX;
         private int posY;
