@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AppRestaurant.Model.DiningRoom.Move;
 
 namespace AppRestaurant.Model.DiningRoom.Actors
 {
-    public class Waiter
+    public class Waiter : Position, IMove
     {
+        public Waiter(int posX, int posY) : base(posX, posY){
+        }
+        public Waiter() : base(){
+        }
+        public void Move(int posX, int posY) { this.PosX = posX; this.PosY = posY; }
     }
 }

@@ -1,8 +1,13 @@
-﻿using AppRestaurant.Model.DiningRoom.Position;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AppRestaurant.Model.DiningRoom.Move;
 
-namespace AppRestaurant.Model.DiningRoom.Position
+namespace AppRestaurant.Model.DiningRoom.Move
 {
-    public class Position : IPosition
+    class Position : IPosition
     {
         private int posX;
         private int posY;
@@ -43,5 +48,6 @@ namespace AppRestaurant.Model.DiningRoom.Position
                 posY = value >= 0 ? value : 0;
             }
         }
+
     }
 }

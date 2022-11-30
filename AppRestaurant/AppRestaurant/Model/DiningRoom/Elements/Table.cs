@@ -7,6 +7,7 @@ namespace AppRestaurant.Model.DiningRoom.Elements
     public class Table : Equipment, IPosition
     {
         private int nbPlaces;
+        private Customer group;
         private bool entree = false;
         private bool plate = false;
         private bool dessert = false;
@@ -26,6 +27,7 @@ namespace AppRestaurant.Model.DiningRoom.Elements
         }
 
         public int NbPlaces { get => nbPlaces; set => nbPlaces = value; }
+        public Customer Group { get => group; set => group = value; }
         public bool Entree { get => entree; set => entree = value; }
         public bool Plate { get => plate; set => plate = value; }
         public bool Dessert { get => dessert; set => dessert = value; }

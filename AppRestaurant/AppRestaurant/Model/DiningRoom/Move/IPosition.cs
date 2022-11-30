@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppRestaurant.Model.DiningRoom.Actors
+namespace AppRestaurant.Model.DiningRoom.Move
 {
-    class HotelMaster
+    interface Interface1
     {
     }
 }

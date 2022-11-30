@@ -1,5 +1,4 @@
-﻿using AppRestaurant.Model.Common;
-using AppRestaurant.Model.DiningRoom.Actors;
+﻿using AppRestaurant.Model.DiningRoom.Actors;
 using System.Collections.Generic;
 
 namespace AppRestaurant.Model.DiningRoom.Elements
