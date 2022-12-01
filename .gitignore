@@ -3,3 +3,23 @@
 ################################################################################
 
 *.sqlite
+AppRestaurant/.vs/AppRestaurant/v16/.suo
+AppRestaurant/.vs/AppRestaurant/v16/.suo
+*.lutdata
+*.testlog
+*.manifest
+AppRestaurant/.vs/AppRestaurant/v16/.suo
+*.cache
+*.txt
+*.cache
+*.exe
+*.pdb
+*.cache
+*.exe
+AppRestaurant/AppRestaurant/obj/Debug/AppRestaurant.pdb
+AppRestaurant/AppRestaurant/obj/Debug/AppRestaurant.Properties.Resources.resources
+AppRestaurant/AppRestaurant/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+AppRestaurant/AppRestaurant/obj/Debug/AppRestaurant.exe
+AppRestaurant/AppRestaurant/obj/Debug/AppRestaurant.csprojAssemblyReference.cache
+AppRestaurant/.vs/AppRestaurant/v16/.suo
+*.exe
