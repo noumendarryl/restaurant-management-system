@@ -52,6 +52,7 @@
     <Compile Include="Controller\DiningRoom\Actors\RoomClerkController.cs" />
     <Compile Include="Controller\DiningRoom\Actors\WaiterController.cs" />
     <Compile Include="Controller\DiningRoom\DiningRoomController.cs" />
+    <Compile Include="Controller\DiningRoom\Observer\Unsubscriber.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,8 +71,8 @@
     <Compile Include="Model\DiningRoom\Elements\Line.cs" />
     <Compile Include="Model\DiningRoom\Elements\Table.cs" />
     <Compile Include="Model\DiningRoom\Elements\Square.cs" />
-    <Compile Include="Model\DiningRoom\Factory\AbstractClientFactory.cs" />
-    <Compile Include="Model\DiningRoom\Factory\ClientsFactory.cs" />
+    <Compile Include="Model\DiningRoom\Factory\AbstractCustomersFactory.cs" />
+    <Compile Include="Model\DiningRoom\Factory\CustomersFactory.cs" />
     <Compile Include="Model\DiningRoom\Move\IMove.cs" />
     <Compile Include="Model\DiningRoom\Move\IPosition.cs" />
     <Compile Include="Model\DiningRoom\Move\Position.cs" />

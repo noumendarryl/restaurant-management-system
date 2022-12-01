@@ -16,6 +16,7 @@ namespace AppRestaurant.Model.DiningRoom.Elements
         public List<LineChief> LineChiefs { get => lineChiefs; set => lineChiefs = value; }
         public Square()
         {
+            this.lineChiefs = new List<LineChief>();
             this.waiters = new List<Waiter>();
             this.lines = new List<Line>();
         //    for (int i = 0; i < Param.WAITER_BY_SQUARE; i++)

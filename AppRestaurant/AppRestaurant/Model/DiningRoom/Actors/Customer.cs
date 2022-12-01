@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AppRestaurant.Model.Common;
+using AppRestaurant.Model.DiningRoom.Move;
 
 namespace AppRestaurant.Model.DiningRoom.Actors
 {
@@ -12,7 +13,8 @@ namespace AppRestaurant.Model.DiningRoom.Actors
     public enum CustomerState
     {
         WaitTableAttribution,
-        WaitRankChief,
+        WaitLineChief,
+        Installed,
         Ordering,
         TableDispose,
         Ordered,
@@ -20,10 +22,10 @@ namespace AppRestaurant.Model.DiningRoom.Actors
         WaitPlate,
         WaitDessert,
         WaitBill,
-        Dead
+        Leave
     };
 
-    public class Customer
+    public class Customer : Position, IMove
     {
         private List<Order> orders;
         private CustomerState state;
@@ -34,7 +36,7 @@ namespace AppRestaurant.Model.DiningRoom.Actors
 
         public int Count { get => count; set => count = value; }
 
-        public Customer() : base()
+        public Customer()
         {
             this.CustomerState = CustomerState.WaitTableAttribution;
             this.count = 1;
@@ -44,5 +46,10 @@ namespace AppRestaurant.Model.DiningRoom.Actors
             this.CustomerState = CustomerState.WaitTableAttribution;
         }
 
+        public void Move(int posX, int posY)
+        {
+            this.PosX = posX;
+            this.PosY = posY;
+        }
     }
 }

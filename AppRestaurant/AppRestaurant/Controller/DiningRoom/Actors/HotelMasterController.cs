@@ -12,14 +12,17 @@ using AppRestaurant.Model.DiningRoom.Actors;
 
 namespace AppRestaurant.Controller.DiningRoom.Actors
 {
-    class HotelMasterController
+    class HotelMasterController : IObserver<Customer>
     {
         private HotelMaster hotelMaster;
+        private DiningRoomModel diningRoomModel;
+        private LineChiefController lineChiefController;
 
 
-        public HotelMasterController(HotelMaster hotelMaster)
+        public HotelMasterController(DiningRoomModel diningRoomModel)
         {
-            this.hotelMaster = hotelMaster;
+            this.diningRoomModel = diningRoomModel;
+            this.hotelMaster = diningRoomModel.HotelMaster;
         }
         
 
@@ -55,12 +58,60 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
             return null;
         }
         // pan defVal posX = 10, posY
-        public void CallRankChief(LineChief lineChief, Position adjust)
+        public void CallLineChief(LineChief lineChief, Position adjust)
         {
             if (lineChief != null)
-                //  lineChief.Move(hotelMaster.PosX - 10, hotelMaster.PosY);
                 lineChief.Move(hotelMaster.PosX - adjust.PosX, hotelMaster.PosY - adjust.PosY);
+
         }
 
+        public void OnNext(Customer value)
+        {
+            Console.WriteLine("Maitre d'hotel: Comnbien etes vous ?");
+            
+            Console.WriteLine("Clients: " + value.Count+".");
+            
+            Console.WriteLine("Maitre d'hotel: Veuillez patienter s'il vous plait...");
+
+            Table table = this.CheckAvailableTables(value, this.diningRoomModel);
+
+            if (table != null)
+            {
+                value.CustomerState = CustomerState.WaitLineChief;
+
+                LineChief lineChief = this.FindLineChief(value, this.diningRoomModel);
+
+                if (lineChief != null)
+                {
+                    Console.WriteLine("Chef de rang: Si vous voulez bien me suivre.");
+
+                    lineChief.Available = false;
+                    Position position = new Position(10, 0);
+                    this.CallLineChief(lineChief, position);
+
+                    Console.WriteLine("Chef de rang: Si vous voulez bien me suivre.");
+
+                    LineChiefController lineChiefController = new LineChiefController(lineChief);
+
+                    Console.WriteLine("Chef de rang: Votre table. 0");
+
+
+                    lineChiefController.installClients(value, table);
+
+                    Console.WriteLine("Chef de rang: Votre table.");
+
+                }
+            }
+        }
+
+        public void OnError(Exception error)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnCompleted()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
