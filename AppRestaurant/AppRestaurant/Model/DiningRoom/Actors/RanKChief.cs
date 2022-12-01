@@ -18,6 +18,7 @@ namespace AppRestaurant.Model.DiningRoom.Actors
         {
             this.squares = new List<Square>();
             this.squares.Add(new Square());
+            this.squares[0].Lines.Add(new Line());
 
         }
 
@@ -25,6 +26,7 @@ namespace AppRestaurant.Model.DiningRoom.Actors
         {
             this.squares = new List<Square>();
             this.squares.Add(new Square());
+            this.squares[0].Lines.Add(new Line());
         }
 
 
@@ -32,7 +34,7 @@ namespace AppRestaurant.Model.DiningRoom.Actors
         public bool Available { get => available; set => available = value; }
 
 
-        void IMove.Move(int posX, int posY) { 
+        public void Move(int posX, int posY) { 
             this.PosX = posX;   this.PosY = posY; }
     }
 }

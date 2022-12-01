@@ -14,6 +14,7 @@ namespace AppRestaurant.Model.DiningRoom.Elements
         private int posX = 0;
         private int posY = 0;
 
+
         public Table(int nbPlaces)
         {
             this.nbPlaces = nbPlaces;

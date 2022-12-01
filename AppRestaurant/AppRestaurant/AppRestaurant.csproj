@@ -46,19 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\DiningRoom\Actors\HotelMasterController.cs" />
+    <Compile Include="Controller\DiningRoom\DiningRoomController.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Common\Order.cs" />
     <Compile Include="Model\Common\Equipment.cs" />
+    <Compile Include="Model\Common\Recipe.cs" />
     <Compile Include="Model\DiningRoom\Actors\HotelMaster.cs" />
     <Compile Include="Model\DiningRoom\Actors\RankChief.cs" />
     <Compile Include="Model\DiningRoom\Actors\RoomClerk.cs" />
     <Compile Include="Model\DiningRoom\Actors\Waiter.cs" />
     <Compile Include="Model\DiningRoom\Actors\Customer.cs" />
     <Compile Include="Model\DiningRoom\DiningRoomModel.cs" />
+    <Compile Include="Model\DiningRoom\Elements\Line.cs" />
     <Compile Include="Model\DiningRoom\Elements\Table.cs" />
     <Compile Include="Model\DiningRoom\Elements\Square.cs" />
     <Compile Include="Model\DiningRoom\Move\IMove.cs" />
