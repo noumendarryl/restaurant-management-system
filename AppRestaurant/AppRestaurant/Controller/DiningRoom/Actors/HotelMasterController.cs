@@ -18,43 +18,6 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
             this.hotelMaster = hotelMaster;
         }
         
-        public Customer GenerateClient()
-        {
-            Customer client;
-            Random random = new Random();
-            int randomNumber = random.Next(1, 100);
-            switch (randomNumber)
-            {
-                case int rn when (rn <= 20):
-                    client = new Customer();
-                    //client = ClientFactoryC.Instance.CreateClient();
-                    break;
-
-                case int rn when (rn > 20 && rn < 80):
-                    client = new Customer();
-                    //client = ClientFactoryA.Instance.CreateClient();
-                    break;
-
-                case int rn when (rn >= 80 && rn <= 100):
-                    client = new Customer();
-                    //client = ClientFactoryB.Instance.CreateClient();
-                    break;
-
-                default:
-                    client = new Customer();
-                    //client = ClientFactoryA.Instance.CreateClient();
-                    break;
-            }
-        
-            return client;
-        }
-
-        public Customer CreateGroup(int clientNumber)
-        {
-            Customer group = new Customer(clientNumber);
- 
-            return group;
-        }
 
         public bool CheckAvailableTables(Customer group)
         {
