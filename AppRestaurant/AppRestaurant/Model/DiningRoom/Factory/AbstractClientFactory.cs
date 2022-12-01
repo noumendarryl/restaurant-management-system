@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Model.DiningRoom.Factory
 {
-    class Class1
+    class AbstractClientFactory
     {
     }
 }
