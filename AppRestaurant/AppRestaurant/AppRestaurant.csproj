@@ -46,7 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\DiningRoom\Actors\CustomerController.cs" />
     <Compile Include="Controller\DiningRoom\Actors\HotelMasterController.cs" />
+    <Compile Include="Controller\DiningRoom\Actors\LineChiefController.cs" />
+    <Compile Include="Controller\DiningRoom\Actors\RoomClerkController.cs" />
+    <Compile Include="Controller\DiningRoom\Actors\WaiterController.cs" />
     <Compile Include="Controller\DiningRoom\DiningRoomController.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -58,7 +62,7 @@
     <Compile Include="Model\Common\Equipment.cs" />
     <Compile Include="Model\Common\Recipe.cs" />
     <Compile Include="Model\DiningRoom\Actors\HotelMaster.cs" />
-    <Compile Include="Model\DiningRoom\Actors\RankChief.cs" />
+    <Compile Include="Model\DiningRoom\Actors\LineChief.cs" />
     <Compile Include="Model\DiningRoom\Actors\RoomClerk.cs" />
     <Compile Include="Model\DiningRoom\Actors\Waiter.cs" />
     <Compile Include="Model\DiningRoom\Actors\Customer.cs" />

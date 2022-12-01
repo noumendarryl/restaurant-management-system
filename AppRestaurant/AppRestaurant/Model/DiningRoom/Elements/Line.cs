@@ -4,16 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using AppRestaurant.Model.DiningRoom.Actors;
+
 namespace AppRestaurant.Model.DiningRoom.Elements
 {
     public class Line
     {
         private List<Table> tables;
-        public List<Table> Tables { get => tables; set => tables = value; }
+        //private LineChief lineChief;
 
-        public Line()
+        public List<Table> Tables { get => tables; set => tables = value; }
+        //public LineChief LineChief { get => lineChief; set => lineChief = value; }
+        public Line(int nbTables, int nbSeats)
         {
-            this.tables = new List<Table>();
+            for (int i = 0; i < nbTables; i++)
+            {
+                tables.Add(new Table(nbSeats));
+            }
+            //    this.tables = new List<Table>();
         }
     }
 }

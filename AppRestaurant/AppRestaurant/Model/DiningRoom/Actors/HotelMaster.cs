@@ -8,11 +8,11 @@ using AppRestaurant.Model.DiningRoom.Move;
 
 namespace AppRestaurant.Model.DiningRoom.Actors
 {
-    class HotelMaster : Position
+    public class HotelMaster : Position
     {
-        private List<RankChief> rankChiefs;
+        private List<LineChief> rankChiefs;
 
-        public List<RankChief> RankChiefs
+        public List<LineChief> RankChiefs
         {
             get => rankChiefs;
             set => rankChiefs = value;
@@ -20,16 +20,15 @@ namespace AppRestaurant.Model.DiningRoom.Actors
 
         public HotelMaster() : base()
         {
-            this.rankChiefs = new List<RankChief>();
-
+            this.rankChiefs = new List<LineChief>();
+            this.rankChiefs.Add(new LineChief());
         }
 
         public HotelMaster(int posX, int posY) : base(posX, posY)
         {
-            this.rankChiefs = new List<RankChief>();
+            this.rankChiefs = new List<LineChief>();
 
-            this.rankChiefs.Add(new RankChief());
-            this.rankChiefs.Add(new RankChief());
+            this.rankChiefs.Add(new LineChief());
         }
     }
 }
