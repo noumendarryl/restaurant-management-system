@@ -8,7 +8,7 @@ namespace AppRestaurant.Model.kitchen
 {
     public class Diver : MotionkitchenItem
     {
-        private static string spritePath = "Resources/Diver/";
+        private static string spritePath = "C:\\Users\\NOUMEN DARRYL\\Documents\\prog-sys-obj\\AppRestaurant\\AppRestaurant\\Resources\\Diver\\";
 
         private static string imageFront = "front.png";
         private static string imageBack = "back.png";
@@ -16,22 +16,22 @@ namespace AppRestaurant.Model.kitchen
         private static string imageRight = "right.png";
         private static string imageWorking = "working.png";
 
-        private Sprite front = new Sprite(spritePath, imageFront);
-        private Sprite back = new Sprite(spritePath, imageBack);
-        private Sprite left = new Sprite(spritePath, imageLeft);
-        private Sprite right = new Sprite(spritePath, imageRight);
-        private Sprite working = new Sprite(spritePath, imageWorking);
+        public Sprite front = new Sprite(spritePath, imageFront);
+        public Sprite back = new Sprite(spritePath, imageBack);
+        public Sprite left = new Sprite(spritePath, imageLeft);
+        public Sprite right = new Sprite(spritePath, imageRight);
+        public Sprite working = new Sprite(spritePath, imageWorking);
 
         public Diver()
         {
             this.posX = 15;
             this.posY = 10;
 
-            //front.loadImage();
-            //back.loadImage();
-            //left.loadImage();
-            //right.loadImage();
-            //working.loadImage();
+            front.loadImage();
+            back.loadImage();
+            left.loadImage();
+            right.loadImage();
+            working.loadImage();
 
             this.setSprite(front);
         }

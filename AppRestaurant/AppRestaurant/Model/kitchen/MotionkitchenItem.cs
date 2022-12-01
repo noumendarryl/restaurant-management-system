@@ -11,7 +11,7 @@ namespace AppRestaurant.Model.kitchen
 	{
         private Sprite sprite;
 
-		private int speed { get; set; }
+		public int speed { get; set; }
 
 		/* Instantiates a new MotionkitchenItem.
 		* @param map
@@ -55,32 +55,6 @@ namespace AppRestaurant.Model.kitchen
 		public void moveRight()
 		{
 			this.posX += this.speed;
-		}
-
-		/*
-		 * Moves the element to the direction provided.
-		 * @param direction
-		 * 	The direction where the element moves.
-		 */
-		public void move(Direction direction, int times)
-		{
-			switch (direction)
-			{
-				case Direction.Up:
-					for (int i = 0; i < times; i++) { this.moveUp(); }
-					break;
-				case Direction.Down:
-					for (int i = 0; i < times; i++) { this.moveDown(); }
-					break;
-				case Direction.Left:
-					for (int i = 0; i < times; i++) { this.moveLeft(); }
-					break;
-				case Direction.Right:
-					for (int i = 0; i < times; i++) { this.moveRight(); }
-					break;
-				default:
-					break;
-			}
 		}
 
 		/*

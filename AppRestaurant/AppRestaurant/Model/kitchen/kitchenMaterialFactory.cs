@@ -8,7 +8,7 @@ namespace AppRestaurant.Model.kitchen
 {
     public class kitchenMaterialFactory
     {
-		private static string spritePath = "/Resources/kitchenMaterials/";
+		private static string spritePath = "C:\\Users\\NOUMEN DARRYL\\Documents\\prog-sys-obj\\AppRestaurant\\AppRestaurant\\Resources\\kitchenMaterials\\";
 
 		private static string imageCookingFire = "cookingFire.png";
 		private static string imageOven = "oven.png";

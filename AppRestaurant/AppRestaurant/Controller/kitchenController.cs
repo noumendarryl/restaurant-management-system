@@ -72,7 +72,7 @@ namespace AppRestaurant.Controller
             for (int i = 1; i <= model.chefs.Length; i++)
             {
                 Thread ChefThread = new Thread(new ThreadStart(ChefTask));
-                ChefThread.Name = "Chef (" + i + ")";
+                ChefThread.Name = "Chef " + i;
                 ChefThread.Start();
             }
 
@@ -83,21 +83,21 @@ namespace AppRestaurant.Controller
             for (int i = 1; i <= model.deputyChefs.Length; i++)
             {
                 Thread deputyChefThread = new Thread(new ThreadStart(deputyChefTask));
-                deputyChefThread.Name = "Deputy Chef (" + i + ")";
+                deputyChefThread.Name = "Deputy Chef " + i;
                 deputyChefThread.Start();
             }
 
             for (int i = 1; i <= model.kitchenClerks.Length; i++)
             {
                 Thread KitchenClerkThread = new Thread(new ThreadStart(KitchenClerkTask));
-                KitchenClerkThread.Name = "Kitchen Clerk (" + i + ")";
+                KitchenClerkThread.Name = "Kitchen Clerk " + i;
                 KitchenClerkThread.Start();
             }
 
             for (int i = 1; i <= model.divers.Length; i++)
             {
                 Thread diverThread = new Thread(new ThreadStart(diverTask));
-                diverThread.Name = "Diver (" + i  + ")";
+                diverThread.Name = "Diver " + i;
                 diverThread.Start();
             }
 
@@ -108,11 +108,20 @@ namespace AppRestaurant.Controller
         {
             while (true)
             {
-                Console.WriteLine(Thread.CurrentThread.Name + " : Waiting for an order... ");
+                Console.WriteLine(Thread.CurrentThread.Name + " : Waiting for an order...");
 
+                notifyOrderQueueMut.WaitOne();
                 orderQueueMre.WaitOne();
-                Console.WriteLine(Thread.CurrentThread.Name + " : Order received. ");
-                Console.WriteLine(Thread.CurrentThread.Name + " : Sending to a deputy chef ");
+                orderQueueMre.Reset();
+                notifyOrderQueueMut.ReleaseMutex();
+                Console.WriteLine(Thread.CurrentThread.Name + " : Order received.");
+                Console.WriteLine(Thread.CurrentThread.Name + " : Sending to a deputy chef");
+                
+                // Changing sprite
+                int threadNumber = int.Parse((Thread.CurrentThread.Name[Thread.CurrentThread.Name.Length - 1]) + "");
+                int chefPosition = threadNumber - 1;
+                model.chefs[chefPosition].setSprite(model.chefs[chefPosition].front);
+                model.NotifyWhenMoved(model.chefs[chefPosition].posX, model.chefs[chefPosition].posY, model.chefs[chefPosition].posX, model.chefs[chefPosition].posY);
 
                 orderQueueMut.WaitOne();
                 pendingOrderQueueMut.WaitOne();
@@ -122,13 +131,15 @@ namespace AppRestaurant.Controller
 
                 recipeQueueMut.WaitOne();
                 recipeQueue.Enqueue(orderQueue.First<Order>().recipe);
+                Thread.Sleep(2000);
                 recipeQueueMre.Set();
                 recipeQueueMut.ReleaseMutex();
                 orderQueue.Dequeue();
-
                 orderQueueMut.ReleaseMutex();
 
-                orderQueueMre.Reset();
+                // Changing sprite
+                model.chefs[chefPosition].setSprite(model.chefs[chefPosition].stop);
+                model.NotifyWhenMoved(model.chefs[chefPosition].posX, model.chefs[chefPosition].posY, model.chefs[chefPosition].posX, model.chefs[chefPosition].posY);
             }
         }
 
@@ -136,19 +147,39 @@ namespace AppRestaurant.Controller
         {
             while (true)
             {
-                Console.WriteLine(Thread.CurrentThread.Name + " : Waiting for Recipe... ");
+                Console.WriteLine(Thread.CurrentThread.Name + " : Waiting for Recipe...");
                 notifyOrderQueueMut.WaitOne();
                 recipeQueueMre.WaitOne();
                 recipeQueueMre.Reset();
+
                 notifyOrderQueueMut.ReleaseMutex();
 
-                Console.WriteLine(Thread.CurrentThread.Name + " : Recipe received. ");
+                Console.WriteLine(Thread.CurrentThread.Name + " : Recipe received.");
 
                 recipeQueueMut.WaitOne();
                 Recipe recipe = recipeQueue.First<Recipe>();
                 recipeQueue.Dequeue();
                 recipeQueueMut.ReleaseMutex();
 
+                int threadNumber = int.Parse((Thread.CurrentThread.Name[Thread.CurrentThread.Name.Length - 1]) + "");
+                int deputyChefPosition = threadNumber - 1;
+                model.deputyChefs[deputyChefPosition].setSprite(model.chefs[deputyChefPosition].right);
+                model.NotifyWhenMoved(model.deputyChefs[deputyChefPosition].posX, model.deputyChefs[deputyChefPosition].posY, model.deputyChefs[deputyChefPosition].posX, model.deputyChefs[deputyChefPosition].posY);
+
+                for (int i = 0; i <= 4; i++)
+                {
+                    int pastX = model.deputyChefs[deputyChefPosition].posX;
+                    int pastY = model.deputyChefs[deputyChefPosition].posY;
+                    model.deputyChefs[deputyChefPosition].moveRight();
+                    model.NotifyWhenMoved(model.deputyChefs[deputyChefPosition].posX, model.deputyChefs[deputyChefPosition].posY, model.deputyChefs[deputyChefPosition].posX, model.deputyChefs[deputyChefPosition].posY);
+                }
+
+                //if (deputyChefPosition % 2 == 0)
+                //    model.deputyChefs[deputyChefPosition].currentSprite = model.deputyChefs[deputyChefPosition].GetSprite("moving-up");
+                //else
+                //    model.deputyChefs[deputyChefPosition].currentSprite = model.deputyChefs[deputyChefPosition].GetSprite("moving-down");
+
+                model.NotifyWhenMoved(model.deputyChefs[deputyChefPosition].posX, model.deputyChefs[deputyChefPosition].posY, model.deputyChefs[deputyChefPosition].posX, model.deputyChefs[deputyChefPosition].posY);
 
                 foreach (RecipeStep task in recipe.recipeSteps)
                 {
@@ -157,19 +188,39 @@ namespace AppRestaurant.Controller
                         Console.WriteLine(Thread.CurrentThread.Name + " : Waiting for " + task.material.name);
                         Thread.Sleep(2000);
                     }
-                    --task.material.quantity;
+
+                    task.material.quantity--;
                     Console.WriteLine(Thread.CurrentThread.Name + " : Doing task '" + task.name + "' ...");
                     Thread.Sleep(task.duration * TIME_SCALE);
                     Console.WriteLine(Thread.CurrentThread.Name + " : Task '" + task.name + "' done.");
-
                     materialWashQueueMut.WaitOne();
-                    materialWashQueue.Enqueue(task.material);
-                    materialWashQueueMre.Set();
+                    if (task.material.washable)
+                    {
+                        materialWashQueue.Enqueue(task.material);
+                        materialWashQueueMre.Set();
+                    }
+                    else
+                        task.material.quantity++;
                     materialWashQueueMut.ReleaseMutex();
                 }
 
                 Console.WriteLine(Thread.CurrentThread.Name + " : Recipe '" + recipe.name + "' done.");
+                model.deputyChefs[deputyChefPosition].setSprite(model.chefs[deputyChefPosition].left);
 
+                for (int i = 0; i <= 4; i++)
+                {
+                    int pastX = model.deputyChefs[deputyChefPosition].posX;
+                    int pastY = model.deputyChefs[deputyChefPosition].posY;
+                    model.deputyChefs[deputyChefPosition].moveLeft();
+                    model.NotifyWhenMoved(model.deputyChefs[deputyChefPosition].posX, model.deputyChefs[deputyChefPosition].posY, model.deputyChefs[deputyChefPosition].posX, model.deputyChefs[deputyChefPosition].posY);
+                }
+
+                //if (deputyChefPosition % 2 == 0)
+                //    model.deputyChefs[deputyChefPosition].currentSprite = model.deputyChefs[deputyChefPosition].GetSprite("moving-up");
+                //else
+                //    model.deputyChefs[deputyChefPosition].currentSprite = model.deputyChefs[deputyChefPosition].GetSprite("moving-down");
+
+                model.NotifyWhenMoved(model.deputyChefs[deputyChefPosition].posX, model.deputyChefs[deputyChefPosition].posY, model.deputyChefs[deputyChefPosition].posX, model.deputyChefs[deputyChefPosition].posY);
 
                 doneOrderQueueMut.WaitOne();
                 pendingOrderQueueMut.WaitOne();
@@ -184,19 +235,49 @@ namespace AppRestaurant.Controller
         {
             while (true)
             {
-                Console.WriteLine(Thread.CurrentThread.Name + " : Waiting for done orders...");
+                Console.WriteLine(Thread.CurrentThread.Name + ": Waiting for done orders...");
 
                 notifyDoneOrderQueueMut.WaitOne();
-                doneOrderQueueMre.WaitOne();
-                doneOrderQueueMre.Reset();
-                notifyDoneOrderQueueMut.ReleaseMutex();
 
-                Console.WriteLine(Thread.CurrentThread.Name + " : Done order received");
+                if (doneOrderQueueMre.WaitOne())
+                {
+                    doneOrderQueueMre.Reset();
+                    notifyDoneOrderQueueMut.ReleaseMutex();
 
-                doneOrderQueueMut.WaitOne();
-                Console.WriteLine(Thread.CurrentThread.Name + " : Moving'" + doneOrderQueue.First<Order>().recipe.name + "' to comptoir");
-                doneOrderQueue.Dequeue();
-                doneOrderQueueMut.ReleaseMutex();
+                    Console.WriteLine(Thread.CurrentThread.Name + " : Done order received");
+
+                    int threadNumber = int.Parse((Thread.CurrentThread.Name[Thread.CurrentThread.Name.Length - 1]) + "");
+                    int clerkPosition = threadNumber - 1;
+                    model.kitchenClerks[clerkPosition].setSprite(model.kitchenClerks[clerkPosition].front);
+                    model.NotifyWhenMoved(model.kitchenClerks[clerkPosition].posX, model.kitchenClerks[clerkPosition].posY, model.kitchenClerks[clerkPosition].posX, model.kitchenClerks[clerkPosition].posY);
+
+                    for (int i = 0; i <= 4; i++)
+                    {
+                        int pastX = model.kitchenClerks[clerkPosition].posX;
+                        int pastY = model.kitchenClerks[clerkPosition].posY;
+                        model.kitchenClerks[clerkPosition].moveLeft();
+                        model.NotifyWhenMoved(pastX, pastY, model.kitchenClerks[clerkPosition].posX, model.kitchenClerks[clerkPosition].posY);
+                    }
+
+                    doneOrderQueueMut.WaitOne();
+                    Console.WriteLine(Thread.CurrentThread.Name + " : Moving'" + doneOrderQueue.First<Order>().recipe.name + "' to comptoir");
+                    doneOrderQueue.Dequeue();
+                    doneOrderQueueMut.ReleaseMutex();
+
+                    model.kitchenClerks[clerkPosition].setSprite(model.kitchenClerks[clerkPosition].right);
+                    model.NotifyWhenMoved(model.kitchenClerks[clerkPosition].posX, model.kitchenClerks[clerkPosition].posY, model.kitchenClerks[clerkPosition].posX, model.kitchenClerks[clerkPosition].posY);
+
+                    for (int i = 0; i <= 4; i++)
+                    {
+                        int pastX = model.kitchenClerks[clerkPosition].posX;
+                        int pastY = model.kitchenClerks[clerkPosition].posY;
+                        model.kitchenClerks[clerkPosition].moveRight();
+                        model.NotifyWhenMoved(pastX, pastY, model.kitchenClerks[clerkPosition].posX, model.kitchenClerks[clerkPosition].posY);
+                    }
+
+                    model.kitchenClerks[clerkPosition].setSprite(model.kitchenClerks[clerkPosition].back);
+                    model.NotifyWhenMoved(model.kitchenClerks[clerkPosition].posX, model.kitchenClerks[clerkPosition].posY, model.kitchenClerks[clerkPosition].posX, model.kitchenClerks[clerkPosition].posY);
+                }
             }
         }
 
@@ -204,19 +285,28 @@ namespace AppRestaurant.Controller
         {
             while (true)
             {
-                Console.WriteLine(Thread.CurrentThread.Name + " : Waiting for material to wash...");
+                Console.WriteLine(Thread.CurrentThread.Name + " : Waiting for a dirty material...");
                 notifyMaterialWashMut.WaitOne();
                 materialWashQueueMre.WaitOne();
+
+
+                int threadNumber = int.Parse((Thread.CurrentThread.Name[Thread.CurrentThread.Name.Length - 1]) + "");
+                int diverPosition = threadNumber - 1;
+                model.divers[diverPosition].setSprite(model.divers[diverPosition].right);
+                model.NotifyWhenMoved(model.divers[diverPosition].posX, model.divers[diverPosition].posY, model.divers[diverPosition].posX, model.divers[diverPosition].posY);
+
                 materialWashQueueMut.WaitOne();
                 Console.WriteLine(Thread.CurrentThread.Name + " : Material '" + materialWashQueue.First<kitchenMaterial>().name + "' received.");
                 Console.WriteLine(Thread.CurrentThread.Name + " : Washing Material '" + materialWashQueue.First<kitchenMaterial>().name + "' ...");
                 Thread.Sleep(2000);
                 Console.WriteLine(Thread.CurrentThread.Name + " : Washing Material '" + materialWashQueue.First<kitchenMaterial>().name + "' done.");
 
-                kitchenMaterial material = materialWashQueue.First<kitchenMaterial>();
-                material.quantity++;
+                materialWashQueue.First<kitchenMaterial>().quantity++;
 
                 materialWashQueue.Dequeue();
+
+                model.divers[diverPosition].setSprite(model.divers[diverPosition].left);
+                model.NotifyWhenMoved(model.divers[diverPosition].posX, model.divers[diverPosition].posY, model.divers[diverPosition].posX, model.divers[diverPosition].posX);
 
                 materialWashQueueMut.ReleaseMutex();
                 materialWashQueueMre.Reset();

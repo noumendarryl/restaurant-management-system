@@ -212,11 +212,11 @@ create table Commande (
    id_commande          int              identity,
    num_table                varchar(200)      not null,
    nb_commandes         int                not null,
-   prix                 int                  not null,
+   prix                 double                  not null,
    constraint PK_COMMANDE primary key nonclustered (id_commande)
 );
 insert into Commande(num_table, nb_commandes, prix) values 
-();
+(1, 2, 80.30), (2, 3, 100);
 go
 
 /*==============================================================*/
@@ -289,7 +289,7 @@ create table Recette (
    nom                  varchar(200)         not null,
    nb_personnes         int                  not null,
    categorie            varchar(200)       not null,
-   prix                 float              not null,
+   prix                 double              not null,
    constraint PK_RECETTE primary key nonclustered (id_recette)
 );
 insert Recette(nom, nb_personnes, categorie, prix) values

@@ -12,7 +12,7 @@ namespace AppRestaurant.View
 {
     public class kitchenView : IObserver
     {
-        private static int FRAME_SIZE = 32;
+        public static int FRAME_SIZE = 64;
         public Form1 form { get; set; }
 
         public kitchenView(kitchenModel  model)

@@ -22,13 +22,20 @@ namespace AppRestaurant.Model
 
 		public void loadImage()
         {
-            this.setImage(Image.FromFile(this.getSpritePath()+this.getImageName()));
+            try
+            {
+                this.setImage(Image.FromFile(this.getSpritePath()+this.getImageName()));
+            } catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
 
         /*
         * The image
         */
-        private Image getImage()
+        public Image getImage()
         {
             return image;
         }
@@ -36,7 +43,7 @@ namespace AppRestaurant.Model
         /*
         * The image
         */
-        private void setImage(Image value)
+        public void setImage(Image value)
         {
             image = value;
         }

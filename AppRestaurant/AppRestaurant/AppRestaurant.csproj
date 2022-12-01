@@ -64,13 +64,12 @@
     <Compile Include="Model\DB\DBActions.cs" />
     <Compile Include="Model\DB\DBConnection.cs" />
     <Compile Include="Model\DB\IDBActions.cs" />
-    <Compile Include="Model\Entity.cs" />
+    <Compile Include="Model\kitchen\Entity.cs" />
     <Compile Include="Model\kitchen\Chef.cs" />
     <Compile Include="Model\kitchen\DeputyChef.cs" />
-    <Compile Include="Model\kitchen\Direction.cs" />
     <Compile Include="Model\kitchen\Diver.cs" />
     <Compile Include="Model\kitchen\Ingredient.cs" />
-    <Compile Include="Model\IObserver.cs" />
+    <Compile Include="Model\kitchen\IObserver.cs" />
     <Compile Include="Model\kitchen\kitchenModel.cs" />
     <Compile Include="Model\kitchen\kitchenClerk.cs" />
     <Compile Include="Model\kitchen\MotionkitchenItem.cs" />
@@ -80,8 +79,8 @@
     <Compile Include="Model\kitchen\Order.cs" />
     <Compile Include="Model\kitchen\Recipe.cs" />
     <Compile Include="Model\kitchen\RecipeStep.cs" />
-    <Compile Include="Model\Position.cs" />
-    <Compile Include="Model\Sprite.cs" />
+    <Compile Include="Model\kitchen\Position.cs" />
+    <Compile Include="Model\kitchen\Sprite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\Form1.resx">
@@ -108,6 +107,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Chef\front.png" />
+    <Content Include="Resources\DeputyChef\front.png" />
+    <Content Include="Resources\Diver\front.png" />
+    <Content Include="Resources\kitchenClerk\front.png" />
+    <Content Include="Resources\kitchenMaterials\evier.png" />
+    <Content Include="Resources\kitchenMaterials\fridge.png" />
+    <Content Include="Resources\kitchenMaterials\cookingFire.png" />
+    <Content Include="Resources\kitchentile.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,7 +13,7 @@ namespace AppRestaurant.Model.kitchen
 		/*
 		* The kitchen.
 		*/
-		private kitchen kitchen { get; set; }
+		public kitchen kitchen { get; set; }
 
 		/*
 		* The chef
@@ -59,7 +59,7 @@ namespace AppRestaurant.Model.kitchen
 
 		public kitchenModel()
         {
-			kitchen = new kitchen();
+			this.kitchen = new kitchen();
 			observers = new List<IObserver>();
 
 			cookingFire = kitchenMaterialFactory.createCookingFire();
