@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AppRestaurant.View;
+using AppRestaurant.Controller;
+using AppRestaurant.Model.kitchen;
 
 namespace AppRestaurant
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -14,9 +17,13 @@ namespace AppRestaurant
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //ApplicationConfiguration.Initialize();
+
+            kitchenModel model = new kitchenModel();
+            kitchenView view = new kitchenView(model);
+            kitchenController controller = new kitchenController(model, view);
+
+            controller.Start();
         }
     }
 }

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CE53E745-362F-484F-8BD4-C3DF4F630B81}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>AppRestaurant</RootNamespace>
     <AssemblyName>AppRestaurant</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,14 +49,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Controller\kitchenController.cs" />
+    <Compile Include="Model\kitchen\CommonMaterial.cs" />
+    <Compile Include="Model\kitchen\CommonMaterialFactory.cs" />
+    <Compile Include="Model\kitchen\kitchen.cs" />
+    <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="View\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\kitchenView.cs" />
+    <Compile Include="Model\DB\DBAccess.cs" />
+    <Compile Include="Model\DB\DBActions.cs" />
+    <Compile Include="Model\DB\DBConnection.cs" />
+    <Compile Include="Model\DB\IDBActions.cs" />
+    <Compile Include="Model\Entity.cs" />
+    <Compile Include="Model\kitchen\Chef.cs" />
+    <Compile Include="Model\kitchen\DeputyChef.cs" />
+    <Compile Include="Model\kitchen\Direction.cs" />
+    <Compile Include="Model\kitchen\Diver.cs" />
+    <Compile Include="Model\kitchen\Ingredient.cs" />
+    <Compile Include="Model\IObserver.cs" />
+    <Compile Include="Model\kitchen\kitchenModel.cs" />
+    <Compile Include="Model\kitchen\kitchenClerk.cs" />
+    <Compile Include="Model\kitchen\MotionkitchenItem.cs" />
+    <Compile Include="Model\kitchen\kitchenMaterial.cs" />
+    <Compile Include="Model\kitchen\kitchenMaterialFactory.cs" />
+    <Compile Include="Model\kitchen\Material.cs" />
+    <Compile Include="Model\kitchen\Order.cs" />
+    <Compile Include="Model\kitchen\Recipe.cs" />
+    <Compile Include="Model\kitchen\RecipeStep.cs" />
+    <Compile Include="Model\Position.cs" />
+    <Compile Include="Model\Sprite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="View\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,5 +109,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

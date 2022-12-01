@@ -6,32 +6,32 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Model.kitchen
 {
-    public class Chef : MotionkitchenItem
+    public class DeputyChef : MotionkitchenItem
     {
-        private static string spritePath = "Resources/Chef/";
+        private static string spritePath = "Resources/DeputyChef/";
 
         private static string imageFront = "front.png";
         private static string imageBack = "back.png";
         private static string imageLeft = "left.png";
         private static string imageRight = "right.png";
-        private static string imageStop = "stop.png";
+        private static string imageWorking = "working.png";
 
         private Sprite front = new Sprite(spritePath, imageFront);
         private Sprite back = new Sprite(spritePath, imageBack);
         private Sprite left = new Sprite(spritePath, imageLeft);
         private Sprite right = new Sprite(spritePath, imageRight);
-        private Sprite stop = new Sprite(spritePath, imageStop);
+        private Sprite working = new Sprite(spritePath, imageWorking);
 
-        public Chef()
+        public DeputyChef()
         {
-            this.posX = 0;
-            this.posY = 0;
+            this.posX = 7;
+            this.posY = 4;
 
             //front.loadImage();
             //back.loadImage();
             //left.loadImage();
             //right.loadImage();
-            //stop.loadImage();
+            //working.loadImage();
 
             this.setSprite(front);
         }

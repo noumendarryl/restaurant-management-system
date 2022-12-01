@@ -210,12 +210,12 @@ go
 /*==============================================================*/
 create table Commande (
    id_commande          int              identity,
-   titre                varchar(200)      not null,
+   num_table                varchar(200)      not null,
    nb_commandes         int                not null,
    prix                 int                  not null,
    constraint PK_COMMANDE primary key nonclustered (id_commande)
 );
-insert into Commande(titre, nb_commandes, prix) values 
+insert into Commande(num_table, nb_commandes, prix) values 
 ();
 go
 
