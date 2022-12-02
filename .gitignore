@@ -12,8 +12,8 @@
 *.pdb
 *.cache
 *.exe
-AppRestaurant/.vs/AppRestaurant/v16/.suo
-AppRestaurant/.vs/AppRestaurant/v17/.suo
+AppRestaurant/.vs/AppRestaurant/v16/*.suo
+AppRestaurant/.vs/AppRestaurant/v17/*.suo
 AppRestaurant/AppRestaurant/obj/Debug/*.sqlite
 AppRestaurant/AppRestaurant/obj/Debug/*.lutdata
 AppRestaurant/AppRestaurant/obj/Debug/*.testlog
