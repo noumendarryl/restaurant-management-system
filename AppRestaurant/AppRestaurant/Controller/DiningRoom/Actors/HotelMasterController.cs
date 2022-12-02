@@ -16,7 +16,9 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
     {
         private HotelMaster hotelMaster;
         private DiningRoomModel diningRoomModel;
-        private LineChiefController lineChiefController;
+        //private LineChiefController lineChiefController;
+
+        private static LineChiefController lineChiefController;
 
 
         public HotelMasterController(DiningRoomModel diningRoomModel)
@@ -35,7 +37,7 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
                 for (int j = 0; j < nbLine; j++)
                 {
                     int nbTable = diningRoomModel.Squares[i].Lines[j].Tables.Count;
-                    for (int k = 0; k < nbLine; k++)
+                    for (int k = 0; k < nbTable; k++)
                     {
                         if (group.Count < diningRoomModel.Squares[i].Lines[j].Tables[k].NbPlaces && diningRoomModel.Squares[i].Lines[j].Tables[k].State == EquipmentState.Available)
                         {
@@ -80,6 +82,8 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
                 value.CustomerState = CustomerState.WaitLineChief;
 
                 LineChief lineChief = this.FindLineChief(value, this.diningRoomModel);
+                
+                Console.WriteLine("Chef de rang: Oui");
 
                 if (lineChief != null)
                 {
@@ -89,17 +93,13 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
                     Position position = new Position(10, 0);
                     this.CallLineChief(lineChief, position);
 
-                    Console.WriteLine("Chef de rang: Si vous voulez bien me suivre.");
-
-                    LineChiefController lineChiefController = new LineChiefController(lineChief);
-
-                    Console.WriteLine("Chef de rang: Votre table. 0");
-
+                    lineChiefController = new LineChiefController(lineChief);
 
                     lineChiefController.installClients(value, table);
 
-                    Console.WriteLine("Chef de rang: Votre table.");
+                    lineChiefController.LineChief.Available = true;
 
+                    Console.WriteLine("=========Clients installé=========");
                 }
             }
         }

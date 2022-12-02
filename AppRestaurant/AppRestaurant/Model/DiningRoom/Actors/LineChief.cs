@@ -11,15 +11,16 @@ namespace AppRestaurant.Model.DiningRoom.Actors
 {
     public class LineChief : Position, IMove
     {
-        private Line line;
         private bool available = true;
 
         public LineChief()
         {
+            available = true;
         }
 
         public LineChief(int posX, int posY) : base(posX, posY)
         {
+            available = true;
         }
 
         public bool Available { get => available; set => available = value; }

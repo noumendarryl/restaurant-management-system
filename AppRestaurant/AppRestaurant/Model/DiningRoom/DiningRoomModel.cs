@@ -28,6 +28,8 @@ namespace AppRestaurant.Model.DiningRoom
 
             squares.Add(new Square());
 
+            lineChiefs.Add(new LineChief());
+
             squares[0].Lines.Add(new Line(4,6));
             //squares[0].Lines.Add(new Line());
             squares[0].Waiters.Add(new Waiter());
