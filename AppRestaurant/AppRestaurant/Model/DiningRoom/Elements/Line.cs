@@ -17,6 +17,7 @@ namespace AppRestaurant.Model.DiningRoom.Elements
         //public LineChief LineChief { get => lineChief; set => lineChief = value; }
         public Line(int nbTables, int nbSeats)
         {
+            tables = new List<Table>();
             for (int i = 0; i < nbTables; i++)
             {
                 tables.Add(new Table(nbSeats));

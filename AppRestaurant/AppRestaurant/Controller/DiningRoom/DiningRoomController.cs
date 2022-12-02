@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AppRestaurant.Model.DiningRoom;
+using AppRestaurant.Model.DiningRoom.Actors;
+using AppRestaurant.Model.DiningRoom.Factory;
 using AppRestaurant.Controller.DiningRoom.Actors;
 
 namespace AppRestaurant.Controller.DiningRoom
@@ -19,12 +21,23 @@ namespace AppRestaurant.Controller.DiningRoom
         private List<WaiterController> waiterControllers;
 
 
-        DiningRoomController(DiningRoomModel diningRoomModel)
+        public DiningRoomController(DiningRoomModel diningRoomModel)
         {
-            this.hotelMasterController = new HotelMasterController(diningRoomModel.HotelMaster);
-            this.lineChiefControllers = new List<LineChiefController>(lineChiefControllers);
-            this.roomClerkControllers = new List<RoomClerkController>(roomClerkControllers);
-            this.waiterControllers = new List<WaiterController>(waiterControllers);
+            this.hotelMasterController = new HotelMasterController(diningRoomModel);
+            this.lineChiefControllers = new List<LineChiefController>();
+            this.roomClerkControllers = new List<RoomClerkController>();
+            this.waiterControllers = new List<WaiterController>();
+
+            CustomersFactory factor = new CustomersFactory();
+
+            factor.Subscribe(hotelMasterController);
+            
+            List<Customer> CustomerList = new List<Customer>();
+            Console.WriteLine("-------------------");
+            for(int i = 0; i < 5; i++)
+            {
+                CustomerList.Add(factor.CreateCustomers(4));
+            }
         }
     }
 }

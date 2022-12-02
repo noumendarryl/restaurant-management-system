@@ -19,6 +19,12 @@ namespace AppRestaurant.Model.DiningRoom
         public DiningRoomModel()
         {
             hotelMaster = new HotelMaster();
+            
+            squares = new List<Square>();
+
+            roomclerks = new List<RoomClerk>();
+
+            lineChiefs = new List<LineChief>();
 
             squares.Add(new Square());
 
@@ -34,7 +40,13 @@ namespace AppRestaurant.Model.DiningRoom
         {
             hotelMaster = new HotelMaster();
 
-            for(int i=0; i < nbSquares; i++)
+            squares = new List<Square>();
+
+            roomclerks = new List<RoomClerk>();
+
+            lineChiefs = new List<LineChief>();
+
+            for (int i=0; i < nbSquares; i++)
                 squares.Add(new Square());
 
             for (int i = 0; i < nbSquares; i++)
