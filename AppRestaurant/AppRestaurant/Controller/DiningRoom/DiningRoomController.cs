@@ -34,11 +34,12 @@ namespace AppRestaurant.Controller.DiningRoom
 
             factor.Subscribe(hotelMasterController);
 
-            List<Customer> CustomerList = new List<Customer>();
+            Queue<Customer> CustomerQueue = new Queue<Customer>();
             for (int i = 0; i < 5; i++)
             {
-                CustomerList.Add(factor.CreateCustomers(4));
+                CustomerQueue.Enqueue(factor.CreateCustomers(4));
             }
+
         }
     }
 }
