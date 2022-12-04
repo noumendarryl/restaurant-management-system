@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using AppRestaurant.Model.Common;
 
-namespace AppRestaurant.Controller.DiningRoom.Actors.Strategy
+namespace AppRestaurant.Controller.DiningRoom.Strategy
 {
     class NormalStrategy : ICustomerStrategy
     {
