@@ -22,6 +22,10 @@ namespace AppRestaurant.Model.Common
             this.menu = menu;
             this.date = date;
         }
+        public MenuCard(Menu menu)
+        {
+            this.menu = menu;
+        }
         public int PosX
         {
             get

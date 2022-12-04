@@ -50,18 +50,26 @@
     <Compile Include="Controller\DiningRoom\Actors\HotelMasterController.cs" />
     <Compile Include="Controller\DiningRoom\Actors\LineChiefController.cs" />
     <Compile Include="Controller\DiningRoom\Actors\RoomClerkController.cs" />
+    <Compile Include="Controller\DiningRoom\Strategy\ICustomer.cs" />
+    <Compile Include="Controller\DiningRoom\Strategy\ICustomerStrategy.cs" />
+    <Compile Include="Controller\DiningRoom\Strategy\NormalStrategy.cs" />
+    <Compile Include="Controller\DiningRoom\Strategy\RushedStrategy.cs" />
+    <Compile Include="Controller\DiningRoom\Strategy\CoolStrategy.cs" />
     <Compile Include="Controller\DiningRoom\Actors\WaiterController.cs" />
     <Compile Include="Controller\DiningRoom\DiningRoomController.cs" />
     <Compile Include="Controller\DiningRoom\Observer\Unsubscriber.cs" />
+    <Compile Include="Controller\DiningRoom\Strategy\Class1.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Common\MenuCard.cs" />
     <Compile Include="Model\Common\Order.cs" />
     <Compile Include="Model\Common\Equipment.cs" />
     <Compile Include="Model\Common\Recipe.cs" />
+    <Compile Include="Model\Common\Menu.cs" />
     <Compile Include="Model\DiningRoom\Actors\HotelMaster.cs" />
     <Compile Include="Model\DiningRoom\Actors\LineChief.cs" />
     <Compile Include="Model\DiningRoom\Actors\RoomClerk.cs" />

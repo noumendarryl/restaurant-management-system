@@ -20,6 +20,8 @@ namespace AppRestaurant.Controller.DiningRoom
         private List<RoomClerkController> roomClerkControllers;
         private List<WaiterController> waiterControllers;
 
+        static Queue<Customer> CustomerQueue = new Queue<Customer>();
+
 
         public DiningRoomController(DiningRoomModel diningRoomModel)
         {
@@ -30,16 +32,20 @@ namespace AppRestaurant.Controller.DiningRoom
         }
         public void Run()
         {
-            CustomersFactory factor = new CustomersFactory();
+            CustomersFactory factory = new CustomersFactory();
+            
+            installCustomers(factory);
+        }
 
-            factor.Subscribe(hotelMasterController);
+        public void installCustomers(CustomersFactory factory)
+        {
+            factory.Subscribe(hotelMasterController);
 
-            Queue<Customer> CustomerQueue = new Queue<Customer>();
             for (int i = 0; i < 5; i++)
             {
-                CustomerQueue.Enqueue(factor.CreateCustomers(4));
+                CustomerQueue.Enqueue(factory.CreateCustomers(4));
             }
-
         }
+
     }
 }
