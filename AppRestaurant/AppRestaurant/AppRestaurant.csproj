@@ -58,7 +58,6 @@
     <Compile Include="Controller\DiningRoom\Actors\WaiterController.cs" />
     <Compile Include="Controller\DiningRoom\DiningRoomController.cs" />
     <Compile Include="Controller\DiningRoom\Observer\Unsubscriber.cs" />
-    <Compile Include="Controller\DiningRoom\Strategy\Class1.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
