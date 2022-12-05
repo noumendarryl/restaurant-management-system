@@ -22,7 +22,8 @@ namespace AppRestaurant.Controller.DiningRoom
         private List<LineChiefController> lineChiefControllers;
         private List<RoomClerkController> roomClerkControllers;
         private List<WaiterController> waiterControllers;
-
+        
+        
         static Queue<Customer> CustomerQueue = new Queue<Customer>();
 
         private int orderCount = 0;
@@ -43,6 +44,8 @@ namespace AppRestaurant.Controller.DiningRoom
             this.lineChiefControllers = new List<LineChiefController>();
             this.roomClerkControllers = new List<RoomClerkController>();
             this.waiterControllers = new List<WaiterController>();
+
+ 
         }
         public void Run()
         {

@@ -97,9 +97,16 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
 
                     lineChiefController.installClients(value, table);
 
+                    lineChiefController.setMenuCard(table,diningRoomModel.MenuCards);
+
                     lineChiefController.LineChief.Available = true;
 
                     Console.WriteLine("=========Clients installé=========");
+
+                    lineChiefController.setMenuCard(table, this.diningRoomModel.MenuCards);
+
+                    Console.WriteLine("=======Carte de menu deposée=======");
+
                 }
             }
         }

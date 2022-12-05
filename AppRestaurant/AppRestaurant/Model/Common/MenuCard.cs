@@ -10,7 +10,7 @@ using AppRestaurant.Model.DiningRoom.Move;
 
 namespace AppRestaurant.Model.Common
 {
-    public class MenuCard : IPosition
+    public class MenuCard : Equipment, IPosition
     {
         private DateTime date;
         private Menu menu;
@@ -21,10 +21,12 @@ namespace AppRestaurant.Model.Common
         {
             this.menu = menu;
             this.date = date;
+            this.State = EquipmentState.Available;
         }
         public MenuCard(Menu menu)
         {
             this.menu = menu;
+            this.State = EquipmentState.Available;
         }
         public int PosX
         {

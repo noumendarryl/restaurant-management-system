@@ -30,5 +30,17 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
 
         }
         public LineChief LineChief { get => lineChief; set => lineChief = value; }
+
+        internal void setMenuCard(Table table, List<MenuCard> menuCards)
+        {
+            foreach(MenuCard menuCard in menuCards)
+            {
+                if(menuCard.State == EquipmentState.Available)
+                {
+                    menuCard.State = EquipmentState.InUse;
+                    table.MenuCard = menuCard;
+                }
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace AppRestaurant.Model.DiningRoom.Elements
         private bool dessert = false;
         private int posX = 0;
         private int posY = 0;
-
+        private MenuCard menuCard;
 
         public Table(int nbPlaces)
         {
@@ -46,5 +46,6 @@ namespace AppRestaurant.Model.DiningRoom.Elements
         public bool Dessert { get => dessert; set => dessert = value; }
         public int PosX { get => posX; set => posX = value; }
         public int PosY { get => posY; set => posY = value; }
+        public MenuCard MenuCard { get => menuCard; set => menuCard = value; }
     }
 }

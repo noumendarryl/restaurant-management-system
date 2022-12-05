@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AppRestaurant.Model.DiningRoom.Actors;
 using AppRestaurant.Model.DiningRoom.Elements;
+using AppRestaurant.Model.Common;
 
 namespace AppRestaurant.Model.DiningRoom
 {
@@ -15,6 +16,9 @@ namespace AppRestaurant.Model.DiningRoom
         private  List<Waiter> waiters;
         private  List<Square> squares;
         private  List<LineChief> lineChiefs;
+        private Menu menu; 
+        private List<MenuCard> menuCards;
+
 
         public DiningRoomModel()
         {
@@ -30,6 +34,13 @@ namespace AppRestaurant.Model.DiningRoom
 
             lineChiefs.Add(new LineChief());
 
+            menuCards = new List<MenuCard>();
+
+            for(int i = 0; i < 40; i++)
+            {
+                menuCards.Add(new MenuCard(menu));
+            }
+
             squares[0].Lines.Add(new Line(4,6));
             //squares[0].Lines.Add(new Line());
             squares[0].Waiters.Add(new Waiter());
@@ -38,7 +49,7 @@ namespace AppRestaurant.Model.DiningRoom
             
             roomclerks.Add(new RoomClerk());
         }
-        public DiningRoomModel(int nbSquares, int nbLines, int nbTablesPerLine, int nbSeatsPerTable, int nbLineChiefs, int nbWaiters, int nbRoomClerks)
+        public DiningRoomModel(int nbSquares, int nbLines, int nbTablesPerLine, int nbSeatsPerTable, int nbLineChiefs, int nbWaiters, int nbRoomClerks, int nbMenuCard)
         {
             hotelMaster = new HotelMaster();
 
@@ -65,13 +76,18 @@ namespace AppRestaurant.Model.DiningRoom
 
             for (int i = 0; i < nbRoomClerks; i++)
                 roomclerks.Add(new RoomClerk());
+
+
+            menuCards = new List<MenuCard>();
+            for (int i = 0; i < nbMenuCard; i++)
+                menuCards.Add(new MenuCard(menu));
         }
         public HotelMaster HotelMaster { get => hotelMaster; set => hotelMaster = value; }
         public  List<RoomClerk> RoomClerks { get => roomclerks; set => roomclerks = value; }
         public  List<Waiter> Waiters { get => waiters; set => waiters = value; }
         public  List<Square> Squares { get => squares; set => squares = value; }
         public  List<LineChief> LineChiefs { get => lineChiefs; set => lineChiefs = value; }
-
-
+        public  List<MenuCard> MenuCards { get => menuCards; set => menuCards = value; }
+        public Menu Menu { get => menu; set => menu = value; }
     }
 }
