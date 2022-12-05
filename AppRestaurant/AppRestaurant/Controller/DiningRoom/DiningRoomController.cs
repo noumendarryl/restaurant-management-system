@@ -8,6 +8,7 @@ using AppRestaurant.Model.DiningRoom;
 using AppRestaurant.Model.DiningRoom.Actors;
 using AppRestaurant.Model.DiningRoom.Factory;
 using AppRestaurant.Controller.DiningRoom.Actors;
+using System.Threading;
 
 namespace AppRestaurant.Controller.DiningRoom
 {
@@ -33,15 +34,18 @@ namespace AppRestaurant.Controller.DiningRoom
         public void Run()
         {
             CustomersFactory factory = new CustomersFactory();
-            
-            installCustomers(factory);
-        }
 
-        public void installCustomers(CustomersFactory factory)
-        {
             factory.Subscribe(hotelMasterController);
 
-            for (int i = 0; i < 5; i++)
+            installCustomers(factory, 5);
+
+            //Thread installThread = new Thread(() => installCustomers(factory, 5));
+            //installThread.Start();
+        }
+
+        public void installCustomers(CustomersFactory factory,int nbCustomer)
+        {
+            for (int i = 0; i < nbCustomer; i++)
             {
                 CustomerQueue.Enqueue(factory.CreateCustomers(4));
             }
