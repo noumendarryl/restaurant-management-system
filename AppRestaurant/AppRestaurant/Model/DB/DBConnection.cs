@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Model.DB
 {
-    public class DBConnection
-    {
+	public class DBConnection
+	{
 		/* The instance. */
 		private static DBConnection INSTANCE = null;
 

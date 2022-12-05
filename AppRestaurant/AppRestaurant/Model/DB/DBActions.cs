@@ -14,11 +14,8 @@ namespace AppRestaurant.Model.DB
         private Dictionary<string, int> values;
         private List<string> recipes;
         private List<string> steps;
-        private List<string> materials;
-        private List<string> ingredients;
         private SqlDataReader reader;
         private int limitStock = 100;
-        private Boolean isOpened;
 
         public void getBooking()
         {
@@ -37,73 +34,22 @@ namespace AppRestaurant.Model.DB
                     }
                     reader.Close();
                 }
-            } catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        public List<string> getIngredients(string name)
-        {
-            ingredients = new List<string>();
-            da.createSqlCommand("SELECT * FROM dbo.Ingredients WHERE nom = @nomIngredient");
-            da.getCmd().Parameters.AddWithValue("@nomIngredient", name);
-
-            try
-            {
-                reader = da.executeReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        ingredients.Add(reader[1].ToString());
-                    }
-                    reader.Close();
-                }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-
-            return ingredients;
-        }
-
-        public List<string> getMaterials(string type)
-        {
-            materials = new List<string>();
-            da.createSqlCommand("SELECT * FROM dbo.Materials WHERE type = @typeMateriel");
-            da.getCmd().Parameters.AddWithValue("@typeMateriel", type);
-
-            try
-            {
-                reader = da.executeReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        materials.Add(reader[3].ToString());
-                    }
-                    reader.Close();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return materials;
         }
 
         public int getPrice(string nameRecipe)
         {
             int price = 0;
 
-           da.createSqlCommand("SELECT Prix FROM dbo.Recette WHERE nom = @nomRecette");
-           da.getCmd().Parameters.AddWithValue("@nomRecette", nameRecipe);
+            da.createSqlCommand("SELECT Prix FROM dbo.Recette WHERE nom = @nomRecette");
+            da.getCmd().Parameters.AddWithValue("@nomRecette", nameRecipe);
 
-           try
-           {
+            try
+            {
                 reader = da.executeReader();
                 if (reader.HasRows)
                 {
@@ -113,12 +59,13 @@ namespace AppRestaurant.Model.DB
                     }
                     reader.Close();
                 }
-           } catch (Exception e)
-           {
+            }
+            catch (Exception e)
+            {
                 Console.WriteLine(e.Message);
-           }
+            }
 
-           return price;
+            return price;
         }
 
         /*
@@ -141,13 +88,14 @@ namespace AppRestaurant.Model.DB
                     }
                     reader.Close();
                 }
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
 
             return recipes;
-         }
+        }
 
         /*
 	     * Get steps according to a specified recipe 
@@ -155,13 +103,13 @@ namespace AppRestaurant.Model.DB
         public List<string> getSteps(string nameRecipe)
         {
             steps = new List<string>();
-            da.createSqlCommand("");
+            da.createSqlCommand("SELECT * FROM dbo.Etapes WHERE ");
             da.getCmd().Parameters.AddWithValue("@nomRecette", nameRecipe);
             reader = da.executeReader();
 
             try
             {
-               if (reader.HasRows)
+                if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
@@ -169,7 +117,8 @@ namespace AppRestaurant.Model.DB
                     }
                     reader.Close();
                 }
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -180,27 +129,27 @@ namespace AppRestaurant.Model.DB
         /*
 	     * Update the stock according to deliveries.
 	     */
-        public void reStock()
+        public void reStock(string nameIngredient)
         {
             values = new Dictionary<string, int>();
 
-            da.createSqlCommand("");
-            da.getCmd().Parameters.AddWithValue("", limitStock);
-            
+            da.createSqlCommand("SELECT * FROM dbo.Ingredients WHERE nom = @nom");
+            da.getCmd().Parameters.AddWithValue("@nom", nameIngredient);
+
             reader = da.executeReader();
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    values.Add(reader[2].ToString(), (int)reader[3]);
+                    values.Add(reader[1].ToString(), (int)reader[2]);
                 }
                 reader.Close();
             }
 
             foreach (var element in values)
             {
-                da.createSqlCommand("");
-                da.getCmd().Parameters.AddWithValue("@nom",element.Key);
+                da.createSqlCommand("UPDATE dbo.Ingredients SET quantity = @newquantity WHERE nom = @nom");
+                da.getCmd().Parameters.AddWithValue("@nom", element.Key);
                 da.getCmd().Parameters.AddWithValue("@newquantity", limitStock - element.Value);
                 da.executeNonQuery();
             }
@@ -221,42 +170,11 @@ namespace AppRestaurant.Model.DB
 
                 da.executeNonQuery();
                 da.close();
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-        }
-
-        /*
-	     * Update the stock according to client orders.
-	     */
-        public void updateStock(string nameRecipe, int nbOrders)
-        {
-            values = new Dictionary<string, int>();
-
-            da.createSqlCommand("");
-            da.getCmd().Parameters.AddWithValue("@nom", nameRecipe);
-            da.getCmd().Parameters.AddWithValue("@nb_commandes", nbOrders);
-            
-            reader = da.executeReader();
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    //values.Add(reader[].ToString(), (int)reader[] * nbOrders);
-                }
-                reader.Close();
-            }
-
-            foreach (var item in values)
-            {
-                da.createSqlCommand("");
-                da.getCmd().Parameters.AddWithValue("", item.Key);
-                da.getCmd().Parameters.AddWithValue("", item.Value);
-                da.executeNonQuery();
-            }
-
-            da.close();
         }
     }
 }

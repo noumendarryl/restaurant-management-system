@@ -7,11 +7,9 @@ using AppRestaurant.Model.kitchen;
 
 namespace AppRestaurant.Model.kitchen
 {
-    public class MotionkitchenItem : Position
+	public class MotionkitchenItem : kitchenItem
 	{
-        private Sprite sprite;
-
-		public int speed { get; set; }
+		public static int speed { get; set; }
 
 		/* Instantiates a new MotionkitchenItem.
 		* @param map
@@ -22,55 +20,75 @@ namespace AppRestaurant.Model.kitchen
 		*/
 		public MotionkitchenItem()
 		{
-			this.speed = 1;
+			speed = 1;
 		}
 
 		/*
-		 * Moves the element Up
+		 * Moves the element up
 		 */
 		public void moveUp()
 		{
-			this.posY -= this.speed;
+			this.posY -= speed;
 		}
 
 		/*
-		 * Moves the element Down
+		 * Moves the element down
 		 */
 		public void moveDown()
 		{
-			this.posY += this.speed;
+			this.posY += speed;
 		}
 
 		/*
-		 * Moves the element to the Left
+		 * Moves the element to the left
 		 */
 		public void moveLeft()
 		{
-			this.posX -= this.speed;
+			this.posX -= speed;
 		}
 
 		/*
-		 * Moves the element to the Right
+		 * Moves the element to the right
 		 */
 		public void moveRight()
 		{
-			this.posX += this.speed;
+			this.posX += speed;
 		}
 
 		/*
-		* The sprite
-		*/
-		public Sprite getSprite()
+		 * Moves the element to the right, up diagonal
+		 */
+		public void moveRightUp()
 		{
-			return sprite;
+			this.posX += speed;
+			this.posY -= speed;
 		}
 
 		/*
-		* The sprite
-		*/
-		public void setSprite(Sprite value)
+		 * Moves the element to the right, down diagonal
+		 */
+		public void moveRightDown()
 		{
-			sprite = value;
+			this.posX += speed;
+			this.posY += speed;
+		}
+
+		/*
+		 * Moves the element to the left, up diagonal.
+		 */
+		public void moveLeftUp()
+		{
+			this.posX -= speed;
+			this.posY -= speed;
+		}
+
+		/*
+		 * Moves the element to the left, down diagonal.
+		 */
+		public void moveLeftDown()
+		{
+			this.posX -= speed;
+			this.posY += speed;
 		}
 	}
 }

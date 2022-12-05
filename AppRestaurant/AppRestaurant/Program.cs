@@ -17,13 +17,14 @@ namespace AppRestaurant
         [STAThread]
         static void Main()
         {
-            //ApplicationConfiguration.Initialize();
-
             kitchenModel model = new kitchenModel();
             kitchenView view = new kitchenView(model);
             kitchenController controller = new kitchenController(model, view);
 
-            controller.Start();
+            Application.Run(kitchenView.mainApp);
+            Application.Run(kitchenView.setting);
+            Application.Run(kitchenView.simulationForm);
+            //controller.Start();
         }
     }
 }

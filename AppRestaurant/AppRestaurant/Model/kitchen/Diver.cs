@@ -24,14 +24,14 @@ namespace AppRestaurant.Model.kitchen
 
         public Diver()
         {
-            this.posX = 15;
-            this.posY = 10;
+            this.posX = 12;
+            this.posY = 1;
 
             front.loadImage();
-            back.loadImage();
-            left.loadImage();
-            right.loadImage();
-            working.loadImage();
+            //back.loadImage();
+            //left.loadImage();
+            //right.loadImage();
+            //working.loadImage();
 
             this.setSprite(front);
         }

@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Model.kitchen
 {
-    public abstract class Material
+    public abstract class Material : MotionlesskitchenItem
     {
         public string name { get; set; }
-
         public int quantity { get; set; }
-
         public bool washable { get; set; }
 
         public Material(string name, int quantity)

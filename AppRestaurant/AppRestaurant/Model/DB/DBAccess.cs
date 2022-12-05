@@ -9,10 +9,10 @@ using AppRestaurant.Model.DB;
 
 namespace AppRestaurant.Model.DB
 {
-    public class DBAccess 
-    {
+	public class DBAccess
+	{
 		private DBConnection dbconn;
-        private SqlCommand cmd;
+		private SqlCommand cmd;
 
 		public DBAccess()
 		{
@@ -26,24 +26,27 @@ namespace AppRestaurant.Model.DB
 			}
 		}
 
-		public void createSqlCommand (string query)
-        {
+		public void createSqlCommand(string query)
+		{
 			this.setCmd(new SqlCommand(query, this.dbconn.getConnection()));
 		}
 
 		public void executeNonQuery()
 		{
 			try
-            {
+			{
 				this.getCmd().ExecuteNonQuery();
 				this.getCmd().Dispose();
-			} catch (InvalidCastException err)
-            {
-				Console.WriteLine(err.Message);
-            } catch (InvalidOperationException err)
+			}
+			catch (InvalidCastException err)
 			{
 				Console.WriteLine(err.Message);
-			} catch (SqlException err)
+			}
+			catch (InvalidOperationException err)
+			{
+				Console.WriteLine(err.Message);
+			}
+			catch (SqlException err)
 			{
 				Console.WriteLine(err.Message);
 			}
@@ -54,7 +57,7 @@ namespace AppRestaurant.Model.DB
 			return this.getCmd().ExecuteReader();
 		}
 
-        public SqlCommand getCmd()
+		public SqlCommand getCmd()
 		{
 			return cmd;
 		}
@@ -65,8 +68,8 @@ namespace AppRestaurant.Model.DB
 		}
 
 		public void close()
-        {
+		{
 			this.dbconn.close();
-        }
+		}
 	}
 }

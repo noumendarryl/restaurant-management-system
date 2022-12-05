@@ -10,10 +10,10 @@ namespace AppRestaurant.Model.kitchen
     {
         private static string spritePath = "C:\\Users\\NOUMEN DARRYL\\Documents\\prog-sys-obj\\AppRestaurant\\AppRestaurant\\Resources\\Chef\\";
 
-        private static string imageFront = "front.png";
-        private static string imageBack = "back.png";
-        private static string imageLeft = "left.png";
-        private static string imageRight = "right.png";
+        private static string imageFront = "front.gif";
+        private static string imageBack = "back.gif";
+        private static string imageLeft = "left.gif";
+        private static string imageRight = "right.gif";
         private static string imageStop = "stop.png";
 
         public Sprite front = new Sprite(spritePath, imageFront);
@@ -24,16 +24,16 @@ namespace AppRestaurant.Model.kitchen
 
         public Chef()
         {
-            this.posX = 0;
-            this.posY = 0;
+            posX = 0;
+            posY = 0;
 
             front.loadImage();
-            back.loadImage();
-            left.loadImage();
+            //back.loadImage();
+            //left.loadImage();
             right.loadImage();
-            stop.loadImage();
+            //stop.loadImage();
 
-            this.setSprite(front);
+            setSprite(front);
         }
     }
 }

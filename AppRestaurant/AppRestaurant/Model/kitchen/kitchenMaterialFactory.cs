@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Model.kitchen
 {
-    public class kitchenMaterialFactory
-    {
+	public class kitchenMaterialFactory
+	{
+		private static kitchenMaterial COOKING_FIRE;
+		private static kitchenMaterial FRIDGE;
+		private static kitchenMaterial BLENDER;
+		private static kitchenMaterial OVEN;
+		private static kitchenMaterial KNIFE;
+
 		private static string spritePath = "C:\\Users\\NOUMEN DARRYL\\Documents\\prog-sys-obj\\AppRestaurant\\AppRestaurant\\Resources\\kitchenMaterials\\";
 
 		private static string imageCookingFire = "cookingFire.png";
 		private static string imageOven = "oven.png";
-		private static string imagePan = "pan.png";
+		private static string imageFridge = "fridge.png";
 		private static string imageBlender = "blender.png";
 		private static string imageKnife = "knife.png";
 
 		private static Sprite cookingFire = new Sprite(spritePath, imageCookingFire);
 		private static Sprite oven = new Sprite(spritePath, imageOven);
-		private static Sprite pan = new Sprite(spritePath, imagePan);
+		private static Sprite fridge = new Sprite(spritePath, imageFridge);
 		private static Sprite blender = new Sprite(spritePath, imageBlender);
 		private static Sprite knife = new Sprite(spritePath, imageKnife);
-
-		private static kitchenMaterial COOKING_FIRE;
-		private static kitchenMaterial PAN;
-		private static kitchenMaterial BLENDER;
-		private static kitchenMaterial OVEN;
-		private static kitchenMaterial KNIFE;
 
 		/*
 		 * Creates a cooking fire
@@ -34,8 +34,9 @@ namespace AppRestaurant.Model.kitchen
 		 */
 		public static kitchenMaterial createCookingFire()
 		{
-			//cookingFire.loadImage();
 			COOKING_FIRE = new kitchenMaterial("cooking fire", 5, cookingFire);
+			cookingFire.loadImage();
+			COOKING_FIRE.setSprite(cookingFire);
 			COOKING_FIRE.washable = false;
 			return COOKING_FIRE;
 		}
@@ -46,21 +47,23 @@ namespace AppRestaurant.Model.kitchen
 		 */
 		public static kitchenMaterial createOven()
 		{
-			//oven.loadImage();
-			OVEN = new kitchenMaterial("oven", 1, oven);
+			OVEN = new kitchenMaterial("oven", 5, oven);
+			oven.loadImage();
+			OVEN.setSprite(oven);
 			OVEN.washable = false;
 			return OVEN;
 		}
 
 		/*
-		 * Creates a pan
-		 * @return The {@link pan} {@link kitchenMaterial}.
+		 * Creates a fridge
+		 * @return The {@link fridge} {@link kitchenMaterial}.
 		 */
-		public static kitchenMaterial createPan()
+		public static kitchenMaterial createFridge()
 		{
-			//pan.loadImage();
-			PAN = new kitchenMaterial("pan", 10, pan);
-			return PAN;
+			FRIDGE = new kitchenMaterial("fridge", 1, fridge);
+			fridge.loadImage();
+			FRIDGE.setSprite(fridge);
+			return FRIDGE;
 		}
 
 		/*
@@ -69,8 +72,9 @@ namespace AppRestaurant.Model.kitchen
 		 */
 		public static kitchenMaterial createBlender()
 		{
-			//blender.loadImage();
 			BLENDER = new kitchenMaterial("blender", 1, blender);
+			//blender.loadImage();
+			//BLENDER.setSprite(blender);
 			return BLENDER;
 		}
 
@@ -78,10 +82,11 @@ namespace AppRestaurant.Model.kitchen
 		 * Creates a knife
 		 * @return The {@link knife} {@link kitchenMaterial}.
 		 */
-		public static kitchenMaterial createKnife()
+		public static kitchenMaterial createKnife(int quantity)
 		{
+			KNIFE = new kitchenMaterial("kitchen knife", quantity, knife);
 			//knife.loadImage();
-			KNIFE = new kitchenMaterial("kitchen knife", 5, knife);
+			//KNIFE.setSprite(cookingFire);
 			return KNIFE;
 		}
 	}

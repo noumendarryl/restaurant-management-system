@@ -16,20 +16,13 @@ namespace AppRestaurant.Model
 
         public Sprite(string spritePath, string imageName)
         {
-			this.setSpritePath(spritePath);
-			this.setImageName(imageName);
+            this.setSpritePath(spritePath);
+            this.setImageName(imageName);
         }
 
-		public void loadImage()
+        public void loadImage()
         {
-            try
-            {
-                this.setImage(Image.FromFile(this.getSpritePath()+this.getImageName()));
-            } catch (FileNotFoundException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            
+           this.setImage(Image.FromFile(this.getSpritePath() + this.getImageName()));
         }
 
         /*

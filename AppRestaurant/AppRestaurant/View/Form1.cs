@@ -33,7 +33,7 @@ namespace AppRestaurant
         private void kitchenForm_Paint(object sender, PaintEventArgs e)
         {
             for (int i = 0; i < model.kitchen.map.GetUpperBound(0); i++)
-            {
+            { 
                 for (int j = 0; j < model.kitchen.map.GetUpperBound(1); j++)
                 {
                     e.Graphics.DrawImage(Image.FromFile("C:\\Users\\NOUMEN DARRYL\\Documents\\prog-sys-obj\\AppRestaurant\\AppRestaurant\\Resources\\kitchentile.png"), i * kitchenView.FRAME_SIZE, j * kitchenView.FRAME_SIZE);
@@ -59,6 +59,11 @@ namespace AppRestaurant
             {
                 e.Graphics.DrawImage(diver.getSprite().getImage(), diver.posX * kitchenView.FRAME_SIZE, diver.posY * kitchenView.FRAME_SIZE);
             }
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

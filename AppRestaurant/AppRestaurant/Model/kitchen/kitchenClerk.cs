@@ -22,16 +22,16 @@ namespace AppRestaurant.Model.kitchen
         public Sprite right = new Sprite(spritePath, imageRight);
         public Sprite working = new Sprite(spritePath, imageWorking);
 
-        public kitchenClerk() 
+        public kitchenClerk()
         {
             this.posX = 50;
             this.posY = 30;
 
             front.loadImage();
-            back.loadImage();
-            left.loadImage();
-            right.loadImage();
-            working.loadImage();
+            //back.loadImage();
+            //left.loadImage();
+            //right.loadImage();
+            //working.loadImage();
 
             this.setSprite(front);
         }

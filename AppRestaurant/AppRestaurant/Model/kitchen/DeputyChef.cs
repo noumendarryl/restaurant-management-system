@@ -24,16 +24,16 @@ namespace AppRestaurant.Model.kitchen
 
         public DeputyChef()
         {
-            this.posX = 7;
+            this.posX = 12;
             this.posY = 4;
 
-            front.loadImage();
-            back.loadImage();
-            left.loadImage();
-            right.loadImage();
-            working.loadImage();
+            //front.loadImage();
+            //back.loadImage();
+            //left.loadImage();
+            //right.loadImage();
+            //working.loadImage();
 
-            this.setSprite(front);
+            //this.setSprite(front);
         }
     }
 }
