@@ -50,9 +50,7 @@ namespace AppRestaurant.Controller.DiningRoom
 
             factory.Subscribe(hotelMasterController);
 
-            //installCustomers(factory, 5);
-
-            Thread homeClientThread = new Thread(() => installCustomers(factory, 5));
+            Thread homeClientThread = new Thread(() => installCustomers(factory, 3));
             homeClientThread.Name = "Home_customers";
             homeClientThread.Start();
 
@@ -66,26 +64,29 @@ namespace AppRestaurant.Controller.DiningRoom
         {
             while (true)
             {
-                //customerQueueMtx.WaitOne();
+                customerQueueMtx.WaitOne();
                 if (CustomerQueue.Count != 0)
                 {
-                    customerQueueMre.WaitOne();
-
-
                     orderCount++;
-                    Console.WriteLine("=-=-=-=-=-=-=-=-=-==-=-=");
 
                     Customer clt = CustomerQueue.Dequeue();
+                    clt.CustomerState = CustomerState.Ordering;
+
+
+
                     CustomerController customerController = new CustomerController(clt, new NormalStrategy());
 
+                    //Thread thread = new Thread(() => customerOrder(customerController));
+                    //thread.Name = "Order";
+                    //thread.Start();
                     orderThreads.Add(new Thread(() => customerOrder(customerController)));
                     orderThreads[orderThreads.Count - 1].Name = "Order n_" + (orderThreads.Count - 1);
                     orderThreads[orderThreads.Count - 1].Start();
 
-                    customerQueueMre.Reset();
+                    //customerQueueMre.Reset();
 
                 }
-                //customerQueueMtx.ReleaseMutex();
+                customerQueueMtx.ReleaseMutex();
             }
         }
 
@@ -100,9 +101,11 @@ namespace AppRestaurant.Controller.DiningRoom
 
         public void customerOrder(CustomerController customerController)
         {
+            customerQueueMtx.WaitOne();
             OrderList.Enqueue(customerController.Order(menuCard));
             Thread thread = Thread.CurrentThread;
             Console.WriteLine("Order :" + thread.Name);
+            customerQueueMtx.ReleaseMutex();
         }
 
     }
