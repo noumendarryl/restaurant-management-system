@@ -25,6 +25,8 @@ namespace AppRestaurant.Controller.DiningRoom
 
         static Queue<Customer> CustomerQueue = new Queue<Customer>();
 
+        private int orderCount = 0;
+
         private MenuCard menuCard = new MenuCard(new Menu());
 
         private static ManualResetEvent customerQueueMre = new ManualResetEvent(false);
@@ -32,6 +34,8 @@ namespace AppRestaurant.Controller.DiningRoom
         private static Mutex customerQueueMtx = new Mutex();
 
         private static Queue<Order> OrderList = new Queue<Order>();
+
+        private static List<Thread> orderThreads = new List<Thread>(); 
 
         public DiningRoomController(DiningRoomModel diningRoomModel)
         {
@@ -63,14 +67,24 @@ namespace AppRestaurant.Controller.DiningRoom
             while (true)
             {
                 //customerQueueMtx.WaitOne();
-                customerQueueMre.WaitOne();
                 if (CustomerQueue.Count != 0)
                 {
+                    customerQueueMre.WaitOne();
+
+
+                    orderCount++;
+                    Console.WriteLine("=-=-=-=-=-=-=-=-=-==-=-=");
+
                     Customer clt = CustomerQueue.Dequeue();
                     CustomerController customerController = new CustomerController(clt, new NormalStrategy());
-                    OrderList.Enqueue(customerController.Order(menuCard));
+
+                    orderThreads.Add(new Thread(() => customerOrder(customerController)));
+                    orderThreads[orderThreads.Count - 1].Name = "Order n_" + (orderThreads.Count - 1);
+                    orderThreads[orderThreads.Count - 1].Start();
+
+                    customerQueueMre.Reset();
+
                 }
-                customerQueueMre.Reset();
                 //customerQueueMtx.ReleaseMutex();
             }
         }
@@ -82,6 +96,13 @@ namespace AppRestaurant.Controller.DiningRoom
                 CustomerQueue.Enqueue(factory.CreateCustomers(4));
                 customerQueueMre.Set();
             }
+        }
+
+        public void customerOrder(CustomerController customerController)
+        {
+            OrderList.Enqueue(customerController.Order(menuCard));
+            Thread thread = Thread.CurrentThread;
+            Console.WriteLine("Order :" + thread.Name);
         }
 
     }
