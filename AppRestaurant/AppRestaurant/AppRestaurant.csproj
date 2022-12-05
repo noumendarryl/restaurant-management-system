@@ -4,8 +4,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F7EEEA96-6F23-47F2-ABBA-00879EF678AF}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{1BF8E70C-7B9D-47EE-9F48-9DEBCD1FC0C1}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <RootNamespace>AppRestaurant</RootNamespace>
     <AssemblyName>AppRestaurant</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,38 +49,74 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\DiningRoom\Actors\CustomerController.cs" />
-    <Compile Include="Controller\DiningRoom\Actors\HotelMasterController.cs" />
-    <Compile Include="Controller\DiningRoom\Actors\LineChiefController.cs" />
-    <Compile Include="Controller\DiningRoom\Actors\RoomClerkController.cs" />
-    <Compile Include="Controller\DiningRoom\Actors\WaiterController.cs" />
-    <Compile Include="Controller\DiningRoom\DiningRoomController.cs" />
-    <Compile Include="Controller\DiningRoom\Observer\Unsubscriber.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="AppRestaurant.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="AppRestaurant.Designer.cs">
+      <DependentUpon>AppRestaurant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookingForm.Designer.cs">
+      <DependentUpon>BookingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\kitchenController.cs" />
+    <Compile Include="Model\kitchen\DAOEntity.cs" />
+    <Compile Include="Model\kitchen\DAOIngredient.cs" />
+    <Compile Include="Model\kitchen\kitchenItem.cs" />
+    <Compile Include="Model\kitchen\MotionlesskitchenItem.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting.Designer.cs">
+      <DependentUpon>Setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Simulation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Simulation.Designer.cs">
+      <DependentUpon>Simulation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Common\Order.cs" />
-    <Compile Include="Model\Common\Equipment.cs" />
-    <Compile Include="Model\Common\Recipe.cs" />
-    <Compile Include="Model\DiningRoom\Actors\HotelMaster.cs" />
-    <Compile Include="Model\DiningRoom\Actors\LineChief.cs" />
-    <Compile Include="Model\DiningRoom\Actors\RoomClerk.cs" />
-    <Compile Include="Model\DiningRoom\Actors\Waiter.cs" />
-    <Compile Include="Model\DiningRoom\Actors\Customer.cs" />
-    <Compile Include="Model\DiningRoom\DiningRoomModel.cs" />
-    <Compile Include="Model\DiningRoom\Elements\Line.cs" />
-    <Compile Include="Model\DiningRoom\Elements\Table.cs" />
-    <Compile Include="Model\DiningRoom\Elements\Square.cs" />
-    <Compile Include="Model\DiningRoom\Factory\AbstractCustomersFactory.cs" />
-    <Compile Include="Model\DiningRoom\Factory\CustomersFactory.cs" />
-    <Compile Include="Model\DiningRoom\Move\IMove.cs" />
-    <Compile Include="Model\DiningRoom\Move\IPosition.cs" />
-    <Compile Include="Model\DiningRoom\Move\Position.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Model\DB\DBAccess.cs" />
+    <Compile Include="Model\DB\DBActions.cs" />
+    <Compile Include="Model\DB\DBConnection.cs" />
+    <Compile Include="Model\DB\IDBActions.cs" />
+    <Compile Include="Model\kitchen\Chef.cs" />
+    <Compile Include="Model\kitchen\CommonMaterial.cs" />
+    <Compile Include="Model\kitchen\CommonMaterialFactory.cs" />
+    <Compile Include="Model\kitchen\DeputyChef.cs" />
+    <Compile Include="Model\kitchen\Diver.cs" />
+    <Compile Include="Model\kitchen\Entity.cs" />
+    <Compile Include="Model\kitchen\Ingredient.cs" />
+    <Compile Include="Model\kitchen\IObserver.cs" />
+    <Compile Include="Model\kitchen\kitchen.cs" />
+    <Compile Include="Model\kitchen\kitchenClerk.cs" />
+    <Compile Include="Model\kitchen\kitchenMaterial.cs" />
+    <Compile Include="Model\kitchen\kitchenMaterialFactory.cs" />
+    <Compile Include="Model\kitchen\kitchenModel.cs" />
+    <Compile Include="Model\kitchen\Material.cs" />
+    <Compile Include="Model\kitchen\MotionkitchenItem.cs" />
+    <Compile Include="Model\kitchen\Order.cs" />
+    <Compile Include="Model\kitchen\Position.cs" />
+    <Compile Include="Model\kitchen\Recipe.cs" />
+    <Compile Include="Model\kitchen\RecipeStep.cs" />
+    <Compile Include="Model\kitchen\Sprite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\kitchenView.cs" />
+    <EmbeddedResource Include="AppRestaurant.resx">
+      <DependentUpon>AppRestaurant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookingForm.resx">
+      <DependentUpon>BookingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -87,6 +126,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Setting.resx">
+      <DependentUpon>Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Simulation.resx">
+      <DependentUpon>Simulation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,6 +148,25 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Chef\back.gif" />
+    <Content Include="Resources\Chef\front.gif" />
+    <Content Include="Resources\Chef\front.png" />
+    <Content Include="Resources\Chef\left.gif" />
+    <Content Include="Resources\Chef\right.gif" />
+    <Content Include="Resources\dinningroomtile.png" />
+    <Content Include="Resources\Diver\front.png" />
+    <Content Include="Resources\kitchenClerk\front.png" />
+    <Content Include="Resources\kitchenMaterials\comptoir.png" />
+    <Content Include="Resources\kitchenMaterials\cookingFire.png" />
+    <Content Include="Resources\kitchenMaterials\decorator-1.png" />
+    <Content Include="Resources\kitchenMaterials\decorator-2.png" />
+    <Content Include="Resources\kitchenMaterials\fridge.png" />
+    <Content Include="Resources\kitchenMaterials\oven.png" />
+    <Content Include="Resources\kitchentile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\DeputyChef\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
