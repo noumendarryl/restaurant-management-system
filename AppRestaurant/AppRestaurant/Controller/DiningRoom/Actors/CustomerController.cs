@@ -28,5 +28,7 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
         {
             return this.customerStrategy.Order(menuCard);
         }
+
+        public Customer Customer { get => customer; set => customer = value; }
     }
 }

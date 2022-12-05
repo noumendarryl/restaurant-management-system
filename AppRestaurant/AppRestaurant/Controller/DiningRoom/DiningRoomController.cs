@@ -10,6 +10,7 @@ using AppRestaurant.Model.DiningRoom.Factory;
 using AppRestaurant.Model.Common;
 using AppRestaurant.Controller.DiningRoom.Actors;
 using AppRestaurant.Controller.DiningRoom.Strategy;
+using AppRestaurant.Model.DiningRoom.Elements;
 using System.Threading;
 
 namespace AppRestaurant.Controller.DiningRoom
@@ -26,8 +27,6 @@ namespace AppRestaurant.Controller.DiningRoom
         
         static Queue<Customer> CustomerQueue = new Queue<Customer>();
 
-        private int orderCount = 0;
-
         private MenuCard menuCard = new MenuCard(new Menu());
 
         private static ManualResetEvent customerQueueMre = new ManualResetEvent(false);
@@ -36,10 +35,13 @@ namespace AppRestaurant.Controller.DiningRoom
 
         private static Queue<Order> OrderList = new Queue<Order>();
 
-        private static List<Thread> orderThreads = new List<Thread>(); 
+        private static List<Thread> orderThreads = new List<Thread>();
+
+        public DiningRoomModel diningRoomModel;
 
         public DiningRoomController(DiningRoomModel diningRoomModel)
         {
+            this.diningRoomModel = diningRoomModel;
             this.hotelMasterController = new HotelMasterController(diningRoomModel);
             this.lineChiefControllers = new List<LineChiefController>();
             this.roomClerkControllers = new List<RoomClerkController>();
@@ -70,24 +72,13 @@ namespace AppRestaurant.Controller.DiningRoom
                 customerQueueMtx.WaitOne();
                 if (CustomerQueue.Count != 0)
                 {
-                    orderCount++;
-
                     Customer clt = CustomerQueue.Dequeue();
                     clt.CustomerState = CustomerState.Ordering;
-
-
-
                     CustomerController customerController = new CustomerController(clt, new NormalStrategy());
 
-                    //Thread thread = new Thread(() => customerOrder(customerController));
-                    //thread.Name = "Order";
-                    //thread.Start();
                     orderThreads.Add(new Thread(() => customerOrder(customerController)));
                     orderThreads[orderThreads.Count - 1].Name = "Order n_" + (orderThreads.Count - 1);
                     orderThreads[orderThreads.Count - 1].Start();
-
-                    //customerQueueMre.Reset();
-
                 }
                 customerQueueMtx.ReleaseMutex();
             }
@@ -105,11 +96,37 @@ namespace AppRestaurant.Controller.DiningRoom
         public void customerOrder(CustomerController customerController)
         {
             customerQueueMtx.WaitOne();
-            OrderList.Enqueue(customerController.Order(menuCard));
-            Thread thread = Thread.CurrentThread;
-            Console.WriteLine("Order :" + thread.Name);
+            Table table = FindCustomerTable(customerController.Customer);
+
+            if(table != null)
+            {
+                OrderList.Enqueue(customerController.Order(table.MenuCard));
+                Thread thread = Thread.CurrentThread;
+                Console.WriteLine("Order :" + thread.Name);
+            }
+
             customerQueueMtx.ReleaseMutex();
         }
 
+        private Table FindCustomerTable(Customer customer)
+        {
+            int nbSquare = this.diningRoomModel.Squares.Count;
+            for (int i = 0; i < nbSquare; i++)
+            {
+                int nbLine = diningRoomModel.Squares[i].Lines.Count;
+                for (int j = 0; j < nbLine; j++)
+                {
+                    int nbTable = diningRoomModel.Squares[i].Lines[j].Tables.Count;
+                    for (int k = 0; k < nbTable; k++)
+                    {
+                        if (customer == diningRoomModel.Squares[i].Lines[j].Tables[k].Group )
+                        {
+                            return diningRoomModel.Squares[i].Lines[j].Tables[k];
+                        }
+                    }
+                }
+            }
+            return null;
+        }
     }
 }
