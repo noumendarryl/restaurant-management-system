@@ -77,7 +77,7 @@ namespace AppRestaurant.Controller.DiningRoom
                     CustomerController customerController = new CustomerController(clt, new NormalStrategy());
 
                     orderThreads.Add(new Thread(() => customerOrder(customerController)));
-                    orderThreads[orderThreads.Count - 1].Name = "Order n_" + (orderThreads.Count - 1);
+                    orderThreads[orderThreads.Count - 1].Name = "Commande n_" + (orderThreads.Count - 1);
                     orderThreads[orderThreads.Count - 1].Start();
                 }
                 customerQueueMtx.ReleaseMutex();
@@ -101,8 +101,9 @@ namespace AppRestaurant.Controller.DiningRoom
             if(table != null)
             {
                 OrderList.Enqueue(customerController.Order(table.MenuCard));
+                customerController.Customer.CustomerState = CustomerState.Ordered;
                 Thread thread = Thread.CurrentThread;
-                Console.WriteLine("Order :" + thread.Name);
+                Console.WriteLine("========="+thread.Name + " prise========");
             }
 
             customerQueueMtx.ReleaseMutex();
