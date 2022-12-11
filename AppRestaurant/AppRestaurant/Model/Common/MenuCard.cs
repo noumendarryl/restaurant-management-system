@@ -13,20 +13,24 @@ namespace AppRestaurant.Model.Common
     public class MenuCard : Equipment, IPosition
     {
         private DateTime date;
-        private Menu menu;
+        private Dictionary<string, List<Recipe>> menu;
         private int posX;
         private int posY;
 
-        public MenuCard(Menu menu, DateTime date)
+        public MenuCard(Dictionary<string, List<Recipe>> menu, DateTime date)
         {
             this.menu = menu;
             this.date = date;
             this.State = EquipmentState.Available;
         }
-        public MenuCard(Menu menu)
+        public MenuCard(Dictionary<string, List<Recipe>> menu)
         {
             this.menu = menu;
             this.State = EquipmentState.Available;
+        }
+        public MenuCard()
+        {
+
         }
         public int PosX
         {
@@ -51,7 +55,7 @@ namespace AppRestaurant.Model.Common
                 posY = value >= 0 ? value : 0;
             }
         }
-        public Menu Menu { get; set; }
+        public Dictionary<string, List<Recipe>> Menu { get; set; }
         public DateTime Date { get => date; set => date = value; }
     }
 

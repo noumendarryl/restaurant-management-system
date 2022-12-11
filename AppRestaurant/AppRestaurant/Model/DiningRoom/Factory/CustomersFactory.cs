@@ -7,16 +7,16 @@ using AppRestaurant.Model.DiningRoom.Actors;
 using AppRestaurant.Controller.DiningRoom.Observer;
 namespace AppRestaurant.Model.DiningRoom.Factory
 {
-    internal class CustomersFactory : AbstractCustomersFactory, IObservable<Customer>
+    internal class CustomersFactory : AbstractCustomersFactory, IObservable<CustomerGroup>
     {
-        private List<IObserver<Customer>> observers;
+        private List<IObserver<CustomerGroup>> observers;
         public CustomersFactory()
         {
-            observers = new List<IObserver<Customer>>();
+            observers = new List<IObserver<CustomerGroup>>();
         }
-        public override Customer CreateCustomers(int nbCustomers)
+        public override CustomerGroup CreateCustomers(int nbCustomers)
         {
-            Customer customer_ = new Customer(nbCustomers);
+            CustomerGroup customer_ = new CustomerGroup(nbCustomers);
 
             foreach (var observer in observers)
                 observer.OnNext(customer_);
@@ -24,7 +24,7 @@ namespace AppRestaurant.Model.DiningRoom.Factory
             return customer_;
         }
 
-        public IDisposable Subscribe(IObserver<Customer> observer)
+        public IDisposable Subscribe(IObserver<CustomerGroup> observer)
         {
             // Check whether observer is already registered. If not, add it
             if (!observers.Contains(observer))
@@ -34,7 +34,7 @@ namespace AppRestaurant.Model.DiningRoom.Factory
                 //foreach (var item in flights)
                 //    observer.OnNext(item);
             }
-            return new Unsubscriber<Customer>(observers, observer);
+            return new Unsubscriber<CustomerGroup>(observers, observer);
         }
 
     }

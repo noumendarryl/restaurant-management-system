@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AppRestaurant.Model.Common;
+using AppRestaurant.Model.DiningRoom.Actors;
+using AppRestaurant.Controller.DiningRoom.Actors;
+
 
 namespace AppRestaurant.Controller.DiningRoom.Strategy
 {
-    interface ICustomerStrategy
+    interface IOrderStrategy
     {
-        Order Order(MenuCard menuCard);
+        Order Order(CustomerController customer,MenuCard menuCard);
     }
 }

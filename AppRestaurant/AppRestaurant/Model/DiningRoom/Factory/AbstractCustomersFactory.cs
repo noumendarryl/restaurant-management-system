@@ -10,6 +10,6 @@ namespace AppRestaurant.Model.DiningRoom.Factory
 {
     public abstract class AbstractCustomersFactory
     {
-        public abstract Customer CreateCustomers(int nbCustomers);
+        public abstract CustomerGroup CreateCustomers(int nbCustomers);
     }
 }

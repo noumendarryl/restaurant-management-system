@@ -17,11 +17,14 @@ namespace AppRestaurant.Model.Common
     public class Order
     {
         private OrderStatus orderStatus;
-        private Dictionary<Recipe,int> plats;
+        private Dictionary<Recipe,int> plats = new Dictionary<Recipe, int>();
 
         public OrderStatus State { get => orderStatus; set => orderStatus = value; }
         public Dictionary<Recipe, int> orderLine { get => plats; set => plats = value; }
 
-
+        public Order()
+        {
+            plats = new Dictionary<Recipe, int>();
+        }
     }
 }

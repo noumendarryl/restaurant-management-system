@@ -16,12 +16,24 @@ namespace AppRestaurant.Model.DiningRoom
         private  List<Waiter> waiters;
         private  List<Square> squares;
         private  List<LineChief> lineChiefs;
-        private Menu menu; 
-        private List<MenuCard> menuCards;
+        private MenuCard menuCard;
+        private Queue<MenuCard> menuCards;
 
+
+        Dictionary<string, List<Recipe>> menu;
 
         public DiningRoomModel()
         {
+            menu = new Dictionary<string, List<Recipe>>();
+
+            menu.Add("Entry",new List<Recipe>() { new Recipe(RecipeType.Entry, "Feuillete de crabe",4, 1000), new Recipe(RecipeType.Entry, "Oeufs cocotte",4,200) });
+            menu.Add("Dish", new List<Recipe>() { new Recipe(RecipeType.Dish, "Bouillinade anguilles ou poissons",4,345), new Recipe(RecipeType.Dish, "Boles de picoulats", 25, 560) });
+            menu.Add("Dessert", new List<Recipe>() { new Recipe(RecipeType.Dessert, "Tiramisu", 4, 1200), new Recipe(RecipeType.Dessert,"Creme brule", 3, 450) });
+
+            menuCard = new MenuCard();
+
+            menuCard.Menu = menu;
+
             hotelMaster = new HotelMaster();
             
             squares = new List<Square>();
@@ -34,11 +46,11 @@ namespace AppRestaurant.Model.DiningRoom
 
             lineChiefs.Add(new LineChief());
 
-            menuCards = new List<MenuCard>();
+            menuCards = new Queue<MenuCard>();
 
             for(int i = 0; i < 40; i++)
             {
-                menuCards.Add(new MenuCard(menu));
+                menuCards.Enqueue(new MenuCard(menu));
             }
 
             squares[0].Lines.Add(new Line(4,6));
@@ -78,16 +90,20 @@ namespace AppRestaurant.Model.DiningRoom
                 roomclerks.Add(new RoomClerk());
 
 
-            menuCards = new List<MenuCard>();
+            menuCards = new Queue<MenuCard>();
             for (int i = 0; i < nbMenuCard; i++)
-                menuCards.Add(new MenuCard(menu));
+                menuCards.Enqueue(new MenuCard(menu));
         }
         public HotelMaster HotelMaster { get => hotelMaster; set => hotelMaster = value; }
         public  List<RoomClerk> RoomClerks { get => roomclerks; set => roomclerks = value; }
         public  List<Waiter> Waiters { get => waiters; set => waiters = value; }
         public  List<Square> Squares { get => squares; set => squares = value; }
         public  List<LineChief> LineChiefs { get => lineChiefs; set => lineChiefs = value; }
-        public  List<MenuCard> MenuCards { get => menuCards; set => menuCards = value; }
-        public Menu Menu { get => menu; set => menu = value; }
+        public Queue<MenuCard> MenuCards { get => menuCards; set => menuCards = value; }
+
+        public MenuCard MenuCard { get => menuCard; set => menuCard = value; }
+
+
+        public Dictionary<string, List<Recipe>> Menu { get => menu; set => menu = value; }
     }
 }

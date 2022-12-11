@@ -20,7 +20,7 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
             this.lineChief = lineChief;
         }
 
-        public void installClients(Customer customer, Table table)
+        public void installClients(CustomerGroup customer, Table table)
         {
             customer.Move(table.PosX, table.PosY);
             Console.WriteLine("Chef de rang: Veuillez prendre place.");
@@ -39,6 +39,7 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
                 {
                     menuCard.State = EquipmentState.InUse;
                     table.MenuCard = menuCard;
+                    return;
                 }
             }
         }

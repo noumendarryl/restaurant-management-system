@@ -5,11 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using AppRestaurant.Controller.DiningRoom;
+using AppRestaurant.Controller.DiningRoom.Actors;
+
 namespace AppRestaurant.Controller.DiningRoom.Strategy
 {
-    class CoolStrategy : ICustomerStrategy
+    class CoolStrategy : IOrderStrategy
     {
-        Order ICustomerStrategy.Order(MenuCard menuCard)
+        Order IOrderStrategy.Order(CustomerController customer, MenuCard menuCard)
         {
             throw new NotImplementedException();
         }

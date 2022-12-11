@@ -12,7 +12,7 @@ using AppRestaurant.Model.DiningRoom.Actors;
 
 namespace AppRestaurant.Controller.DiningRoom.Actors
 {
-    class HotelMasterController : IObserver<Customer>
+    class HotelMasterController : IObserver<CustomerGroup>
     {
         private HotelMaster hotelMaster;
         private DiningRoomModel diningRoomModel;
@@ -28,7 +28,7 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
         }
         
 
-        public Table CheckAvailableTables(Customer group, DiningRoomModel diningRoomModel)
+        public int[] CheckAvailableTables(CustomerGroup group, DiningRoomModel diningRoomModel)
         {
             int nbSquare = diningRoomModel.Squares.Count;
             for (int i = 0; i < nbSquare; i++)
@@ -42,7 +42,8 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
                         if (group.Count < diningRoomModel.Squares[i].Lines[j].Tables[k].NbPlaces && diningRoomModel.Squares[i].Lines[j].Tables[k].State == EquipmentState.Available)
                         {
                             diningRoomModel.Squares[i].Lines[j].Tables[k].Group = group;
-                            return diningRoomModel.Squares[i].Lines[j].Tables[k];
+                            //return diningRoomModel.Squares[i].Lines[j].Tables[k];
+                            return new int[3] { i, j, k };
                         }
                     }
                 }
@@ -50,7 +51,7 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
             return null; 
         }
 
-        public LineChief FindLineChief(Customer group, DiningRoomModel diningRoomModel)
+        public LineChief FindLineChief(CustomerGroup group, DiningRoomModel diningRoomModel)
         {
             foreach(LineChief lineChief in diningRoomModel.LineChiefs)
             {
@@ -67,7 +68,7 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
 
         }
 
-        public void OnNext(Customer value)
+        public void OnNext(CustomerGroup value)
         {
             Console.WriteLine("Maitre d'hotel: Comnbien etes vous ?");
             
@@ -75,7 +76,9 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
             
             Console.WriteLine("Maitre d'hotel: Veuillez patienter s'il vous plait...");
 
-            Table table = this.CheckAvailableTables(value, this.diningRoomModel);
+            int[] table;
+
+            table = this.CheckAvailableTables(value, this.diningRoomModel);
 
             if (table != null)
             {
@@ -94,16 +97,30 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
                     this.CallLineChief(lineChief, position);
 
                     lineChiefController = new LineChiefController(lineChief);
+                    
+                    lineChiefController.installClients(value, this.diningRoomModel.Squares[table[0]].Lines[table[1]].Tables[table[2]]);
 
-                    lineChiefController.installClients(value, table);
-
-                    lineChiefController.setMenuCard(table,diningRoomModel.MenuCards);
+                    //lineChiefController.setMenuCard(this.diningRoomModel.Squares[table[0]].Lines[table[1]].Tables[table[2]], diningRoomModel.MenuCards);
 
                     lineChiefController.LineChief.Available = true;
 
                     Console.WriteLine("=========Clients installé=========");
 
-                    lineChiefController.setMenuCard(table, this.diningRoomModel.MenuCards);
+                    /*
+                        lineChiefController.setMenuCard(this.diningRoomModel.Squares[table[0]].Lines[table[1]].Tables[table[2]], this.diningRoomModel.MenuCards);
+                    
+
+                        foreach (MenuCard menuCard in menuCards)
+                        {
+                            if (menuCard.State == EquipmentState.Available)
+                            {
+                                menuCard.State = EquipmentState.InUse;
+                                table.MenuCard = menuCard;
+                                return;
+                            }
+                        }
+                    */
+                    this.diningRoomModel.Squares[table[0]].Lines[table[1]].Tables[table[2]].MenuCard = this.diningRoomModel.MenuCards.Dequeue();
 
                     Console.WriteLine("=======Carte de menu deposée=======");
 

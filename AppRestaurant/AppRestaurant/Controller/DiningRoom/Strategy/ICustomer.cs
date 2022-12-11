@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AppRestaurant.Model.Common;
+using AppRestaurant.Model.DiningRoom.Actors;
 
 namespace AppRestaurant.Controller.DiningRoom.Strategy
 {
@@ -12,6 +13,6 @@ namespace AppRestaurant.Controller.DiningRoom.Strategy
     {
         Order Order(MenuCard menuCard);
 
-        void changeOrderStrategy(ICustomerStrategy customerStrategy);
+        void changeOrderStrategy(IOrderStrategy customerStrategy);
     }
 }
