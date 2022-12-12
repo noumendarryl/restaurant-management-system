@@ -10,14 +10,17 @@ using AppRestaurant.Model.DiningRoom.Factory;
 using AppRestaurant.Model.Common;
 using AppRestaurant.Controller.DiningRoom.Actors;
 using AppRestaurant.Controller.DiningRoom.Strategy;
+using AppRestaurant.Controller.DiningRoom.Observer;
 using AppRestaurant.Model.DiningRoom.Elements;
 using System.Threading;
 
 namespace AppRestaurant.Controller.DiningRoom
 {
-    class DiningRoomController
+    class DiningRoomController : IObservable<Order>
     {
+
         private HotelMasterController hotelMasterController;
+        public DiningRoomModel diningRoomModel;
 
         private List<CustomerController> customerControllers;
         private List<LineChiefController> lineChiefControllers;
@@ -26,20 +29,17 @@ namespace AppRestaurant.Controller.DiningRoom
 
         static int costomerCount = 0;
         
-        static Queue<CustomerGroup> CustomerQueue = new Queue<CustomerGroup>();
-
-
+        private static Queue<CustomerGroup> CustomerQueue = new Queue<CustomerGroup>();
         private static ManualResetEvent customerQueueMre = new ManualResetEvent(false);
-
         private static Mutex customerQueueMtx = new Mutex();
 
-        public static Queue<Order> OrderList = new Queue<Order>();
-
+        private static Queue<Order> OrderList = new Queue<Order>();
         public Queue<Order> OrderListing { get => OrderList; set => OrderList = value; }
 
         private static List<Thread> orderThreads = new List<Thread>();
 
-        public DiningRoomModel diningRoomModel;
+        private List<IObserver<Order>> observers;
+
 
         public DiningRoomController(DiningRoomModel diningRoomModel)
         {
@@ -48,12 +48,15 @@ namespace AppRestaurant.Controller.DiningRoom
             this.lineChiefControllers = new List<LineChiefController>();
             this.roomClerkControllers = new List<RoomClerkController>();
             this.waiterControllers = new List<WaiterController>();
+            this.observers = new List<IObserver<Order>>();
         }
-        public void Install()
+        public void Run()
         {
-            CustomersFactory factory = new CustomersFactory();
 
+            CustomersFactory factory = new CustomersFactory();
             factory.Subscribe(hotelMasterController);
+
+            installCustomers(factory, 3);
 
             Thread takeOrderThread = new Thread(() =>
             {
@@ -79,14 +82,8 @@ namespace AppRestaurant.Controller.DiningRoom
             takeOrderThread.Name = "Take_order";
             takeOrderThread.Start();
 
-            installCustomers(factory, 3);
-
-        }
-        public void Run()
-        {
-            Install();
             Thread.Sleep(1000);
-            Console.WriteLine("========== " + OrderListing.Count + " Commandes ont ete prise. ==========");
+            Console.WriteLine("========== " + OrderListing.Count + " Commande(s) ont ete prise. ==========");
 
             foreach(Order comm in OrderListing)
             {
@@ -137,6 +134,11 @@ namespace AppRestaurant.Controller.DiningRoom
             if(table != null)
             {                
                 OrderList.Enqueue(customerController.Order(this.diningRoomModel.Squares[table[0]].Lines[table[1]].Tables[table[2]].MenuCard));
+                Order order = OrderList.Peek();
+                foreach(IObserver<Order> observer in this.observers)
+                {
+                    observer.OnNext(order);
+                }
                 customerController.Customer.CustomerState = CustomerState.Ordered;
                 Thread thread = Thread.CurrentThread;
                 Console.WriteLine("========="+thread.Name + " prise========");
@@ -165,6 +167,14 @@ namespace AppRestaurant.Controller.DiningRoom
                 }
             }
             return null;
+        }
+
+        public IDisposable Subscribe(IObserver<Order> observer)
+        {
+            if (!observers.Contains(observer)){
+                observers.Add(observer);
+            }
+            return new DRUnsubscriber<Order>(observers, observer);
         }
     }
 }

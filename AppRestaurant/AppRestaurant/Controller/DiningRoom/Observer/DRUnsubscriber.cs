@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Controller.DiningRoom.Observer
 {
-    internal class Unsubscriber<Customer> : IDisposable
+    class DRUnsubscriber<Order> : IDisposable
     {
-        private List<IObserver<Customer>> _observers;
-        private IObserver<Customer> _observer;
+        private List<IObserver<Order>> _observers;
+        private IObserver<Order> _observer;
 
-        internal Unsubscriber(List<IObserver<Customer>> observers, IObserver<Customer> observer)
+        internal DRUnsubscriber(List<IObserver<Order>> observers, IObserver<Order> observer)
         {
             this._observers = observers;
             this._observer = observer;

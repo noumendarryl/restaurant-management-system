@@ -9,7 +9,7 @@ namespace AppRestaurant.Model.DiningRoom.Factory
 {
     internal class CustomersFactory : AbstractCustomersFactory, IObservable<CustomerGroup>
     {
-        private List<IObserver<CustomerGroup>> observers;
+        private readonly List<IObserver<CustomerGroup>> observers;
         public CustomersFactory()
         {
             observers = new List<IObserver<CustomerGroup>>();
@@ -34,7 +34,7 @@ namespace AppRestaurant.Model.DiningRoom.Factory
                 //foreach (var item in flights)
                 //    observer.OnNext(item);
             }
-            return new Unsubscriber<CustomerGroup>(observers, observer);
+            return new CFUnsubscriber<CustomerGroup>(observers, observer);
         }
 
     }
