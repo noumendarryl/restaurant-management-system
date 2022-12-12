@@ -50,7 +50,9 @@ namespace AppRestaurant.Model.DiningRoom
 
             for(int i = 0; i < 40; i++)
             {
-                menuCards.Enqueue(new MenuCard(menu));
+                MenuCard mCard = new MenuCard();
+                mCard.Menu = menu;
+                menuCards.Enqueue(mCard);
             }
 
             squares[0].Lines.Add(new Line(4,6));

@@ -33,7 +33,9 @@ namespace AppRestaurant.Controller.DiningRoom
 
         private static Mutex customerQueueMtx = new Mutex();
 
-        private static Queue<Order> OrderList = new Queue<Order>();
+        public static Queue<Order> OrderList = new Queue<Order>();
+
+        public Queue<Order> OrderListing { get => OrderList; set => OrderList = value; }
 
         private static List<Thread> orderThreads = new List<Thread>();
 
@@ -46,28 +48,54 @@ namespace AppRestaurant.Controller.DiningRoom
             this.lineChiefControllers = new List<LineChiefController>();
             this.roomClerkControllers = new List<RoomClerkController>();
             this.waiterControllers = new List<WaiterController>();
-
- 
         }
-        public void Run()
+        public void Install()
         {
             CustomersFactory factory = new CustomersFactory();
 
             factory.Subscribe(hotelMasterController);
 
-            Thread homeClientThread = new Thread(() => installCustomers(factory, 3));
-            homeClientThread.Name = "Home_customers";
-            homeClientThread.Start();
+            Thread takeOrderThread = new Thread(() =>
+            {
+                while (true)
+                {
+                    customerQueueMtx.WaitOne();
+                    if (CustomerQueue.Count != 0)
+                    {
+                        int id = costomerCount++;
+                        Console.WriteLine("=========Client n_" + id + " commande=======");
 
-            Thread takeOrderThread = new Thread(TakeOrder);
+                        CustomerGroup clt = CustomerQueue.Dequeue();
+                        clt.CustomerState = CustomerState.Ordering;
+                        CustomerController customerController = new CustomerController(clt, new RandomOrderStrategy());
+
+                        orderThreads.Add(new Thread(() => customerOrder(customerController)));
+                        orderThreads[orderThreads.Count - 1].Name = "Commande n_" + (orderThreads.Count - 1) + " du client n_" + id;
+                        orderThreads[orderThreads.Count - 1].Start();
+                    }
+                    customerQueueMtx.ReleaseMutex();
+                }
+            });
             takeOrderThread.Name = "Take_order";
             takeOrderThread.Start();
 
-            homeClientThread.Join();
-            takeOrderThread.Join();
+            installCustomers(factory, 3);
 
+        }
+        public void Run()
+        {
+            Install();
+            Thread.Sleep(1000);
+            Console.WriteLine("========== " + OrderListing.Count + " Commandes ont ete prise. ==========");
 
-            Console.WriteLine("==========++++++++==========" + OrderList.Count + "==========++++++++==========");
+            foreach(Order comm in OrderListing)
+            {
+                foreach(KeyValuePair<Recipe, int> dic in comm.orderLine)
+                {
+                    Console.WriteLine("======= " + dic.Key.RecipeTitle + " : " + dic.Value + " =======");
+                }
+            }
+
         }
 
         public void TakeOrder()
@@ -108,7 +136,7 @@ namespace AppRestaurant.Controller.DiningRoom
 
             if(table != null)
             {                
-                OrderList.Enqueue(customerController.Order(this.diningRoomModel.MenuCard));
+                OrderList.Enqueue(customerController.Order(this.diningRoomModel.Squares[table[0]].Lines[table[1]].Tables[table[2]].MenuCard));
                 customerController.Customer.CustomerState = CustomerState.Ordered;
                 Thread thread = Thread.CurrentThread;
                 Console.WriteLine("========="+thread.Name + " prise========");

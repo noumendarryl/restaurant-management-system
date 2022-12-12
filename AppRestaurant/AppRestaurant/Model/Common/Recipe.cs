@@ -26,5 +26,6 @@ namespace AppRestaurant.Model.Common
             this.peopleCount = peopleCount;
             this.cookingTime = cookingTime;
         }
+        public String RecipeTitle { get => recipeTitle; set => recipeTitle = value; }
     }
 }

@@ -89,7 +89,7 @@ namespace AppRestaurant.Controller.DiningRoom.Strategy
 
                     if (menu.ContainsKey(key))
                     {
-                        List<Recipe> recipeList = menuCard.Menu[key];
+                        List<Recipe> recipeList = menu[key];
                         int choice = rand.Next(0, recipeList.Count);
                         
                         order.orderLine.Add(recipeList[choice], 1);
@@ -97,8 +97,7 @@ namespace AppRestaurant.Controller.DiningRoom.Strategy
                 }
             }
 
-            Console.WriteLine(order.orderLine.Count);
-
+            
             return order;
         }
     }
