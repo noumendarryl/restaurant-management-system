@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,11 +33,20 @@ namespace AppRestaurant
 
         private void kitchenForm_Paint(object sender, PaintEventArgs e)
         {
+
+            string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string exeDir = System.IO.Path.GetDirectoryName(exePath);
+            DirectoryInfo binDir = System.IO.Directory.GetParent(exeDir);
+            binDir = System.IO.Directory.GetParent(binDir.FullName);
+
+
+            string spritePath = binDir.FullName + "\\Resources\\kitchentile.png";
+
             for (int i = 0; i < model.kitchen.map.GetUpperBound(0); i++)
             { 
                 for (int j = 0; j < model.kitchen.map.GetUpperBound(1); j++)
                 {
-                    e.Graphics.DrawImage(Image.FromFile("C:\\Users\\NOUMEN DARRYL\\Documents\\prog-sys-obj\\AppRestaurant\\AppRestaurant\\Resources\\kitchentile.png"), i * kitchenView.FRAME_SIZE, j * kitchenView.FRAME_SIZE);
+                    e.Graphics.DrawImage(Image.FromFile(spritePath), i * kitchenView.FRAME_SIZE, j * kitchenView.FRAME_SIZE);
                 }
             }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,14 @@ namespace AppRestaurant.Model.kitchen
 		private static kitchenMaterial OVEN;
 		private static kitchenMaterial KNIFE;
 
-		private static string spritePath = "C:\\Users\\NOUMEN DARRYL\\Documents\\prog-sys-obj\\AppRestaurant\\AppRestaurant\\Resources\\kitchenMaterials\\";
+
+		private static string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+		private static string exeDir = System.IO.Path.GetDirectoryName(exePath);
+		private static DirectoryInfo binDir = System.IO.Directory.GetParent(System.IO.Directory.GetParent(exeDir).FullName);
+
+		//private static string spritePath = "C:\\Users\\NOUMEN DARRYL\\Documents\\prog-sys-obj\\AppRestaurant\\AppRestaurant\\Resources\\kitchenMaterials\\";
+
+		private static string spritePath = binDir.FullName + "\\Resources\\kitchenMaterials\\";
 
 		private static string imageCookingFire = "cookingFire.png";
 		private static string imageOven = "oven.png";

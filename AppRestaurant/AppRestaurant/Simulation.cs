@@ -47,7 +47,9 @@ namespace AppRestaurant
 
         private void button2_Click(object sender, EventArgs e)
         {
-            saveFilePath = "C:\\Users\\NOUMEN DARRYL\\Documents\\prog-sys-obj\\AppRestaurant\\AppRestaurant\\bin\\Debug\\AppRestaurantConfigs.txt";
+            string directory = Directory.GetCurrentDirectory();
+            string filePath = directory + "\\AppRestaurantConfigs.txt";
+            saveFilePath = filePath;
             if (File.Exists(saveFilePath))
             {
                 try
@@ -148,22 +150,40 @@ namespace AppRestaurant
 
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
+
+            string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string exeDir = System.IO.Path.GetDirectoryName(exePath);
+            DirectoryInfo binDir = System.IO.Directory.GetParent(exeDir);
+            binDir = System.IO.Directory.GetParent(binDir.FullName);
+
+
+            string spritePath = binDir.FullName + "\\Resources\\dinningroomtile.png";
+
             for (int i = 0; i < model.kitchen.map.GetUpperBound(0); i++)
             {
                 for (int j = 0; j < model.kitchen.map.GetUpperBound(1); j++)
-                {
-                   e.Graphics.DrawImage(Image.FromFile("C:\\Users\\NOUMEN DARRYL\\Documents\\prog-sys-obj\\AppRestaurant\\AppRestaurant\\Resources\\dinningroomtile.png"), i * kitchenView.FRAME_SIZE, j * kitchenView.FRAME_SIZE);
+                { 
+                   e.Graphics.DrawImage(Image.FromFile(spritePath), i * kitchenView.FRAME_SIZE, j * kitchenView.FRAME_SIZE);
                 }
             }
         }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
+
+            string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string exeDir = System.IO.Path.GetDirectoryName(exePath);
+            DirectoryInfo binDir = System.IO.Directory.GetParent(exeDir);
+            binDir = System.IO.Directory.GetParent(binDir.FullName);
+
+
+            string spritePath = binDir.FullName + "\\Resources\\kitchentile.png";
+
             for (int i = 0; i < model.kitchen.map.GetUpperBound(0); i++)
             {
                 for (int j = 0; j < model.kitchen.map.GetUpperBound(1); j++)
                 {
-                    e.Graphics.DrawImage(Image.FromFile("C:\\Users\\NOUMEN DARRYL\\Documents\\prog-sys-obj\\AppRestaurant\\AppRestaurant\\Resources\\kitchentile.png"), i * kitchenView.FRAME_SIZE, j * kitchenView.FRAME_SIZE);
+                    e.Graphics.DrawImage(Image.FromFile(spritePath), i * kitchenView.FRAME_SIZE, j * kitchenView.FRAME_SIZE);
                 }
             }
 
