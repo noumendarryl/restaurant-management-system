@@ -12,6 +12,8 @@
 *.pdb
 *.cache
 *.exe
+*.csproj
+*.csproj.user
 AppRestaurant/.vs/AppRestaurant/v16/*.suo
 AppRestaurant/.vs/AppRestaurant/v17/*.suo
 AppRestaurant/AppRestaurant/obj/Debug/*.sqlite
@@ -34,6 +36,7 @@ AppRestaurant/AppRestaurantTest/obj/Debug/AppRestaurantTest.csproj.AssemblyRefer
 AppRestaurant/AppRestaurant/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 AppRestaurant/AppRestaurant/obj/Debug/AppRestaurant.csproj.AssemblyReference.cache
 AppRestaurant/AppRestaurant/AppRestaurant.csproj
+AppRestaurant/AppRestaurant/AppRestaurant.csproj.user
 AppRestaurant/.vs/AppRestaurant/v17/.suo
 AppRestaurant/AppRestaurant/obj/Debug/
 AppRestaurant/.vs/AppRestaurant/v17/
