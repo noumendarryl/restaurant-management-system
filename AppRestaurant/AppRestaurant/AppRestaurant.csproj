@@ -61,7 +61,40 @@
     <Compile Include="BookingForm.Designer.cs">
       <DependentUpon>BookingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controller\DiningRoom\Actors\CustomerController.cs" />
+    <Compile Include="Controller\DiningRoom\Actors\HotelMasterController.cs" />
+    <Compile Include="Controller\DiningRoom\Actors\LineChiefController.cs" />
+    <Compile Include="Controller\DiningRoom\Actors\RoomClerkController.cs" />
+    <Compile Include="Controller\DiningRoom\Actors\WaiterController.cs" />
+    <Compile Include="Controller\DiningRoom\DiningRoomController.cs" />
+    <Compile Include="Controller\DiningRoom\Observer\CFUnsubscriber.cs" />
+    <Compile Include="Controller\DiningRoom\Observer\DRUnsubscriber.cs" />
+    <Compile Include="Controller\DiningRoom\Strategy\CoolStrategy.cs" />
+    <Compile Include="Controller\DiningRoom\Strategy\ICustomer.cs" />
+    <Compile Include="Controller\DiningRoom\Strategy\IOrderStrategy.cs" />
+    <Compile Include="Controller\DiningRoom\Strategy\RandomOrderStrategy.cs" />
+    <Compile Include="Controller\DiningRoom\Strategy\RushedStrategy.cs" />
     <Compile Include="Controller\kitchenController.cs" />
+    <Compile Include="Model\Common\Equipment.cs" />
+    <Compile Include="Model\Common\Menu.cs" />
+    <Compile Include="Model\Common\MenuCard.cs" />
+    <Compile Include="Model\Common\Order.cs" />
+    <Compile Include="Model\Common\Recipe.cs" />
+    <Compile Include="Model\DiningRoom\Actors\Customer.cs" />
+    <Compile Include="Model\DiningRoom\Actors\CustomerGroup.cs" />
+    <Compile Include="Model\DiningRoom\Actors\HotelMaster.cs" />
+    <Compile Include="Model\DiningRoom\Actors\LineChief.cs" />
+    <Compile Include="Model\DiningRoom\Actors\RoomClerk.cs" />
+    <Compile Include="Model\DiningRoom\Actors\Waiter.cs" />
+    <Compile Include="Model\DiningRoom\DiningRoomModel.cs" />
+    <Compile Include="Model\DiningRoom\Elements\Line.cs" />
+    <Compile Include="Model\DiningRoom\Elements\Square.cs" />
+    <Compile Include="Model\DiningRoom\Elements\Table.cs" />
+    <Compile Include="Model\DiningRoom\Factory\AbstractCustomersFactory.cs" />
+    <Compile Include="Model\DiningRoom\Factory\CustomersFactory.cs" />
+    <Compile Include="Model\DiningRoom\Move\IMove.cs" />
+    <Compile Include="Model\DiningRoom\Move\IPosition.cs" />
+    <Compile Include="Model\DiningRoom\Move\Position.cs" />
     <Compile Include="Model\kitchen\DAOEntity.cs" />
     <Compile Include="Model\kitchen\DAOIngredient.cs" />
     <Compile Include="Model\kitchen\kitchenItem.cs" />
@@ -135,6 +168,7 @@
     <EmbeddedResource Include="View\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -156,6 +190,7 @@
     <Content Include="Resources\Chef\right.gif" />
     <Content Include="Resources\dinningroomtile.png" />
     <Content Include="Resources\Diver\front.png" />
+    <Content Include="Resources\front.png" />
     <Content Include="Resources\kitchenClerk\front.png" />
     <Content Include="Resources\kitchenMaterials\comptoir.png" />
     <Content Include="Resources\kitchenMaterials\cookingFire.png" />

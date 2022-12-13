@@ -34,7 +34,7 @@ namespace AppRestaurantTest
     }
         public void CreateKitchenKnifeTest()
         {
-            kitchenMaterial kitchenKnife = kitchenMaterialFactory.createKnife();
+            kitchenMaterial kitchenKnife = kitchenMaterialFactory.createKnife(2);
             Assert.AreEqual<String>(kitchenKnife.name, "kitchen knife");
         }
     }

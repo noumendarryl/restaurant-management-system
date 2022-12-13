@@ -21,10 +21,10 @@ namespace AppRestaurant.Model.DiningRoom.Elements
             this.State = EquipmentState.Available;
         }
 
-        public Table(int nbPlaces, int posX, int posY)
+        public Table(int nbPlaces, int PosX, int posY)
         {
             this.nbPlaces = nbPlaces;
-            this.posX = posX;
+            this.PosX = PosX;
             this.posY = posY;
             this.State = EquipmentState.Available;
 
@@ -33,7 +33,7 @@ namespace AppRestaurant.Model.DiningRoom.Elements
         public Table(int nbPlaces, Position position)
         {
             this.nbPlaces = nbPlaces;
-            this.posX = position.PosX;
+            this.PosX = position.PosX;
             this.posY = position.PosY;
             this.State = EquipmentState.Available;
 

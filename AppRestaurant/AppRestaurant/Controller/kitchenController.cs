@@ -179,10 +179,10 @@ namespace AppRestaurant.Controller
                 int threadNumber = int.Parse((Thread.CurrentThread.Name[Thread.CurrentThread.Name.Length - 1]) + "");
                 int chefPosition = threadNumber - 1;
 
-                int pastX = Model.deputyChefs[chefPosition].posX;
-                int pastY = Model.deputyChefs[chefPosition].posY;
+                int pastX = Model.deputyChefs[chefPosition].PosX;
+                int pastY = Model.deputyChefs[chefPosition].PosY;
                 Model.chefs[chefPosition].moveRight();
-                Model.NotifyWhenMoved(pastX, pastY, Model.chefs[chefPosition].posX, Model.chefs[chefPosition].posY);
+                Model.NotifyWhenMoved(pastX, pastY, Model.chefs[chefPosition].PosX, Model.chefs[chefPosition].PosY);
 
                 orderQueueMut.WaitOne();
                 pendingOrderQueueMut.WaitOne();
@@ -299,7 +299,7 @@ namespace AppRestaurant.Controller
                 //else
                 //    Model.deputyChefs[deputyChefPosition].currentSprite = Model.deputyChefs[deputyChefPosition].GetSprite("moving-down");
 
-                Model.NotifyWhenMoved(Model.deputyChefs[deputyChefPosition].posX, Model.deputyChefs[deputyChefPosition].posY, Model.deputyChefs[deputyChefPosition].posX, Model.deputyChefs[deputyChefPosition].posY);
+                Model.NotifyWhenMoved(Model.deputyChefs[deputyChefPosition].PosX, Model.deputyChefs[deputyChefPosition].PosY, Model.deputyChefs[deputyChefPosition].PosX, Model.deputyChefs[deputyChefPosition].PosY);
 
                 doneOrderQueueMut.WaitOne();
                 pendingOrderQueueMut.WaitOne();
@@ -359,7 +359,7 @@ namespace AppRestaurant.Controller
                     //}
 
                     //Model.kitchenClerks[clerkPosition].setSprite(Model.kitchenClerks[clerkPosition].back);
-                    Model.NotifyWhenMoved(Model.kitchenClerks[clerkPosition].posX, Model.kitchenClerks[clerkPosition].posY, Model.kitchenClerks[clerkPosition].posX, Model.kitchenClerks[clerkPosition].posY);
+                    Model.NotifyWhenMoved(Model.kitchenClerks[clerkPosition].PosX, Model.kitchenClerks[clerkPosition].PosY, Model.kitchenClerks[clerkPosition].PosX, Model.kitchenClerks[clerkPosition].PosY);
                 }
             }
         }

@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppRestaurant\AppRestaurant\AppRestaurant.csproj">
-      <Project>{1BF8E70C-7B9D-47EE-9F48-9DEBCD1FC0C1}</Project>
+      <Project>{1bf8e70c-7b9d-47ee-9f48-9debcd1fc0c1}</Project>
       <Name>AppRestaurant</Name>
     </ProjectReference>
   </ItemGroup>
