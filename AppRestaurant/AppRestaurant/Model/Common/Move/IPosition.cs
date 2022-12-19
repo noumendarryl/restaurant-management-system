@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppRestaurant.Model.DiningRoom.Move
+namespace AppRestaurant.Model.Common.Move
 {
     public interface IPosition
     {

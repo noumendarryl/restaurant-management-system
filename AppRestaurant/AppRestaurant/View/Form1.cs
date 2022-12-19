@@ -16,9 +16,9 @@ namespace AppRestaurant
 {
     public partial class Form1 : Form
     {
-        public kitchenModel model { get; set; }
+        public KitchenModel model { get; set; }
 
-        public Form1(kitchenModel model)
+        public Form1(KitchenModel model)
         {
             this.model = model;
             InitializeComponent();
@@ -26,8 +26,8 @@ namespace AppRestaurant
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            int width = (model.kitchen.map.GetUpperBound(0) - 1) * kitchenView.FRAME_SIZE;
-            int height = (model.kitchen.map.GetUpperBound(1) - 1) * kitchenView.FRAME_SIZE;
+            int width = (model.kitchen.map.GetUpperBound(0) - 1) * KitchenView.FRAME_SIZE;
+            int height = (model.kitchen.map.GetUpperBound(1) - 1) * KitchenView.FRAME_SIZE;
             Size = new Size(width, height);
         }
 
@@ -46,28 +46,28 @@ namespace AppRestaurant
             { 
                 for (int j = 0; j < model.kitchen.map.GetUpperBound(1); j++)
                 {
-                    e.Graphics.DrawImage(Image.FromFile(spritePath), i * kitchenView.FRAME_SIZE, j * kitchenView.FRAME_SIZE);
+                    e.Graphics.DrawImage(Image.FromFile(spritePath), i * KitchenView.FRAME_SIZE, j * KitchenView.FRAME_SIZE);
                 }
             }
 
             foreach (Chef chef in model.chefs)
             {
-                e.Graphics.DrawImage(chef.getSprite().getImage(), chef.posX * kitchenView.FRAME_SIZE, chef.posY * kitchenView.FRAME_SIZE);
+                e.Graphics.DrawImage(chef.getSprite().getImage(), chef.posX * KitchenView.FRAME_SIZE, chef.posY * KitchenView.FRAME_SIZE);
             }
 
             foreach (DeputyChef deputyChef in model.deputyChefs)
             {
-                e.Graphics.DrawImage(deputyChef.getSprite().getImage(), deputyChef.posX * kitchenView.FRAME_SIZE, deputyChef.posY * kitchenView.FRAME_SIZE);
+                e.Graphics.DrawImage(deputyChef.getSprite().getImage(), deputyChef.posX * KitchenView.FRAME_SIZE, deputyChef.posY * KitchenView.FRAME_SIZE);
             }
 
-            foreach (kitchenClerk kitchenClerk in model.kitchenClerks)
+            foreach (KitchenClerk kitchenClerk in model.kitchenClerks)
             {
-                e.Graphics.DrawImage(kitchenClerk.getSprite().getImage(), kitchenClerk.posX * kitchenView.FRAME_SIZE, kitchenClerk.posY * kitchenView.FRAME_SIZE);
+                e.Graphics.DrawImage(kitchenClerk.getSprite().getImage(), kitchenClerk.posX * KitchenView.FRAME_SIZE, kitchenClerk.posY * KitchenView.FRAME_SIZE);
             }
 
             foreach (Diver diver in model.divers)
             {
-                e.Graphics.DrawImage(diver.getSprite().getImage(), diver.posX * kitchenView.FRAME_SIZE, diver.posY * kitchenView.FRAME_SIZE);
+                e.Graphics.DrawImage(diver.getSprite().getImage(), diver.posX * KitchenView.FRAME_SIZE, diver.posY * KitchenView.FRAME_SIZE);
             }
         }
 

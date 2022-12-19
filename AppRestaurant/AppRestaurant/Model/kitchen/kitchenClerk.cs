@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Model.kitchen
 {
-    public class kitchenClerk : MotionkitchenItem
+    public class KitchenClerk : MotionkitchenItem
     {
         //private static string spritePath = "C:\\Users\\NOUMEN DARRYL\\Documents\\prog-sys-obj\\AppRestaurant\\AppRestaurant\\Resources\\kitchenClerk\\";
 
@@ -23,7 +23,7 @@ namespace AppRestaurant.Model.kitchen
         public Sprite right;
         public Sprite working;
 
-        public kitchenClerk()
+        public KitchenClerk()
         {
 
             string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;

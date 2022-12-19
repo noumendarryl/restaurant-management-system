@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Model.kitchen
 {
-    public class kitchen
+    public class Kitchen
     {
-        public kitchenMaterial[,] map { get; set; }
+        public KitchenMaterial[,] map { get; set; }
 
-        public kitchen()
+        public Kitchen()
         {
-            map = new kitchenMaterial[18, 8];
+            map = new KitchenMaterial[18, 8];
         }
     }
 }

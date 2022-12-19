@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 using AppRestaurant.Model.Common;
 using AppRestaurant.Model.DiningRoom;
-using AppRestaurant.Model.DiningRoom.Move;
-using AppRestaurant.Model.DiningRoom.Elements;
+using AppRestaurant.Model.Common.Move;
 using AppRestaurant.Model.DiningRoom.Actors;
 
 namespace AppRestaurant.Controller.DiningRoom.Actors
@@ -63,9 +62,6 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
         // pan defVal posX = 10, posY
         public void CallLineChief(LineChief lineChief, Position adjust)
         {
-            if (lineChief != null)
-                lineChief.Move(hotelMaster.PosX - adjust.PosX, hotelMaster.PosY - adjust.PosY);
-
         }
 
         public void OnNext(CustomerGroup value)

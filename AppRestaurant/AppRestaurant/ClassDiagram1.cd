@@ -130,22 +130,16 @@
   <Class Name="AppRestaurant.Controller.kitchenController" Collapsed="true">
     <Position X="31.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>YAARBkQwCCAAAAJSAABAAEBJKoABAKDiCQgAACqAAEE=</HashCode>
+      <HashCode>YEARBkQwCCCAAAJSAABAAEBJKoABAKDiCQgAACqAAEE=</HashCode>
       <FileName>Controller\kitchenController.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppRestaurant.Model.Common.Equipment" Collapsed="true">
     <Position X="6.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAA=</HashCode>
       <FileName>Model\Common\Equipment.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="AppRestaurant.Model.Common.Menu" Collapsed="true">
-    <Position X="30" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAABCAAAAQgAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
-      <FileName>Model\Common\Menu.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AppRestaurant.Model.Common.MenuCard" Collapsed="true">
@@ -155,20 +149,6 @@
       <FileName>Model\Common\MenuCard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="AppRestaurant.Model.Common.Order" Collapsed="true">
-    <Position X="31.75" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAgAAIAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Model\Common\Order.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="AppRestaurant.Model.Common.Recipe" Collapsed="true">
-    <Position X="26.5" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAAgAAAAAABIgBAAAAAAAAAAAABAA=</HashCode>
-      <FileName>Model\Common\Recipe.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="AppRestaurant.Model.DB.DBAccess" Collapsed="true">
     <Position X="28.25" Y="1.5" Width="1.5" />
@@ -282,11 +262,11 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="AppRestaurant.Model.DiningRoom.Move.Position" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="AppRestaurant.Model.Common.Move.Position" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="33.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAwAAAAAA=</HashCode>
-      <FileName>Model\DiningRoom\Move\Position.cs</FileName>
+      <FileName>Model\Common\Move\Position.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
@@ -406,14 +386,14 @@
   <Class Name="AppRestaurant.Model.kitchen.Order" Collapsed="true">
     <Position X="2.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAACAAQAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAABAAAAACAAQAAAIgAAIAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Model\kitchen\Order.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AppRestaurant.Model.kitchen.Recipe" Collapsed="true">
     <Position X="28.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAAAIAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAABAAAAAQAAAAAAIgAAAAAABIgFAAAAAAAAAAAABAA=</HashCode>
       <FileName>Model\kitchen\Recipe.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -487,18 +467,18 @@
       <FileName>Model\DB\IDBActions.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="AppRestaurant.Model.DiningRoom.Move.IMove" Collapsed="true">
+  <Interface Name="AppRestaurant.Model.Common.Move.IMove" Collapsed="true">
     <Position X="31.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\DiningRoom\Move\IMove.cs</FileName>
+      <FileName>Model\Common\Move\IMove.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="AppRestaurant.Model.DiningRoom.Move.IPosition" Collapsed="true">
+  <Interface Name="AppRestaurant.Model.Common.Move.IPosition" Collapsed="true">
     <Position X="37" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\DiningRoom\Move\IPosition.cs</FileName>
+      <FileName>Model\Common\Move\IPosition.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AppRestaurant.Model.kitchen.DAOEntity&lt;E&gt;" Collapsed="true">
@@ -520,20 +500,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAAAABAAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Model\Common\Equipment.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="AppRestaurant.Model.Common.OrderStatus" Collapsed="true">
-    <Position X="31.75" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAQAAAAAAAAAABgAAAAAAAAAAAAAAAEAAAAA=</HashCode>
-      <FileName>Model\Common\Order.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="AppRestaurant.Model.Common.RecipeType" Collapsed="true">
-    <Position X="33.5" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgCAAAAA=</HashCode>
-      <FileName>Model\Common\Recipe.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="AppRestaurant.Model.DiningRoom.Actors.CustomerState" Collapsed="true">

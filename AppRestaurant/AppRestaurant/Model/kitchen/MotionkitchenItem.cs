@@ -7,7 +7,7 @@ using AppRestaurant.Model.kitchen;
 
 namespace AppRestaurant.Model.kitchen
 {
-	public class MotionkitchenItem : kitchenItem
+	public class MotionkitchenItem : KitchenItem
 	{
 		public static int speed { get; set; }
 

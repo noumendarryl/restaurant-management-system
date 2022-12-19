@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace AppRestaurant.View
 {
-    public class kitchenView : IObserver
+    public class KitchenView : IObserver
     {
         public static int FRAME_SIZE = 32;
         //public Form1 form { get; set; }
@@ -19,7 +19,7 @@ namespace AppRestaurant.View
         public static Simulation simulationForm { get; set; }
         public static Setting setting { get; set; }
 
-        public kitchenView(kitchenModel model)
+        public KitchenView(KitchenModel model)
         {
             //form = new Form1(model);
             mainApp = new AppRestaurant(model);

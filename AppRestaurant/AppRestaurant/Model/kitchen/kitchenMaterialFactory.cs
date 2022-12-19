@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Model.kitchen
 {
-	public class kitchenMaterialFactory
+	public class KitchenMaterialFactory
 	{
-		private static kitchenMaterial COOKING_FIRE;
-		private static kitchenMaterial FRIDGE;
-		private static kitchenMaterial BLENDER;
-		private static kitchenMaterial OVEN;
-		private static kitchenMaterial KNIFE;
+		private static KitchenMaterial COOKING_FIRE;
+		private static KitchenMaterial FRIDGE;
+		private static KitchenMaterial BLENDER;
+		private static KitchenMaterial OVEN;
+		private static KitchenMaterial KNIFE;
 
 
 		private static string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
@@ -40,9 +40,9 @@ namespace AppRestaurant.Model.kitchen
 		 * Creates a cooking fire
 		 * @return The {@link cooking fire} {@link kitchenMaterial}.
 		 */
-		public static kitchenMaterial createCookingFire()
+		public static KitchenMaterial createCookingFire()
 		{
-			COOKING_FIRE = new kitchenMaterial("cooking fire", 5, cookingFire);
+			COOKING_FIRE = new KitchenMaterial("cooking fire", 5, cookingFire);
 			cookingFire.loadImage();
 			COOKING_FIRE.setSprite(cookingFire);
 			COOKING_FIRE.washable = false;
@@ -53,9 +53,9 @@ namespace AppRestaurant.Model.kitchen
 		 * Creates an oven
 		 * @return The {@link oven} {@link kitchenMaterial}.
 		 */
-		public static kitchenMaterial createOven()
+		public static KitchenMaterial createOven()
 		{
-			OVEN = new kitchenMaterial("oven", 5, oven);
+			OVEN = new KitchenMaterial("oven", 5, oven);
 			oven.loadImage();
 			OVEN.setSprite(oven);
 			OVEN.washable = false;
@@ -66,9 +66,9 @@ namespace AppRestaurant.Model.kitchen
 		 * Creates a fridge
 		 * @return The {@link fridge} {@link kitchenMaterial}.
 		 */
-		public static kitchenMaterial createFridge()
+		public static KitchenMaterial createFridge()
 		{
-			FRIDGE = new kitchenMaterial("fridge", 1, fridge);
+			FRIDGE = new KitchenMaterial("fridge", 1, fridge);
 			fridge.loadImage();
 			FRIDGE.setSprite(fridge);
 			return FRIDGE;
@@ -78,9 +78,9 @@ namespace AppRestaurant.Model.kitchen
 		 * Creates a blender
 		 * @return The {@link blender} {@link kitchenMaterial}.
 		 */
-		public static kitchenMaterial createBlender()
+		public static KitchenMaterial createBlender()
 		{
-			BLENDER = new kitchenMaterial("blender", 1, blender);
+			BLENDER = new KitchenMaterial("blender", 1, blender);
 			//blender.loadImage();
 			//BLENDER.setSprite(blender);
 			return BLENDER;
@@ -90,9 +90,9 @@ namespace AppRestaurant.Model.kitchen
 		 * Creates a knife
 		 * @return The {@link knife} {@link kitchenMaterial}.
 		 */
-		public static kitchenMaterial createKnife(int quantity)
+		public static KitchenMaterial createKnife(int quantity)
 		{
-			KNIFE = new kitchenMaterial("kitchen knife", quantity, knife);
+			KNIFE = new KitchenMaterial("kitchen knife", quantity, knife);
 			//knife.loadImage();
 			//KNIFE.setSprite(cookingFire);
 			return KNIFE;

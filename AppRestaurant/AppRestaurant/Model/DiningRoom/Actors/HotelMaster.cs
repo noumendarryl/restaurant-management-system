@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using AppRestaurant.Model.DiningRoom.Move;
+using AppRestaurant.Model.Common.Move;
 
 namespace AppRestaurant.Model.DiningRoom.Actors
 {
-    public class HotelMaster : Position
+    public class HotelMaster
     {
         private List<LineChief> rankChiefs;
 
@@ -24,11 +24,5 @@ namespace AppRestaurant.Model.DiningRoom.Actors
             this.rankChiefs.Add(new LineChief());
         }
 
-        public HotelMaster(int posX, int posY) : base(posX, posY)
-        {
-            this.rankChiefs = new List<LineChief>();
-
-            this.rankChiefs.Add(new LineChief());
-        }
     }
 }

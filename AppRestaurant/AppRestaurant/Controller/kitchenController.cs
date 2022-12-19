@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace AppRestaurant.Controller
 {
-    public class kitchenController
+    public class KitchenController : IObserver<Order>
     {
-        public static kitchenModel Model { get; set; }
-        public static kitchenView View { get; set; }
+        public static KitchenModel Model { get; set; }
+        public static KitchenView View { get; set; }
         public static Queue<Order> orderQueue { get; set; }
         private static Mutex orderQueueMut = new Mutex();
         private static ManualResetEvent orderQueueMre = new ManualResetEvent(false);
@@ -41,7 +41,7 @@ namespace AppRestaurant.Controller
         private static ManualResetEvent RecipeStepQueueMre = new ManualResetEvent(false);
         private static Mutex notifyRecipeStepQueueMut = new Mutex();
 
-        public static Queue<kitchenMaterial> materialWashQueue { get; set; }
+        public static Queue<KitchenMaterial> materialWashQueue { get; set; }
         private static Mutex materialWashQueueMut = new Mutex();
         private static ManualResetEvent materialWashQueueMre = new ManualResetEvent(false);
         private static Mutex notifyMaterialWashMut = new Mutex();
@@ -52,7 +52,7 @@ namespace AppRestaurant.Controller
         public static Thread KitchenClerkThread { get; set; }
         public static Thread diverThread { get; set; }
 
-        public kitchenController(kitchenModel model, kitchenView view)
+        public KitchenController(KitchenModel model, KitchenView view)
         {
             Model = model;
             View = view;
@@ -63,7 +63,7 @@ namespace AppRestaurant.Controller
             recipeQueue = new Queue<Recipe>();
             ingredientQueue = new Queue<Ingredient>();
             RecipeStepQueue = new Queue<RecipeStep>();
-            materialWashQueue = new Queue<kitchenMaterial>();
+            materialWashQueue = new Queue<KitchenMaterial>();
         }
 
         public static void Start()
@@ -381,17 +381,17 @@ namespace AppRestaurant.Controller
 
                 materialWashQueueMut.WaitOne();
                 Model.NotifyBusyEmployee("diver");
-                Console.WriteLine(Thread.CurrentThread.Name + " : Material '" + materialWashQueue.First<kitchenMaterial>().name + "' received.");
-                Model.NotifyEventLog(Thread.CurrentThread.Name + " : Material '" + materialWashQueue.First<kitchenMaterial>().name + "' received.");
+                Console.WriteLine(Thread.CurrentThread.Name + " : Material '" + materialWashQueue.First<KitchenMaterial>().name + "' received.");
+                Model.NotifyEventLog(Thread.CurrentThread.Name + " : Material '" + materialWashQueue.First<KitchenMaterial>().name + "' received.");
 
-                Console.WriteLine(Thread.CurrentThread.Name + " : Washing Material '" + materialWashQueue.First<kitchenMaterial>().name + "' ...");
-                Model.NotifyEventLog(Thread.CurrentThread.Name + " : Washing Material '" + materialWashQueue.First<kitchenMaterial>().name + "' ...");
+                Console.WriteLine(Thread.CurrentThread.Name + " : Washing Material '" + materialWashQueue.First<KitchenMaterial>().name + "' ...");
+                Model.NotifyEventLog(Thread.CurrentThread.Name + " : Washing Material '" + materialWashQueue.First<KitchenMaterial>().name + "' ...");
 
                 Thread.Sleep(2000);
-                Console.WriteLine(Thread.CurrentThread.Name + " : Washing Material '" + materialWashQueue.First<kitchenMaterial>().name + "' done.");
-                Model.NotifyEventLog(Thread.CurrentThread.Name + " : Washing Material '" + materialWashQueue.First<kitchenMaterial>().name + "' done.");
+                Console.WriteLine(Thread.CurrentThread.Name + " : Washing Material '" + materialWashQueue.First<KitchenMaterial>().name + "' done.");
+                Model.NotifyEventLog(Thread.CurrentThread.Name + " : Washing Material '" + materialWashQueue.First<KitchenMaterial>().name + "' done.");
 
-                materialWashQueue.First<kitchenMaterial>().quantity++;
+                materialWashQueue.First<KitchenMaterial>().quantity++;
 
                 materialWashQueue.Dequeue();
 
@@ -415,6 +415,21 @@ namespace AppRestaurant.Controller
                 orderQueueMre.Set();
                 orderQueueMut.ReleaseMutex();
             }
+        }
+
+        public void OnNext(Order value)
+        {
+           // throw new NotImplementedException();
+        }
+
+        public void OnError(Exception error)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnCompleted()
+        {
+            throw new NotImplementedException();
         }
     }
 }

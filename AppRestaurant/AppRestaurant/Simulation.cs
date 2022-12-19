@@ -16,7 +16,7 @@ namespace AppRestaurant
 {
     public partial class Simulation : Form
     {
-        public kitchenModel model { get; set; }
+        public KitchenModel model { get; set; }
         public BookingForm bookingForm { get; set; }
         public string applicationPath { get; set; }
         public string saveFilePath { get; set; }
@@ -33,7 +33,7 @@ namespace AppRestaurant
         public int ovenNumber { get; set; }
 
         [Obsolete]
-        public Simulation(kitchenModel model)
+        public Simulation(KitchenModel model)
         {
             this.model = model;
             InitializeComponent();
@@ -98,16 +98,16 @@ namespace AppRestaurant
                 saveFilePath = Path.Combine(applicationPath, "AppRestaurantConfigs.txt");
                 writer = new StreamWriter(saveFilePath, false);
 
-                writer.WriteLine(kitchenView.setting.simulationTimeScale.ToString());
-                writer.WriteLine(kitchenView.setting.chefNumber.ToString());
-                writer.WriteLine(kitchenView.setting.deputyChefNumber.ToString());
-                writer.WriteLine(kitchenView.setting.kitchenClerkNumber.ToString());
-                writer.WriteLine(kitchenView.setting.diverNumber.ToString());
+                writer.WriteLine(KitchenView.setting.simulationTimeScale.ToString());
+                writer.WriteLine(KitchenView.setting.chefNumber.ToString());
+                writer.WriteLine(KitchenView.setting.deputyChefNumber.ToString());
+                writer.WriteLine(KitchenView.setting.kitchenClerkNumber.ToString());
+                writer.WriteLine(KitchenView.setting.diverNumber.ToString());
            
-                writer.WriteLine(kitchenView.setting.cookingFireNumber.ToString());
-                writer.WriteLine(kitchenView.setting.ovenNumber.ToString());
-                writer.WriteLine(kitchenView.setting.blenderNumber.ToString());
-                writer.WriteLine(kitchenView.setting.fridgeNumber.ToString());
+                writer.WriteLine(KitchenView.setting.cookingFireNumber.ToString());
+                writer.WriteLine(KitchenView.setting.ovenNumber.ToString());
+                writer.WriteLine(KitchenView.setting.blenderNumber.ToString());
+                writer.WriteLine(KitchenView.setting.fridgeNumber.ToString());
             
                 writer.Close();
             }
@@ -115,14 +115,14 @@ namespace AppRestaurant
 
         private void button4_Click(object sender, EventArgs e)
         {
-            setting = new Setting(kitchenView.simulationForm);
+            setting = new Setting(KitchenView.simulationForm);
             setting.Show();
         }
 
         [Obsolete]
         private void button6_Click(object sender, EventArgs e)
         {
-            kitchenController.Start();
+            KitchenController.Start();
             button6.Visible = false;
             button8.Visible = true;
         }
@@ -130,7 +130,7 @@ namespace AppRestaurant
         [Obsolete]
         private void button8_Click(object sender, EventArgs e)
         {
-            kitchenController.Suspend();
+            KitchenController.Suspend();
             button8.Visible = false;
             button12.Visible = true;
         }
@@ -143,7 +143,7 @@ namespace AppRestaurant
         [Obsolete]
         private void button12_Click(object sender, EventArgs e)
         {
-            kitchenController.Resume();
+            KitchenController.Resume();
             button12.Visible = false;
             button8.Visible = true;
         }
@@ -163,7 +163,7 @@ namespace AppRestaurant
             {
                 for (int j = 0; j < model.kitchen.map.GetUpperBound(1); j++)
                 { 
-                   e.Graphics.DrawImage(Image.FromFile(spritePath), i * kitchenView.FRAME_SIZE, j * kitchenView.FRAME_SIZE);
+                   e.Graphics.DrawImage(Image.FromFile(spritePath), i * KitchenView.FRAME_SIZE, j * KitchenView.FRAME_SIZE);
                 }
             }
         }
@@ -183,7 +183,7 @@ namespace AppRestaurant
             {
                 for (int j = 0; j < model.kitchen.map.GetUpperBound(1); j++)
                 {
-                    e.Graphics.DrawImage(Image.FromFile(spritePath), i * kitchenView.FRAME_SIZE, j * kitchenView.FRAME_SIZE);
+                    e.Graphics.DrawImage(Image.FromFile(spritePath), i * KitchenView.FRAME_SIZE, j * KitchenView.FRAME_SIZE);
                 }
             }
 
@@ -191,18 +191,18 @@ namespace AppRestaurant
             {
                for (int j = 0; j < model.kitchen.map.GetUpperBound(1); j++)
                {
-                   kitchenMaterial material = model.kitchen.map[i, j];
+                   KitchenMaterial material = model.kitchen.map[i, j];
 
                    if (material != null)
                    {
-                        e.Graphics.DrawImage(material.getSprite().getImage(), i * kitchenView.FRAME_SIZE, j * kitchenView.FRAME_SIZE);
+                        e.Graphics.DrawImage(material.getSprite().getImage(), i * KitchenView.FRAME_SIZE, j * KitchenView.FRAME_SIZE);
                    }
                }
             }
 
             foreach (Chef chef in model.chefs)
             {
-                e.Graphics.DrawImage(chef.getSprite().getImage(), chef.posX * kitchenView.FRAME_SIZE, chef.posY * kitchenView.FRAME_SIZE);
+                e.Graphics.DrawImage(chef.getSprite().getImage(), chef.posX * KitchenView.FRAME_SIZE, chef.posY * KitchenView.FRAME_SIZE);
             }
 
             foreach (DeputyChef deputyChef in model.deputyChefs)
@@ -210,14 +210,14 @@ namespace AppRestaurant
                 //e.Graphics.DrawImage(deputyChef.getSprite().getImage(), deputyChef.posX * kitchenView.FRAME_SIZE, deputyChef.posY * kitchenView.FRAME_SIZE);
             }
 
-            foreach (kitchenClerk kitchenClerk in model.kitchenClerks)
+            foreach (KitchenClerk kitchenClerk in model.kitchenClerks)
             {
-                e.Graphics.DrawImage(kitchenClerk.getSprite().getImage(), kitchenClerk.posX * kitchenView.FRAME_SIZE, kitchenClerk.posY * kitchenView.FRAME_SIZE);
+                e.Graphics.DrawImage(kitchenClerk.getSprite().getImage(), kitchenClerk.posX * KitchenView.FRAME_SIZE, kitchenClerk.posY * KitchenView.FRAME_SIZE);
             }
 
             foreach (Diver diver in model.divers)
             {
-                e.Graphics.DrawImage(diver.getSprite().getImage(), diver.posX * kitchenView.FRAME_SIZE, diver.posY * kitchenView.FRAME_SIZE);
+                e.Graphics.DrawImage(diver.getSprite().getImage(), diver.posX * KitchenView.FRAME_SIZE, diver.posY * KitchenView.FRAME_SIZE);
             }
         }
 

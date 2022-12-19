@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Model.kitchen
 {
-    public class kitchenItem : Position
+    public class KitchenItem : Position
     {
 		public Sprite sprite;
 

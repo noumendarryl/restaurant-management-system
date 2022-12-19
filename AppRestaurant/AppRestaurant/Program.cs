@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using AppRestaurant.View;
 using AppRestaurant.Controller;
 using AppRestaurant.Model.kitchen;
+using AppRestaurant.Model.DiningRoom;
+using AppRestaurant.Controller.DiningRoom;
 
 namespace AppRestaurant
 {
@@ -17,13 +19,13 @@ namespace AppRestaurant
         [STAThread]
         static void Main()
         {
-            kitchenModel model = new kitchenModel();
-            kitchenView view = new kitchenView(model);
-            kitchenController controller = new kitchenController(model, view);
+            KitchenModel model = new KitchenModel();
+            KitchenView view = new KitchenView(model);
+            KitchenController controller = new KitchenController(model, view);
 
-            Application.Run(kitchenView.mainApp);
-            Application.Run(kitchenView.setting);
-            Application.Run(kitchenView.simulationForm);
+            Application.Run(KitchenView.mainApp);
+            Application.Run(KitchenView.setting);
+            Application.Run(KitchenView.simulationForm);
             //controller.Start();
         }
     }

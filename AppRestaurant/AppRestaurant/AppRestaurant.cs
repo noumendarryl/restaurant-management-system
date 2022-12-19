@@ -13,9 +13,9 @@ namespace AppRestaurant
 {
     public partial class AppRestaurant : Form
     {
-        public kitchenModel model { get; set; }
+        public KitchenModel model { get; set; }
         public Simulation simulationFrame { get; set; }
-        public AppRestaurant(kitchenModel model)
+        public AppRestaurant(KitchenModel model)
         {
             this.model = model;
             InitializeComponent();

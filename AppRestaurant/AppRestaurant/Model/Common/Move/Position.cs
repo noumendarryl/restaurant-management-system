@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AppRestaurant.Model.DiningRoom.Move;
+using AppRestaurant.Model.Common.Move;
 
-namespace AppRestaurant.Model.DiningRoom.Move
+namespace AppRestaurant.Model.Common.Move
 {
     public class Position : IPosition
     {

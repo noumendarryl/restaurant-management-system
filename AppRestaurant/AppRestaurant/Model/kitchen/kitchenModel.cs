@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Model.kitchen
 {
-	public class kitchenModel
+	public class KitchenModel
 	{
 		private List<IObserver> observers;
 
 		/*
 		* The kitchen.
 		*/
-		public kitchen kitchen { get; set; }
+		public Kitchen kitchen { get; set; }
 
 		/*
 		* The time scale.
@@ -42,7 +42,7 @@ namespace AppRestaurant.Model.kitchen
 		* The kitchenClerk
 		*/
 		public int kitchenClerkNumber;
-		public kitchenClerk[] kitchenClerks { get; set; }
+		public KitchenClerk[] kitchenClerks { get; set; }
 
 		/*
 		* The diver
@@ -59,43 +59,43 @@ namespace AppRestaurant.Model.kitchen
 		* The cooking fire 
 		*/
 		public int cookingFireNumber;
-		public kitchenMaterial cookingFire { get; set; }
+		public KitchenMaterial cookingFire { get; set; }
 
 		/*
 		* The oven 
 		*/
 		public int ovenNumber;
-		public kitchenMaterial oven { get; set; }
+		public KitchenMaterial oven { get; set; }
 
 		/*
 		* The blender
 		*/
 		public int blenderNumber;
-		public kitchenMaterial blender { get; set; }
+		public KitchenMaterial blender { get; set; }
 
 		/*
 		* The fridge
 		*/
 		public int fridgeNumber;
-		public kitchenMaterial fridge { get; set; }
+		public KitchenMaterial fridge { get; set; }
 
 		/*
 		* The knife
 		*/
 		public int knifeNumber;
-		public kitchenMaterial knife { get; set; }
+		public KitchenMaterial knife { get; set; }
 
 		//public Random random = new Random();
 
-		public kitchenModel()
+		public KitchenModel()
 		{
-			this.kitchen = new kitchen();
+			this.kitchen = new Kitchen();
 			observers = new List<IObserver>();
 
-			cookingFire = kitchenMaterialFactory.createCookingFire();
-			oven = kitchenMaterialFactory.createOven();
-			blender = kitchenMaterialFactory.createBlender();
-			fridge = kitchenMaterialFactory.createFridge();
+			cookingFire = KitchenMaterialFactory.createCookingFire();
+			oven = KitchenMaterialFactory.createOven();
+			blender = KitchenMaterialFactory.createBlender();
+			fridge = KitchenMaterialFactory.createFridge();
 
 			this.setMaterialConfig(cookingFireNumber, ovenNumber, blenderNumber, fridgeNumber);
 
@@ -131,7 +131,7 @@ namespace AppRestaurant.Model.kitchen
 		{
 			chefs = new Chef[chefNumber];
 			deputyChefs = new DeputyChef[deputyChefNumber];
-			kitchenClerks = new kitchenClerk[kitchenClerkNumber];
+			kitchenClerks = new KitchenClerk[kitchenClerkNumber];
 			divers = new Diver[diverNumber];
 
 			for (int i = 0; i < chefs.Length; i++)
@@ -149,7 +149,7 @@ namespace AppRestaurant.Model.kitchen
 
 			for (int i = 0; i < kitchenClerks.Length; i++)
 			{
-				kitchenClerks[i] = new kitchenClerk();
+				kitchenClerks[i] = new KitchenClerk();
 				kitchenClerks[i].posX = i;
 				kitchenClerks[i].posY = i + 1;
 			}

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AppRestaurant.Model.DiningRoom.Actors;
 using AppRestaurant.Model.DiningRoom.Elements;
 using AppRestaurant.Model.Common;
+using AppRestaurant.Model.kitchen;
 
 namespace AppRestaurant.Model.DiningRoom
 {
@@ -63,7 +64,7 @@ namespace AppRestaurant.Model.DiningRoom
             
             roomclerks.Add(new RoomClerk());
         }
-        public DiningRoomModel(int nbSquares, int nbLines, int nbTablesPerLine, int nbSeatsPerTable, int nbLineChiefs, int nbWaiters, int nbRoomClerks, int nbMenuCard)
+        public DiningRoomModel(int nbSquares, int nbLines, int nbTablesPerLine, int nbSeatsPerTable, int nbLineChiefs, int nbWaiters, int nbRoomClerks, int nbMenuCard, Dictionary<string, List<Recipe>> menu)
         {
             hotelMaster = new HotelMaster();
 
@@ -94,18 +95,20 @@ namespace AppRestaurant.Model.DiningRoom
 
             menuCards = new Queue<MenuCard>();
             for (int i = 0; i < nbMenuCard; i++)
-                menuCards.Enqueue(new MenuCard(menu));
+            {
+                MenuCard menuCard = new MenuCard();
+                menuCard.Menu = menu;
+                menuCards.Enqueue(menuCard);
+            }
         }
         public HotelMaster HotelMaster { get => hotelMaster; set => hotelMaster = value; }
         public  List<RoomClerk> RoomClerks { get => roomclerks; set => roomclerks = value; }
         public  List<Waiter> Waiters { get => waiters; set => waiters = value; }
         public  List<Square> Squares { get => squares; set => squares = value; }
         public  List<LineChief> LineChiefs { get => lineChiefs; set => lineChiefs = value; }
+
         public Queue<MenuCard> MenuCards { get => menuCards; set => menuCards = value; }
-
         public MenuCard MenuCard { get => menuCard; set => menuCard = value; }
-
-
         public Dictionary<string, List<Recipe>> Menu { get => menu; set => menu = value; }
     }
 }

@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AppRestaurant.Model.DiningRoom.Elements;
-using AppRestaurant.Model.DiningRoom.Move;
 using AppRestaurant.Model.DiningRoom.Actors;
 using AppRestaurant.Model.Common;
 

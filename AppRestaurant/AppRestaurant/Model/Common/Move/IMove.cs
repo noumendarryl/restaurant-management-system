@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppRestaurant.Controller.DiningRoom.Actors
+namespace AppRestaurant.Model.Common.Move
 {
-    class RoomClerkController
+    interface IMove
     {
+        void Move(int posX, int posY);
+
     }
 }

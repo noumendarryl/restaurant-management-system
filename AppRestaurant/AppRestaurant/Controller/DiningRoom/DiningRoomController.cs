@@ -12,6 +12,7 @@ using AppRestaurant.Controller.DiningRoom.Actors;
 using AppRestaurant.Controller.DiningRoom.Strategy;
 using AppRestaurant.Controller.DiningRoom.Observer;
 using AppRestaurant.Model.DiningRoom.Elements;
+using AppRestaurant.Model.kitchen;
 using System.Threading;
 
 namespace AppRestaurant.Controller.DiningRoom
@@ -24,9 +25,7 @@ namespace AppRestaurant.Controller.DiningRoom
 
         private List<CustomerController> customerControllers;
         private List<LineChiefController> lineChiefControllers;
-        private List<RoomClerkController> roomClerkControllers;
-        private List<WaiterController> waiterControllers;
-
+        
         static int costomerCount = 0;
         
         private static Queue<CustomerGroup> CustomerQueue = new Queue<CustomerGroup>();
@@ -46,8 +45,6 @@ namespace AppRestaurant.Controller.DiningRoom
             this.diningRoomModel = diningRoomModel;
             this.hotelMasterController = new HotelMasterController(diningRoomModel);
             this.lineChiefControllers = new List<LineChiefController>();
-            this.roomClerkControllers = new List<RoomClerkController>();
-            this.waiterControllers = new List<WaiterController>();
             this.observers = new List<IObserver<Order>>();
         }
         public void Run()
