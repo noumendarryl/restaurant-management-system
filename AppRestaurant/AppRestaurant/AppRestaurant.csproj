@@ -72,7 +72,7 @@
     <Compile Include="Controller\DiningRoom\Strategy\IOrderStrategy.cs" />
     <Compile Include="Controller\DiningRoom\Strategy\RandomOrderStrategy.cs" />
     <Compile Include="Controller\DiningRoom\Strategy\RushedStrategy.cs" />
-    <Compile Include="Controller\KitchenController.cs" />
+    <Compile Include="Controller\Kitchen\KitchenController.cs" />
     <Compile Include="Model\Common\Equipment.cs" />
     <Compile Include="Model\Common\MenuCard.cs" />
     <Compile Include="Model\DiningRoom\Actors\Customer.cs" />
@@ -90,10 +90,10 @@
     <Compile Include="Model\Common\Move\IMove.cs" />
     <Compile Include="Model\Common\Move\IPosition.cs" />
     <Compile Include="Model\Common\Move\Position.cs" />
-    <Compile Include="Model\Kitchen\DAOEntity.cs" />
-    <Compile Include="Model\Kitchen\DAOIngredient.cs" />
-    <Compile Include="Model\Kitchen\KitchenItem.cs" />
-    <Compile Include="Model\Kitchen\MotionlesskitchenItem.cs" />
+    <Compile Include="Model\Kitchen\DAO\DAOEntity.cs" />
+    <Compile Include="Model\Kitchen\DAO\DAOIngredient.cs" />
+    <Compile Include="Model\Kitchen\Items\KitchenItem.cs" />
+    <Compile Include="Model\Kitchen\Items\MotionlessKitchenItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Setting.cs">
       <SubType>Form</SubType>
@@ -107,38 +107,31 @@
     <Compile Include="Simulation.Designer.cs">
       <DependentUpon>Simulation.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model\DB\DBAccess.cs" />
     <Compile Include="Model\DB\DBActions.cs" />
     <Compile Include="Model\DB\DBConnection.cs" />
     <Compile Include="Model\DB\IDBActions.cs" />
-    <Compile Include="Model\Kitchen\Chef.cs" />
-    <Compile Include="Model\Kitchen\CommonMaterial.cs" />
-    <Compile Include="Model\Kitchen\CommonMaterialFactory.cs" />
-    <Compile Include="Model\Kitchen\DeputyChef.cs" />
-    <Compile Include="Model\Kitchen\Diver.cs" />
-    <Compile Include="Model\Kitchen\Entity.cs" />
-    <Compile Include="Model\Kitchen\Ingredient.cs" />
-    <Compile Include="Model\Kitchen\IObserver.cs" />
+    <Compile Include="Model\Kitchen\Actors\Chef.cs" />
+    <Compile Include="Model\Kitchen\Materials\CommonMaterial.cs" />
+    <Compile Include="Model\Kitchen\Factory\CommonMaterialFactory.cs" />
+    <Compile Include="Model\Kitchen\Actors\DeputyChef.cs" />
+    <Compile Include="Model\Kitchen\Actors\Diver.cs" />
+    <Compile Include="Model\Kitchen\DAO\Entity.cs" />
+    <Compile Include="Model\Kitchen\DAO\Ingredient.cs" />
+    <Compile Include="Controller\Kitchen\Observer\IObserver.cs" />
     <Compile Include="Model\Kitchen\Kitchen.cs" />
-    <Compile Include="Model\Kitchen\KitchenClerk.cs" />
-    <Compile Include="Model\Kitchen\KitchenMaterial.cs" />
-    <Compile Include="Model\Kitchen\KitchenMaterialFactory.cs" />
+    <Compile Include="Model\Kitchen\Actors\KitchenClerk.cs" />
+    <Compile Include="Model\Kitchen\Materials\KitchenMaterial.cs" />
+    <Compile Include="Model\Kitchen\Factory\KitchenMaterialFactory.cs" />
     <Compile Include="Model\Kitchen\KitchenModel.cs" />
-    <Compile Include="Model\Kitchen\Material.cs" />
-    <Compile Include="Model\Kitchen\MotionkitchenItem.cs" />
-    <Compile Include="Model\Kitchen\Order.cs" />
-    <Compile Include="Model\Kitchen\Position.cs" />
-    <Compile Include="Model\Kitchen\Recipe.cs" />
-    <Compile Include="Model\Kitchen\RecipeStep.cs" />
-    <Compile Include="Model\Kitchen\Sprite.cs" />
+    <Compile Include="Model\Kitchen\Materials\Material.cs" />
+    <Compile Include="Model\Kitchen\Items\MotionKitchenItem.cs" />
+    <Compile Include="Model\Common\Order.cs" />
+    <Compile Include="Model\Common\Recipe.cs" />
+    <Compile Include="Model\Common\RecipeStep.cs" />
+    <Compile Include="Model\Common\Sprite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\KitchenView.cs" />
+    <Compile Include="View\Kitchen\KitchenView.cs" />
     <EmbeddedResource Include="AppRestaurant.resx">
       <DependentUpon>AppRestaurant.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,9 +152,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Simulation.resx">
       <DependentUpon>Simulation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">

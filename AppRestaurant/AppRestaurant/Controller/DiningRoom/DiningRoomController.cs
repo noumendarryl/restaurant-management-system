@@ -12,7 +12,7 @@ using AppRestaurant.Controller.DiningRoom.Actors;
 using AppRestaurant.Controller.DiningRoom.Strategy;
 using AppRestaurant.Controller.DiningRoom.Observer;
 using AppRestaurant.Model.DiningRoom.Elements;
-using AppRestaurant.Model.kitchen;
+using AppRestaurant.Model.Kitchen;
 using System.Threading;
 
 namespace AppRestaurant.Controller.DiningRoom

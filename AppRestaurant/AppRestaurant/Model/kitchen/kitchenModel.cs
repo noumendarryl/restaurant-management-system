@@ -4,8 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AppRestaurant.Controller.Kitchen.Observer;
+using AppRestaurant.Model.Kitchen.DAO;
+using AppRestaurant.Model.Kitchen.Actors;
+using AppRestaurant.Model.Common;
+using AppRestaurant.Model.Kitchen.Materials;
+using AppRestaurant.Model.Kitchen.Factory;
 
-namespace AppRestaurant.Model.kitchen
+namespace AppRestaurant.Model.Kitchen
 {
 	public class KitchenModel
 	{
@@ -89,7 +95,7 @@ namespace AppRestaurant.Model.kitchen
 
 		public KitchenModel()
 		{
-			this.kitchen = new Kitchen();
+			kitchen = new Kitchen();
 			observers = new List<IObserver>();
 
 			cookingFire = KitchenMaterialFactory.createCookingFire();
@@ -97,7 +103,7 @@ namespace AppRestaurant.Model.kitchen
 			blender = KitchenMaterialFactory.createBlender();
 			fridge = KitchenMaterialFactory.createFridge();
 
-			this.setMaterialConfig(cookingFireNumber, ovenNumber, blenderNumber, fridgeNumber);
+			setMaterialConfig(cookingFireNumber, ovenNumber, blenderNumber, fridgeNumber);
 
 			recipes = new Recipe[1]
 			{
@@ -124,7 +130,7 @@ namespace AppRestaurant.Model.kitchen
 					}
 				),
 			};
-			this.setEmployeeConfig(chefNumber, deputyChefNumber, kitchenClerkNumber, diverNumber);
+			setEmployeeConfig(chefNumber, deputyChefNumber, kitchenClerkNumber, diverNumber);
 		}
 
 		public void setEmployeeConfig(int chefNumber, int deputyChefNumber, int kitchenClerkNumber, int diverNumber)
@@ -137,28 +143,28 @@ namespace AppRestaurant.Model.kitchen
 			for (int i = 0; i < chefs.Length; i++)
 			{
 				chefs[i] = new Chef();
-				chefs[i].posY = i;
+				chefs[i].PosY = i;
 			}
 
 			for (int i = 0; i < deputyChefs.Length; i++)
 			{
 				deputyChefs[i] = new DeputyChef();
-				deputyChefs[i].posX = 5;
-				deputyChefs[i].posY = i;
+				deputyChefs[i].PosX = 5;
+				deputyChefs[i].PosY = i;
 			}
 
 			for (int i = 0; i < kitchenClerks.Length; i++)
 			{
 				kitchenClerks[i] = new KitchenClerk();
-				kitchenClerks[i].posX = i;
-				kitchenClerks[i].posY = i + 1;
+				kitchenClerks[i].PosX = i;
+				kitchenClerks[i].PosY = i + 1;
 			}
 
 			for (int i = 0; i < divers.Length; i++)
 			{
 				divers[i] = new Diver();
-				divers[i].posX = i + 1;
-				divers[i].posY = i + 2;
+				divers[i].PosX = i + 1;
+				divers[i].PosY = i + 2;
 			}
 		}
 

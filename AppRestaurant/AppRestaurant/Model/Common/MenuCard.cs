@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using AppRestaurant.Model.Common;
 using AppRestaurant.Model;
 using AppRestaurant.Model.Common.Move;
-using AppRestaurant.Model.kitchen;
 
 namespace AppRestaurant.Model.Common
 {

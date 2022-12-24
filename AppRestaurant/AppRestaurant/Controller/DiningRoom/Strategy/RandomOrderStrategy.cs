@@ -8,7 +8,7 @@ using AppRestaurant.Model.Common;
 using AppRestaurant.Model.DiningRoom.Actors;
 using AppRestaurant.Controller.DiningRoom.Actors;
 using System.Runtime.InteropServices;
-using AppRestaurant.Model.kitchen;
+using AppRestaurant.Model.Kitchen;
 
 namespace AppRestaurant.Controller.DiningRoom.Strategy
 {

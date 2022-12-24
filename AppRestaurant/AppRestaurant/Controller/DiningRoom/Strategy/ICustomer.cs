@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AppRestaurant.Model.Common;
-using AppRestaurant.Model.kitchen;
+using AppRestaurant.Model.Kitchen;
 
 namespace AppRestaurant.Controller.DiningRoom.Strategy
 {

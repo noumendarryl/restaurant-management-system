@@ -18,7 +18,7 @@ namespace AppRestaurant.Model.DB
 		{
 			try
 			{
-				this.dbconn = DBConnection.getInstance();
+				dbconn = DBConnection.getInstance();
 			}
 			catch (Exception err)
 			{
@@ -28,15 +28,15 @@ namespace AppRestaurant.Model.DB
 
 		public void createSqlCommand(string query)
 		{
-			this.setCmd(new SqlCommand(query, this.dbconn.getConnection()));
+			setCmd(new SqlCommand(query, dbconn.getConnection()));
 		}
 
 		public void executeNonQuery()
 		{
 			try
 			{
-				this.getCmd().ExecuteNonQuery();
-				this.getCmd().Dispose();
+				getCmd().ExecuteNonQuery();
+				getCmd().Dispose();
 			}
 			catch (InvalidCastException err)
 			{
@@ -54,7 +54,7 @@ namespace AppRestaurant.Model.DB
 
 		public SqlDataReader executeReader()
 		{
-			return this.getCmd().ExecuteReader();
+			return getCmd().ExecuteReader();
 		}
 
 		public SqlCommand getCmd()
@@ -69,7 +69,7 @@ namespace AppRestaurant.Model.DB
 
 		public void close()
 		{
-			this.dbconn.close();
+			dbconn.close();
 		}
 	}
 }

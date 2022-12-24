@@ -1,6 +1,4 @@
-﻿using AppRestaurant.Model.kitchen;
-using AppRestaurant.View;
-using AppRestaurant.Controller;
+﻿using AppRestaurant.Controller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AppRestaurant.Model.Kitchen;
+using AppRestaurant.Controller.Kitchen;
+using AppRestaurant.Model.Kitchen.Materials;
+using AppRestaurant.Model.Kitchen.Actors;
+using AppRestaurant.View.Kitchen;
 
 namespace AppRestaurant
 {
@@ -202,22 +205,22 @@ namespace AppRestaurant
 
             foreach (Chef chef in model.chefs)
             {
-                e.Graphics.DrawImage(chef.getSprite().getImage(), chef.posX * KitchenView.FRAME_SIZE, chef.posY * KitchenView.FRAME_SIZE);
+                e.Graphics.DrawImage(chef.getSprite().getImage(), chef.PosX * KitchenView.FRAME_SIZE, chef.PosY * KitchenView.FRAME_SIZE);
             }
 
             foreach (DeputyChef deputyChef in model.deputyChefs)
             {
-                //e.Graphics.DrawImage(deputyChef.getSprite().getImage(), deputyChef.posX * kitchenView.FRAME_SIZE, deputyChef.posY * kitchenView.FRAME_SIZE);
+                //e.Graphics.DrawImage(deputyChef.getSprite().getImage(), deputyChef.PosX * kitchenView.FRAME_SIZE, deputyChef.PosY * kitchenView.FRAME_SIZE);
             }
 
             foreach (KitchenClerk kitchenClerk in model.kitchenClerks)
             {
-                e.Graphics.DrawImage(kitchenClerk.getSprite().getImage(), kitchenClerk.posX * KitchenView.FRAME_SIZE, kitchenClerk.posY * KitchenView.FRAME_SIZE);
+                e.Graphics.DrawImage(kitchenClerk.getSprite().getImage(), kitchenClerk.PosX * KitchenView.FRAME_SIZE, kitchenClerk.PosY * KitchenView.FRAME_SIZE);
             }
 
             foreach (Diver diver in model.divers)
             {
-                e.Graphics.DrawImage(diver.getSprite().getImage(), diver.posX * KitchenView.FRAME_SIZE, diver.posY * KitchenView.FRAME_SIZE);
+                e.Graphics.DrawImage(diver.getSprite().getImage(), diver.PosX * KitchenView.FRAME_SIZE, diver.PosY * KitchenView.FRAME_SIZE);
             }
         }
 

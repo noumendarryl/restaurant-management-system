@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using AppRestaurant.Model.Common;
 using AppRestaurant.Model.Common.Move;
-using AppRestaurant.Model.kitchen;
+using AppRestaurant.Model.Kitchen;
 
 namespace AppRestaurant.Model.DiningRoom.Actors
 {

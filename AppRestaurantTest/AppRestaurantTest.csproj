@@ -51,8 +51,8 @@
   <ItemGroup>
     <Compile Include="SpriteTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="kitchenMaterialFactoryTest.cs" />
-    <Compile Include="MotionkitchenItemTest.cs" />
+    <Compile Include="KitchenMaterialFactoryTest.cs" />
+    <Compile Include="MotionKitchenItemTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

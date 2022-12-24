@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AppRestaurant.View;
-using AppRestaurant.Controller;
-using AppRestaurant.Model.kitchen;
-using AppRestaurant.Model.DiningRoom;
 using AppRestaurant.Controller.DiningRoom;
+using AppRestaurant.Controller.Kitchen;
+using AppRestaurant.Model.DiningRoom;
+using AppRestaurant.Model.Kitchen;
+using AppRestaurant.View.Kitchen;
 
 namespace AppRestaurant
 {

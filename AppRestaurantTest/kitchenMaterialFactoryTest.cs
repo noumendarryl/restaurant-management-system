@@ -1,11 +1,12 @@
-﻿using AppRestaurant.Model.kitchen;
+﻿using AppRestaurant.Model.Kitchen.Factory;
+using AppRestaurant.Model.Kitchen.Materials;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace AppRestaurantTest
 {
     [TestClass]
-    public class kitchenMaterialFactoryTest
+    public class KitchenMaterialFactoryTest
     {
         [TestMethod]
         public void CreateCookingFireTest()
