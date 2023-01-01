@@ -13,7 +13,6 @@ namespace AppRestaurant
 {
     public partial class BookingForm : Form
     {
-        public DBActions dBActions { get; set; }
         public string clientName { get; set; }
         public int nbPeople { get; set; }
         public DateTime hour { get; set; }
@@ -28,7 +27,6 @@ namespace AppRestaurant
             nbPeople = Convert.ToInt32(numericUpDown1.Value);
             hour = Convert.ToDateTime(dateTimePicker1.Value);
 
-            dBActions.setBooking(clientName, nbPeople, hour);
             this.Close();
         }
     }

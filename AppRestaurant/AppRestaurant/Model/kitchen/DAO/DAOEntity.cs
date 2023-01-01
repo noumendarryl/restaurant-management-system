@@ -13,17 +13,30 @@ namespace AppRestaurant.Model.Kitchen.DAO
 		 *
 		 * @param code
 		 *          the code
-		 * @return the e
+		 * @return the E
 		 */
 		 E find(string code);
 
 		/*
+		 * Find.
+		 *
+		 * @param id
+		 *          the id
+		 * @return the E
+		 */
+		List<E> find(int id);
+
+		/*
 		 * Update.
 		 *
-		 * @param code
-		 *          the code
-		 * @return the e
+		 * @param int
+		 *          the int
+		 *          
+		 * @param quantity
+		 *          the quantity
+		 *          
+		 * @return the E
 		 */
-		void  update(int id, int quantity);
+		void update(int id, int quantity);
 	}
 }

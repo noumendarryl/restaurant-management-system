@@ -13,7 +13,7 @@ namespace AppRestaurant.Model.Kitchen.Items
 		public Sprite sprite;
 
 		/*
-		* The sprite
+		* Gets sprite value
 		*/
 		public Sprite getSprite()
 		{
@@ -21,7 +21,7 @@ namespace AppRestaurant.Model.Kitchen.Items
 		}
 
 		/*
-		* The sprite
+		* Sets sprite value
 		*/
 		public void setSprite(Sprite value)
 		{

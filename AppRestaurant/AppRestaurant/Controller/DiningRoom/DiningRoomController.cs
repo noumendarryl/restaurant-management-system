@@ -1,8 +1,11 @@
 ﻿using System;
+using System.IO;
+using System.IO.Pipes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 using AppRestaurant.Model.DiningRoom;
 using AppRestaurant.Model.DiningRoom.Actors;
@@ -13,41 +16,41 @@ using AppRestaurant.Controller.DiningRoom.Strategy;
 using AppRestaurant.Controller.DiningRoom.Observer;
 using AppRestaurant.Model.DiningRoom.Elements;
 using AppRestaurant.Model.Kitchen;
-using System.Threading;
+using AppRestaurant.Controller.Kitchen;
+using AppRestaurant.Controller.Pipes;
 
 namespace AppRestaurant.Controller.DiningRoom
 {
-    class DiningRoomController : IObservable<Order>
+    class DiningRoomController : StreamString, IObservable<Order>
     {
 
-        private HotelMasterController hotelMasterController;
-        public DiningRoomModel diningRoomModel;
+        private static HotelMasterController hotelMasterController;
+        public static DiningRoomModel DiningRoomModel;
 
-        private List<CustomerController> customerControllers;
-        private List<LineChiefController> lineChiefControllers;
+        private static List<CustomerController> customerControllers;
+        private static List<LineChiefController> lineChiefControllers;
         
-        static int costomerCount = 0;
+        static int customerCount = 0;
         
         private static Queue<CustomerGroup> CustomerQueue = new Queue<CustomerGroup>();
         private static ManualResetEvent customerQueueMre = new ManualResetEvent(false);
         private static Mutex customerQueueMtx = new Mutex();
 
         private static Queue<Order> OrderList = new Queue<Order>();
-        public Queue<Order> OrderListing { get => OrderList; set => OrderList = value; }
+        public static Queue<Order> OrderListing { get => OrderList; set => OrderList = value; }
 
         private static List<Thread> orderThreads = new List<Thread>();
 
-        private List<IObserver<Order>> observers;
-
+        private static List<IObserver<Order>> observers;
 
         public DiningRoomController(DiningRoomModel diningRoomModel)
         {
-            this.diningRoomModel = diningRoomModel;
-            this.hotelMasterController = new HotelMasterController(diningRoomModel);
-            this.lineChiefControllers = new List<LineChiefController>();
-            this.observers = new List<IObserver<Order>>();
+            DiningRoomModel = diningRoomModel;
+            hotelMasterController = new HotelMasterController(DiningRoomModel);
+            lineChiefControllers = new List<LineChiefController>();
+            observers = new List<IObserver<Order>>();
         }
-        public void Run()
+        public static void Run()
         {
 
             CustomersFactory factory = new CustomersFactory();
@@ -62,7 +65,7 @@ namespace AppRestaurant.Controller.DiningRoom
                     customerQueueMtx.WaitOne();
                     if (CustomerQueue.Count != 0)
                     {
-                        int id = costomerCount++;
+                        int id = customerCount++;
                         Console.WriteLine("=========Client n_" + id + " commande=======");
 
                         CustomerGroup clt = CustomerQueue.Dequeue();
@@ -99,7 +102,7 @@ namespace AppRestaurant.Controller.DiningRoom
                 customerQueueMtx.WaitOne();
                 if (CustomerQueue.Count != 0)
                 {
-                    int id = costomerCount++;
+                    int id = customerCount++;
                     Console.WriteLine("=========Client n_" + id + " commande=======");
 
                     CustomerGroup clt = CustomerQueue.Dequeue();
@@ -114,7 +117,7 @@ namespace AppRestaurant.Controller.DiningRoom
             }
         }
 
-        public void installCustomers(CustomersFactory factory,int nbCustomer)
+        public static void installCustomers(CustomersFactory factory,int nbCustomer)
         {
             for (int i = 0; i < nbCustomer; i++)
             {
@@ -123,16 +126,16 @@ namespace AppRestaurant.Controller.DiningRoom
             }
         }
 
-        public void customerOrder(CustomerController customerController)
+        public static void customerOrder(CustomerController customerController)
         {
             customerQueueMtx.WaitOne();
             int[] table = FindCustomerTable(customerController.Customer);
 
             if(table != null)
             {                
-                OrderList.Enqueue(customerController.Order(this.diningRoomModel.Squares[table[0]].Lines[table[1]].Tables[table[2]].MenuCard));
+                OrderList.Enqueue(customerController.Order(DiningRoomModel.Squares[table[0]].Lines[table[1]].Tables[table[2]].MenuCard));
                 Order order = OrderList.Peek();
-                foreach(IObserver<Order> observer in this.observers)
+                foreach(IObserver<Order> observer in observers)
                 {
                     observer.OnNext(order);
                 }
@@ -144,20 +147,20 @@ namespace AppRestaurant.Controller.DiningRoom
             customerQueueMtx.ReleaseMutex();
         }
 
-        private int[] FindCustomerTable(CustomerGroup customer)
+        private static int[] FindCustomerTable(CustomerGroup customer)
         {
-            int nbSquare = this.diningRoomModel.Squares.Count;
+            int nbSquare = DiningRoomModel.Squares.Count;
             for (int i = 0; i < nbSquare; i++)
             {
-                int nbLine = diningRoomModel.Squares[i].Lines.Count;
+                int nbLine = DiningRoomModel.Squares[i].Lines.Count;
                 for (int j = 0; j < nbLine; j++)
                 {
-                    int nbTable = diningRoomModel.Squares[i].Lines[j].Tables.Count;
+                    int nbTable = DiningRoomModel.Squares[i].Lines[j].Tables.Count;
                     for (int k = 0; k < nbTable; k++)
                     {
-                        if (customer == diningRoomModel.Squares[i].Lines[j].Tables[k].Group )
+                        if (customer == DiningRoomModel.Squares[i].Lines[j].Tables[k].Group )
                         {
-                            //return diningRoomModel.Squares[i].Lines[j].Tables[k];
+                            //return DiningRoomModel.Squares[i].Lines[j].Tables[k];
                             return new int[3] { i, j, k };
                         }
                     }

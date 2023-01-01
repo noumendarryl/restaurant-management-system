@@ -11,12 +11,8 @@ namespace AppRestaurant.Model.Kitchen.Items
 	{
 		public static int speed { get; set; }
 
-		/* Instantiates a new MotionKitchenItem.
-		* @param map
-		* 
-		* 	The map.
-		* @param position
-		* 	The position if the MotionKitchenItem.
+		/* 
+		* Instantiates a new MotionKitchenItem.
 		*/
 		public MotionKitchenItem()
 		{
@@ -26,7 +22,7 @@ namespace AppRestaurant.Model.Kitchen.Items
 		/*
 		 * Moves the element up
 		 */
-		public void moveUp()
+		public virtual void moveUp()
 		{
 			PosY -= speed;
 		}
@@ -34,7 +30,7 @@ namespace AppRestaurant.Model.Kitchen.Items
 		/*
 		 * Moves the element down
 		 */
-		public void moveDown()
+		public virtual void moveDown()
 		{
 			PosY += speed;
 		}
@@ -42,7 +38,7 @@ namespace AppRestaurant.Model.Kitchen.Items
 		/*
 		 * Moves the element to the left
 		 */
-		public void moveLeft()
+		public virtual void moveLeft()
 		{
 			PosX -= speed;
 		}
@@ -50,7 +46,7 @@ namespace AppRestaurant.Model.Kitchen.Items
 		/*
 		 * Moves the element to the right
 		 */
-		public void moveRight()
+		public virtual void moveRight()
 		{
 			PosX += speed;
 		}
@@ -58,7 +54,7 @@ namespace AppRestaurant.Model.Kitchen.Items
 		/*
 		 * Moves the element to the right, up diagonal
 		 */
-		public void moveRightUp()
+		public virtual void moveRightUp()
 		{
 			PosX += speed;
 			PosY -= speed;
@@ -67,7 +63,7 @@ namespace AppRestaurant.Model.Kitchen.Items
 		/*
 		 * Moves the element to the right, down diagonal
 		 */
-		public void moveRightDown()
+		public virtual void moveRightDown()
 		{
 			PosX += speed;
 			PosY += speed;
@@ -76,7 +72,7 @@ namespace AppRestaurant.Model.Kitchen.Items
 		/*
 		 * Moves the element to the left, up diagonal.
 		 */
-		public void moveLeftUp()
+		public virtual void moveLeftUp()
 		{
 			PosX -= speed;
 			PosY -= speed;
@@ -85,7 +81,7 @@ namespace AppRestaurant.Model.Kitchen.Items
 		/*
 		 * Moves the element to the left, down diagonal.
 		 */
-		public void moveLeftDown()
+		public virtual void moveLeftDown()
 		{
 			PosX -= speed;
 			PosY += speed;

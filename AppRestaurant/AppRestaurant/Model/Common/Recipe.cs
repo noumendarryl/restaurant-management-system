@@ -1,9 +1,10 @@
-﻿using AppRestaurant.Model.Kitchen.DAO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AppRestaurant.Model.Kitchen.DAO;
+using AppRestaurant.Model.Kitchen.Ingredients;
 
 namespace AppRestaurant.Model.Common
 {
@@ -14,12 +15,13 @@ namespace AppRestaurant.Model.Common
         Dessert
     }
 
-    public class Recipe
+    public class Recipe : Entity
     {
         public String RecipeTitle { get => recipeTitle; set => recipeTitle = value; }
-        public string name { get; set; }
-        public Ingredient[] ingredients { get; set; }
-        public RecipeStep[] recipeSteps { get; set; }
+        public int CookingTime { get => cookingTime; set => cookingTime = value; }
+        public int RestingTime { get => restingTime; set => restingTime = value; }
+        public List<Ingredient> ingredients { get; set; }
+        public List<RecipeStep> recipeSteps { get; set; }
 
         RecipeType type;
         String recipeTitle;
@@ -36,9 +38,11 @@ namespace AppRestaurant.Model.Common
             this.cookingTime = cookingTime;
         }
 
-        public Recipe(string name, Ingredient[] ingredients, RecipeStep[] recipeSteps)
+        public Recipe(string recipeTitle, int cookingTime, int restingTime, List<Ingredient> ingredients, List<RecipeStep> recipeSteps)
         {
-            this.name = name;
+            this.recipeTitle = recipeTitle;
+            this.cookingTime = cookingTime;
+            this.restingTime = restingTime;
             this.ingredients = ingredients;
             this.recipeSteps = recipeSteps;
         }

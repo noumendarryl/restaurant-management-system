@@ -10,6 +10,7 @@ using AppRestaurant.Model.Kitchen.Actors;
 using AppRestaurant.Model.Common;
 using AppRestaurant.Model.Kitchen.Materials;
 using AppRestaurant.Model.Kitchen.Factory;
+using AppRestaurant.Model.Kitchen.Ingredients;
 
 namespace AppRestaurant.Model.Kitchen
 {
@@ -59,7 +60,7 @@ namespace AppRestaurant.Model.Kitchen
 		/*
 		* The recipes
 		*/
-		public Recipe[] recipes { get; set; }
+		public List<Recipe> recipes { get; set; }
 
 		/*
 		* The cooking fire 
@@ -91,12 +92,11 @@ namespace AppRestaurant.Model.Kitchen
 		public int knifeNumber;
 		public KitchenMaterial knife { get; set; }
 
-		//public Random random = new Random();
-
 		public KitchenModel()
 		{
 			kitchen = new Kitchen();
 			observers = new List<IObserver>();
+			//recipes = new List<Recipe>();
 
 			cookingFire = KitchenMaterialFactory.createCookingFire();
 			oven = KitchenMaterialFactory.createOven();
@@ -105,31 +105,33 @@ namespace AppRestaurant.Model.Kitchen
 
 			setMaterialConfig(cookingFireNumber, ovenNumber, blenderNumber, fridgeNumber);
 
-			recipes = new Recipe[1]
+			//recipes.Add(((DAOEntity<Recipe>)dao).find("Feuilleté au crabe"));
+			//recipes.Add(((DAOEntity<Recipe>)dao).find("Foie gras au muscat"));
+			//recipes.Add(((DAOEntity<Recipe>)dao).find("Tiramisu"));
+
+			recipes = new List<Recipe>
 			{
 				new Recipe
 				(
 					"Feuilleté au crabe",
-
-					new Ingredient[4]
+					20,
+					0,
+					new List<Ingredient>
 					{
 						new Ingredient("pâte feuilletée", 5),
 						new Ingredient("oeuf", 10),
 						new Ingredient("sel", 3),
 						new Ingredient("poivre", 6)
 					},
-
-					new RecipeStep[3]
+					new List<RecipeStep>
 					{
 						new RecipeStep("Préchauffer le four à 230°", 5, oven),
 						new RecipeStep("Mélanger crabe, citron, chapelure, herbes", 1, cookingFire),
 						new RecipeStep("Lier le tout avec un oeuf", 1, fridge)
-						//new RecipeStep("Préchauffer le four à 230°", 5, oven),
-						//new RecipeStep("Mélanger crabe, citron, chapelure, herbes", 1, blender),
-						//new RecipeStep("Lier le tout avec un oeuf", 1, knife)
 					}
 				),
 			};
+
 			setEmployeeConfig(chefNumber, deputyChefNumber, kitchenClerkNumber, diverNumber);
 		}
 
@@ -149,6 +151,17 @@ namespace AppRestaurant.Model.Kitchen
 			for (int i = 0; i < deputyChefs.Length; i++)
 			{
 				deputyChefs[i] = new DeputyChef();
+				if (i%2 == 0)
+					deputyChefs[i].Part = Parts.Sauce;
+				else if (i%3 == 0)
+					deputyChefs[i].Part = Parts.Meat;
+				else if (i%5 == 0)
+					deputyChefs[i].Part = Parts.Fish;
+				else if (i%7 == 0)
+					deputyChefs[i].Part = Parts.Dessert;
+				else
+					deputyChefs[i].Part = Parts.Pantry;
+				//Console.WriteLine(deputyChefs[i].Part);
 				deputyChefs[i].PosX = 5;
 				deputyChefs[i].PosY = i;
 			}
@@ -185,12 +198,6 @@ namespace AppRestaurant.Model.Kitchen
 				kitchen.map[i, 4] = oven;
 			}
 
-			//for (int i = 0; i < blenderNumber; i++)
-			//{
-			//	blender = kitchenMaterialFactory.createBlender(blenderNumber);
-			//	kitchen.map[i, 1] =blender;
-			//}
-
 			for (int i = 0; i < fridgeNumber; i++)
 			{
 				kitchen.map[i+16, 5] = fridge;
@@ -213,11 +220,11 @@ namespace AppRestaurant.Model.Kitchen
 			}
 		}
 
-		public void NotifyMaterialAvailaibility(string name)
+		public void NotifyMaterialAvailaibility(string name, MaterialState state)
         {
 			foreach (IObserver observer in observers)
 			{
-				//observer.UpdateMaterial(name);
+				//observer.UpdateMaterial(name, state);
 			}
 		}
 

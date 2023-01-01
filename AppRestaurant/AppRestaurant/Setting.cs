@@ -25,11 +25,11 @@ namespace AppRestaurant
 
         public Setting(Simulation simulationForm)
         {
-            this.simulation = simulationForm;
+            simulation = simulationForm;
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void confirm(object sender, EventArgs e)
         {
             simulationTimeScale = Convert.ToInt32(textBox1.Text);
 
@@ -38,15 +38,15 @@ namespace AppRestaurant
             kitchenClerkNumber = Convert.ToInt32(textBox3.Text);
             diverNumber = Convert.ToInt32(textBox5.Text);
 
-            cookingFireNumber = Convert.ToInt32(textBox8.Text);
-            ovenNumber = Convert.ToInt32(textBox7.Text);
-            fridgeNumber = Convert.ToInt32(textBox9.Text);
             blenderNumber = Convert.ToInt32(textBox6.Text);
+            ovenNumber = Convert.ToInt32(textBox7.Text);
+            cookingFireNumber = Convert.ToInt32(textBox8.Text);
+            fridgeNumber = Convert.ToInt32(textBox9.Text);
 
-            this.simulation.model.setEmployeeConfig(chefNumber, deputyChefNumber, kitchenClerkNumber, diverNumber);
-            this.simulation.model.setMaterialConfig(cookingFireNumber, ovenNumber, blenderNumber, fridgeNumber);
-            this.simulation.model.TIME_SCALE = simulationTimeScale;
-            this.Close();
+            simulation.model.setEmployeeConfig(chefNumber, deputyChefNumber, kitchenClerkNumber, diverNumber);
+            simulation.model.setMaterialConfig(cookingFireNumber, ovenNumber, blenderNumber, fridgeNumber);
+            simulation.model.TIME_SCALE = simulationTimeScale * 1000;
+            Close();
         }
     }
 }

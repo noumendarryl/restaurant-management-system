@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppRestaurant.Model.Kitchen.Factory
+namespace AppRestaurant.Model.Kitchen.DAO
 {
-    public class CommonMaterialFactory
+    class DAOBooking
     {
     }
 }

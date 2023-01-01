@@ -73,6 +73,9 @@
     <Compile Include="Controller\DiningRoom\Strategy\RandomOrderStrategy.cs" />
     <Compile Include="Controller\DiningRoom\Strategy\RushedStrategy.cs" />
     <Compile Include="Controller\Kitchen\KitchenController.cs" />
+    <Compile Include="Controller\Pipes\ClientThread.cs" />
+    <Compile Include="Controller\Pipes\ServerThread.cs" />
+    <Compile Include="Controller\Pipes\StreamString.cs" />
     <Compile Include="Model\Common\Equipment.cs" />
     <Compile Include="Model\Common\MenuCard.cs" />
     <Compile Include="Model\DiningRoom\Actors\Customer.cs" />
@@ -90,8 +93,15 @@
     <Compile Include="Model\Common\Move\IMove.cs" />
     <Compile Include="Model\Common\Move\IPosition.cs" />
     <Compile Include="Model\Common\Move\Position.cs" />
+    <Compile Include="Model\Kitchen\DAO\DAOBooking.cs" />
     <Compile Include="Model\Kitchen\DAO\DAOEntity.cs" />
     <Compile Include="Model\Kitchen\DAO\DAOIngredient.cs" />
+    <Compile Include="Model\Kitchen\DAO\DAOMaterial.cs" />
+    <Compile Include="Model\Kitchen\DAO\DAORecipe.cs" />
+    <Compile Include="Model\Kitchen\DAO\DAORecipeStep.cs" />
+    <Compile Include="Model\Kitchen\DAO\DAOStock.cs" />
+    <Compile Include="Model\Kitchen\Ingredients\Ingredient.cs" />
+    <Compile Include="Model\Kitchen\Ingredients\Stock.cs" />
     <Compile Include="Model\Kitchen\Items\KitchenItem.cs" />
     <Compile Include="Model\Kitchen\Items\MotionlessKitchenItem.cs" />
     <Compile Include="Program.cs" />
@@ -108,16 +118,11 @@
       <DependentUpon>Simulation.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\DB\DBAccess.cs" />
-    <Compile Include="Model\DB\DBActions.cs" />
     <Compile Include="Model\DB\DBConnection.cs" />
-    <Compile Include="Model\DB\IDBActions.cs" />
     <Compile Include="Model\Kitchen\Actors\Chef.cs" />
-    <Compile Include="Model\Kitchen\Materials\CommonMaterial.cs" />
-    <Compile Include="Model\Kitchen\Factory\CommonMaterialFactory.cs" />
     <Compile Include="Model\Kitchen\Actors\DeputyChef.cs" />
     <Compile Include="Model\Kitchen\Actors\Diver.cs" />
     <Compile Include="Model\Kitchen\DAO\Entity.cs" />
-    <Compile Include="Model\Kitchen\DAO\Ingredient.cs" />
     <Compile Include="Controller\Kitchen\Observer\IObserver.cs" />
     <Compile Include="Model\Kitchen\Kitchen.cs" />
     <Compile Include="Model\Kitchen\Actors\KitchenClerk.cs" />
@@ -168,25 +173,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Chef\back.gif" />
     <Content Include="Resources\Chef\front.gif" />
     <Content Include="Resources\Chef\front.png" />
     <Content Include="Resources\Chef\left.gif" />
-    <Content Include="Resources\Chef\right.gif" />
-    <Content Include="Resources\dinningroomtile.png" />
+    <Content Include="Resources\Diningroomtile.png" />
     <Content Include="Resources\Diver\front.png" />
-    <Content Include="Resources\front.png" />
-    <Content Include="Resources\kitchenClerk\front.png" />
-    <Content Include="Resources\kitchenMaterials\comptoir.png" />
-    <Content Include="Resources\kitchenMaterials\cookingFire.png" />
-    <Content Include="Resources\kitchenMaterials\decorator-1.png" />
-    <Content Include="Resources\kitchenMaterials\decorator-2.png" />
-    <Content Include="Resources\kitchenMaterials\fridge.png" />
-    <Content Include="Resources\kitchenMaterials\oven.png" />
-    <Content Include="Resources\kitchentile.png" />
+    <Content Include="Resources\DeputyChef\front.png" />
+    <Content Include="Resources\KitchenClerk\front.png" />
+    <Content Include="Resources\KitchenMaterials\comptoir.png" />
+    <Content Include="Resources\KitchenMaterials\cookingFire.png" />
+    <Content Include="Resources\KitchenMaterials\decorator-1.png" />
+    <Content Include="Resources\KitchenMaterials\decorator-2.png" />
+    <Content Include="Resources\KitchenMaterials\fridge.png" />
+    <Content Include="Resources\KitchenMaterials\oven.png" />
+    <Content Include="Resources\Kitchentile.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\DeputyChef\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

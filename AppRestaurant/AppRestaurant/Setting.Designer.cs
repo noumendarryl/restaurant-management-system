@@ -60,12 +60,12 @@ namespace AppRestaurant
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -89,37 +89,41 @@ namespace AppRestaurant
             // 
             // textBox13
             // 
-            this.textBox13.Location = new System.Drawing.Point(301, 168);
+            this.textBox13.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox13.Location = new System.Drawing.Point(301, 162);
             this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(91, 20);
+            this.textBox13.Size = new System.Drawing.Size(91, 21);
             this.textBox13.TabIndex = 8;
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(301, 100);
+            this.textBox12.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox12.Location = new System.Drawing.Point(301, 94);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(91, 20);
+            this.textBox12.Size = new System.Drawing.Size(91, 21);
             this.textBox12.TabIndex = 7;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(71, 168);
+            this.textBox11.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox11.Location = new System.Drawing.Point(71, 162);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(91, 20);
+            this.textBox11.Size = new System.Drawing.Size(91, 21);
             this.textBox11.TabIndex = 6;
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(69, 98);
+            this.textBox10.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox10.Location = new System.Drawing.Point(69, 92);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(91, 20);
+            this.textBox10.Size = new System.Drawing.Size(91, 21);
             this.textBox10.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(303, 138);
+            this.label6.Location = new System.Drawing.Point(303, 132);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 17);
             this.label6.TabIndex = 4;
@@ -129,7 +133,7 @@ namespace AppRestaurant
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(290, 70);
+            this.label5.Location = new System.Drawing.Point(290, 64);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 17);
             this.label5.TabIndex = 3;
@@ -139,7 +143,7 @@ namespace AppRestaurant
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(63, 138);
+            this.label4.Location = new System.Drawing.Point(63, 132);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(117, 17);
             this.label4.TabIndex = 2;
@@ -149,7 +153,7 @@ namespace AppRestaurant
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(66, 70);
+            this.label3.Location = new System.Drawing.Point(66, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 17);
             this.label3.TabIndex = 1;
@@ -193,58 +197,66 @@ namespace AppRestaurant
             // 
             // textBox9
             // 
+            this.textBox9.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox9.Location = new System.Drawing.Point(668, 193);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(91, 20);
+            this.textBox9.Size = new System.Drawing.Size(91, 21);
             this.textBox9.TabIndex = 18;
             // 
             // textBox8
             // 
+            this.textBox8.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox8.Location = new System.Drawing.Point(668, 124);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(91, 20);
+            this.textBox8.Size = new System.Drawing.Size(91, 21);
             this.textBox8.TabIndex = 17;
             // 
             // textBox7
             // 
+            this.textBox7.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.Location = new System.Drawing.Point(436, 193);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(91, 20);
+            this.textBox7.Size = new System.Drawing.Size(91, 21);
             this.textBox7.TabIndex = 16;
             // 
             // textBox6
             // 
+            this.textBox6.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox6.Location = new System.Drawing.Point(436, 124);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(91, 20);
+            this.textBox6.Size = new System.Drawing.Size(91, 21);
             this.textBox6.TabIndex = 15;
             // 
             // textBox5
             // 
+            this.textBox5.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.Location = new System.Drawing.Point(228, 193);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(91, 20);
+            this.textBox5.Size = new System.Drawing.Size(91, 21);
             this.textBox5.TabIndex = 14;
             // 
             // textBox4
             // 
+            this.textBox4.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(228, 124);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(91, 20);
+            this.textBox4.Size = new System.Drawing.Size(91, 21);
             this.textBox4.TabIndex = 13;
             // 
             // textBox3
             // 
+            this.textBox3.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(11, 193);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(91, 20);
+            this.textBox3.Size = new System.Drawing.Size(91, 21);
             this.textBox3.TabIndex = 12;
             // 
             // textBox2
             // 
+            this.textBox2.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(11, 124);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(91, 20);
+            this.textBox2.Size = new System.Drawing.Size(91, 21);
             this.textBox2.TabIndex = 3;
             // 
             // label16
@@ -369,18 +381,37 @@ namespace AppRestaurant
             this.panel3.Size = new System.Drawing.Size(315, 208);
             this.panel3.TabIndex = 2;
             // 
+            // textBox14
+            // 
+            this.textBox14.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox14.Location = new System.Drawing.Point(165, 162);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(91, 21);
+            this.textBox14.TabIndex = 4;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(21, 163);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(135, 17);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "Overall Simulation Time";
+            // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(165, 84);
+            this.textBox1.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(165, 94);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(91, 20);
+            this.textBox1.Size = new System.Drawing.Size(91, 21);
             this.textBox1.TabIndex = 2;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(21, 85);
+            this.label18.Location = new System.Drawing.Point(21, 95);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(126, 17);
             this.label18.TabIndex = 1;
@@ -401,28 +432,11 @@ namespace AppRestaurant
             this.button1.Font = new System.Drawing.Font("Lexend", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(334, 465);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 34);
+            this.button1.Size = new System.Drawing.Size(148, 42);
             this.button1.TabIndex = 3;
             this.button1.Text = "Confirm";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(165, 137);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(91, 20);
-            this.textBox14.TabIndex = 4;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(21, 138);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(135, 17);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "Overall Simulation Time";
+            this.button1.Click += new System.EventHandler(this.confirm);
             // 
             // Setting
             // 

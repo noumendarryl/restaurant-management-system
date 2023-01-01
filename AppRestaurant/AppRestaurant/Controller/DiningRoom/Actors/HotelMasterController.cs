@@ -66,9 +66,9 @@ namespace AppRestaurant.Controller.DiningRoom.Actors
 
         public void OnNext(CustomerGroup value)
         {
-            Console.WriteLine("Maitre d'hotel: Comnbien etes vous ?");
+            Console.WriteLine("Maitre d'hotel: Combien etes vous ?");
             
-            Console.WriteLine("Clients: " + value.Count+".");
+            Console.WriteLine("Clients : " + value.Count+".");
             
             Console.WriteLine("Maitre d'hotel: Veuillez patienter s'il vous plait...");
 

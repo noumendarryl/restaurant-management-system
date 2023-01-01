@@ -14,6 +14,7 @@ using AppRestaurant.Controller.Kitchen;
 using AppRestaurant.Model.Kitchen.Materials;
 using AppRestaurant.Model.Kitchen.Actors;
 using AppRestaurant.View.Kitchen;
+using AppRestaurant.Controller.DiningRoom;
 
 namespace AppRestaurant
 {
@@ -21,10 +22,11 @@ namespace AppRestaurant
     {
         public KitchenModel model { get; set; }
         public BookingForm bookingForm { get; set; }
-        public string applicationPath { get; set; }
-        public string saveFilePath { get; set; }
         public StreamWriter writer { get; set; }
         public Setting setting { get; set; }
+        public System.Timers.Timer timer { get; set; }
+        public string applicationPath { get; set; }
+        public string saveFilePath { get; set; }
         public int simulationTimeScale { get; set; }
         public int chefNumber { get; set; }
         public int deputyChefNumber { get; set; }
@@ -34,21 +36,46 @@ namespace AppRestaurant
         public int fridgeNumber { get; set; }
         public int blenderNumber { get; set; }
         public int ovenNumber { get; set; }
+        public int hour { get; set; }
+        public int minute { get; set; }
+        public int second { get; set; }
 
         [Obsolete]
         public Simulation(KitchenModel model)
         {
             this.model = model;
+            timer = new System.Timers.Timer();
+            timer.Interval = 1000;
+            timer.Elapsed += onTimeElapsed;
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void onTimeElapsed(Object sender, System.Timers.ElapsedEventArgs e)
         {
-            this.bookingForm = new BookingForm();
-            this.bookingForm.Show();
+            Invoke(new Action(() =>
+            {
+                second += 1;
+                if (second == 60)
+                {
+                    second = 0;
+                    minute += 1;
+                }
+                if (minute == 60)
+                {
+                    minute = 0;
+                    hour += 1;
+                }
+                label8.Text = string.Format("{0}:{1}:{2}", hour.ToString().PadLeft(2, '0'), minute.ToString().PadLeft(2, '0'), second.ToString().PadLeft(2, '0'));
+            }));
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void book(object sender, EventArgs e)
+        {
+            bookingForm = new BookingForm();
+            bookingForm.Show();
+        }
+
+        private void load(object sender, EventArgs e)
         {
             string directory = Directory.GetCurrentDirectory();
             string filePath = directory + "\\AppRestaurantConfigs.txt";
@@ -70,12 +97,12 @@ namespace AppRestaurant
                     diverNumber = Convert.ToInt32(lines.ElementAt(4));
                     Console.WriteLine(diverNumber);
 
-                    cookingFireNumber = Convert.ToInt32(lines.ElementAt(5));
-                    Console.WriteLine(cookingFireNumber);
+                    blenderNumber = Convert.ToInt32(lines.ElementAt(5));
+                    Console.WriteLine(blenderNumber);
                     ovenNumber = Convert.ToInt32(lines.ElementAt(6));
                     Console.WriteLine(ovenNumber);
-                    blenderNumber = Convert.ToInt32(lines.ElementAt(7));
-                    Console.WriteLine(blenderNumber);
+                    cookingFireNumber = Convert.ToInt32(lines.ElementAt(7));
+                    Console.WriteLine(cookingFireNumber);
                     fridgeNumber = Convert.ToInt32(lines.ElementAt(8));
                     Console.WriteLine(fridgeNumber);
 
@@ -88,7 +115,7 @@ namespace AppRestaurant
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void save(object sender, EventArgs e)
         {
             if (File.Exists(saveFilePath))
             {
@@ -96,71 +123,95 @@ namespace AppRestaurant
             } 
             else
             {
-                // the directory that your program is installed in
+                // The directory that your program is installed in
                 applicationPath = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
                 saveFilePath = Path.Combine(applicationPath, "AppRestaurantConfigs.txt");
                 writer = new StreamWriter(saveFilePath, false);
 
                 writer.WriteLine(KitchenView.setting.simulationTimeScale.ToString());
+
                 writer.WriteLine(KitchenView.setting.chefNumber.ToString());
                 writer.WriteLine(KitchenView.setting.deputyChefNumber.ToString());
                 writer.WriteLine(KitchenView.setting.kitchenClerkNumber.ToString());
                 writer.WriteLine(KitchenView.setting.diverNumber.ToString());
            
-                writer.WriteLine(KitchenView.setting.cookingFireNumber.ToString());
-                writer.WriteLine(KitchenView.setting.ovenNumber.ToString());
                 writer.WriteLine(KitchenView.setting.blenderNumber.ToString());
+                writer.WriteLine(KitchenView.setting.ovenNumber.ToString());
+                writer.WriteLine(KitchenView.setting.cookingFireNumber.ToString());
                 writer.WriteLine(KitchenView.setting.fridgeNumber.ToString());
             
                 writer.Close();
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void settings(object sender, EventArgs e)
         {
             setting = new Setting(KitchenView.simulationForm);
             setting.Show();
         }
 
         [Obsolete]
-        private void button6_Click(object sender, EventArgs e)
+        private void start(object sender, EventArgs e)
         {
+            DiningRoomController.Run();
             KitchenController.Start();
+            timer.Start();
             button6.Visible = false;
             button8.Visible = true;
         }
 
         [Obsolete]
-        private void button8_Click(object sender, EventArgs e)
+        private void pause(object sender, EventArgs e)
         {
             KitchenController.Suspend();
+            timer.Stop();
             button8.Visible = false;
             button12.Visible = true;
         }
 
-        private void button10_Click(object sender, EventArgs e)
-        {
-            panel6.Visible = true;
-        }
-
         [Obsolete]
-        private void button12_Click(object sender, EventArgs e)
+        private void resume(object sender, EventArgs e)
         {
             KitchenController.Resume();
+            timer.Start();
             button12.Visible = false;
             button8.Visible = true;
         }
 
+        private void speedUp(object sender, EventArgs e)
+        {
+            second += 10;
+        }
+
+        private void slowDown(object sender, EventArgs e)
+        {
+            second -= 10;
+        }
+
+        private void clientMonitoring(object sender, EventArgs e)
+        {
+            panel6.Visible = false;
+        }
+
+        private void postMonitoring(object sender, EventArgs e)
+        {
+            panel6.Visible = true;
+        }
+
+        private void objectMonitoring(object sender, EventArgs e)
+        {
+            panel6.Visible = false;
+        }
+
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
-
             string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string exeDir = System.IO.Path.GetDirectoryName(exePath);
-            DirectoryInfo binDir = System.IO.Directory.GetParent(exeDir);
-            binDir = System.IO.Directory.GetParent(binDir.FullName);
+            string exeDir = Path.GetDirectoryName(exePath);
+            DirectoryInfo binDir = Directory.GetParent(exeDir);
+            binDir = Directory.GetParent(binDir.FullName);
 
 
-            string spritePath = binDir.FullName + "\\Resources\\dinningroomtile.png";
+            string spritePath = binDir.FullName + "\\Resources\\Diningroomtile.png";
 
             for (int i = 0; i < model.kitchen.map.GetUpperBound(0); i++)
             {
@@ -173,14 +224,12 @@ namespace AppRestaurant
 
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
-
             string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string exeDir = System.IO.Path.GetDirectoryName(exePath);
-            DirectoryInfo binDir = System.IO.Directory.GetParent(exeDir);
-            binDir = System.IO.Directory.GetParent(binDir.FullName);
+            string exeDir = Path.GetDirectoryName(exePath);
+            DirectoryInfo binDir = Directory.GetParent(exeDir);
+            binDir = Directory.GetParent(binDir.FullName);
 
-
-            string spritePath = binDir.FullName + "\\Resources\\kitchentile.png";
+            string spritePath = binDir.FullName + "\\Resources\\Kitchentile.png";
 
             for (int i = 0; i < model.kitchen.map.GetUpperBound(0); i++)
             {
@@ -210,7 +259,7 @@ namespace AppRestaurant
 
             foreach (DeputyChef deputyChef in model.deputyChefs)
             {
-                //e.Graphics.DrawImage(deputyChef.getSprite().getImage(), deputyChef.PosX * kitchenView.FRAME_SIZE, deputyChef.PosY * kitchenView.FRAME_SIZE);
+                e.Graphics.DrawImage(deputyChef.getSprite().getImage(), deputyChef.PosX * KitchenView.FRAME_SIZE, deputyChef.PosY * KitchenView.FRAME_SIZE);
             }
 
             foreach (KitchenClerk kitchenClerk in model.kitchenClerks)
@@ -223,6 +272,5 @@ namespace AppRestaurant
                 e.Graphics.DrawImage(diver.getSprite().getImage(), diver.PosX * KitchenView.FRAME_SIZE, diver.PosY * KitchenView.FRAME_SIZE);
             }
         }
-
     }
 }

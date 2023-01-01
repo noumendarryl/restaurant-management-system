@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AppRestaurant.Controller.DiningRoom;
 using AppRestaurant.Controller.Kitchen;
+using AppRestaurant.Controller.Pipes;
 using AppRestaurant.Model.DiningRoom;
 using AppRestaurant.Model.Kitchen;
 using AppRestaurant.View.Kitchen;
@@ -19,14 +20,23 @@ namespace AppRestaurant
         [STAThread]
         static void Main()
         {
-            KitchenModel model = new KitchenModel();
-            KitchenView view = new KitchenView(model);
-            KitchenController controller = new KitchenController(model, view);
+            // Dining Room Initialization
+            DiningRoomModel diningRoomModel = new DiningRoomModel();
+            DiningRoomController diningRoomController = new DiningRoomController(diningRoomModel);
+            //diningRoomController.DiningRoomSimul();
+            ServerThread server = new ServerThread();
+            server.WriteFromServer();
+            server.ReadFromServer();
 
-            Application.Run(KitchenView.mainApp);
-            Application.Run(KitchenView.setting);
-            Application.Run(KitchenView.simulationForm);
-            //controller.Start();
+            // Kitchen Initialization
+            KitchenModel kitchenModel = new KitchenModel();
+            KitchenView kitchenView = new KitchenView(kitchenModel);
+            KitchenController kitchenController = new KitchenController(kitchenModel, kitchenView);
+
+            // Launching User Interfaces
+            //Application.Run(KitchenView.mainApp);
+            //Application.Run(KitchenView.setting);
+            //Application.Run(KitchenView.simulationForm);
         }
     }
 }

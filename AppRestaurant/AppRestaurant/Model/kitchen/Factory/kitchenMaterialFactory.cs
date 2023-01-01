@@ -21,7 +21,7 @@ namespace AppRestaurant.Model.Kitchen.Factory
 		private static string exeDir = System.IO.Path.GetDirectoryName(exePath);
 		private static DirectoryInfo binDir = System.IO.Directory.GetParent(System.IO.Directory.GetParent(exeDir).FullName);
 
-		private static string spritePath = binDir.FullName + "\\Resources\\kitchenMaterials\\";
+		private static string spritePath = binDir.FullName + "\\Resources\\KitchenMaterials\\";
 
 		private static string imageCookingFire = "cookingFire.png";
 		private static string imageOven = "oven.png";

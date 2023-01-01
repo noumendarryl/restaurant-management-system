@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using AppRestaurant.Model.Kitchen;
 using System.Windows.Forms;
 using AppRestaurant.Controller.Kitchen.Observer;
+using AppRestaurant.Model.Kitchen.Materials;
 
 namespace AppRestaurant.View.Kitchen
 {
@@ -39,22 +40,42 @@ namespace AppRestaurant.View.Kitchen
         }
 
         
-        public void UpdateMaterial(string name)
+        void IObserver.UpdateMaterial(string name, MaterialState state)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateFreeMobilekitchenItem(string name)
+        void IObserver.UpdateFreeMobilekitchenItem(string name)
         {
-            throw new NotImplementedException();
+            switch (name)
+            {
+                case "Chef":
+                    break;
+                case "Deputy Chef":
+                    break;
+                case "KitchenClerk":
+                    break;
+                case "Diver":
+                    break;
+            }
         }
 
-        public void UpdateBusyMobilekitchenItem(string name)
+        void IObserver.UpdateBusyMobilekitchenItem(string name)
         {
-            throw new NotImplementedException();
+            switch (name)
+            {
+                case "Chef":
+                    break;
+                case "Deputy Chef":
+                    break;
+                case "KitchenClerk":
+                    break;
+                case "Diver":
+                    break;
+            }
         }
 
-        public void UpdateTaskEmployee(string name)
+        void IObserver.UpdateTaskEmployee(string name)
         {
             throw new NotImplementedException();
         }

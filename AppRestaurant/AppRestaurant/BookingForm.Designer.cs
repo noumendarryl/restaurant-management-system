@@ -56,9 +56,9 @@ namespace AppRestaurant
             this.label2.Font = new System.Drawing.Font("Lexend", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(77, 77);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 30);
+            this.label2.Size = new System.Drawing.Size(134, 30);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Client Name";
+            this.label2.Text = "Client Name :";
             // 
             // label3
             // 
@@ -66,9 +66,9 @@ namespace AppRestaurant
             this.label3.Font = new System.Drawing.Font("Lexend", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(77, 141);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(179, 30);
+            this.label3.Size = new System.Drawing.Size(188, 30);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Number of people";
+            this.label3.Text = "Number of people :";
             // 
             // label4
             // 
@@ -76,9 +76,9 @@ namespace AppRestaurant
             this.label4.Font = new System.Drawing.Font("Lexend", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(77, 212);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 30);
+            this.label4.Size = new System.Drawing.Size(67, 30);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Hour";
+            this.label4.Text = "Hour :";
             // 
             // button1
             // 
@@ -89,30 +89,29 @@ namespace AppRestaurant
             this.button1.TabIndex = 4;
             this.button1.Text = "Book";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Lexend", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(208, 81);
+            this.textBox1.Font = new System.Drawing.Font("Lexend", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(226, 76);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 24);
+            this.textBox1.Size = new System.Drawing.Size(251, 31);
             this.textBox1.TabIndex = 5;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Lexend", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(141, 218);
+            this.dateTimePicker1.Font = new System.Drawing.Font("Lexend", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(150, 210);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(260, 24);
+            this.dateTimePicker1.Size = new System.Drawing.Size(327, 31);
             this.dateTimePicker1.TabIndex = 8;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Lexend", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(262, 146);
+            this.numericUpDown1.Font = new System.Drawing.Font("Lexend", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(271, 140);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(108, 24);
+            this.numericUpDown1.Size = new System.Drawing.Size(108, 31);
             this.numericUpDown1.TabIndex = 9;
             // 
             // BookingForm

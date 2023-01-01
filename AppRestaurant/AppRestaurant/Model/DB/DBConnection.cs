@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AppRestaurant.Model.DB
 {
-	public class DBConnection
+	class DBConnection
 	{
 		/* The instance. */
 		private static DBConnection INSTANCE = null;
@@ -21,7 +21,7 @@ namespace AppRestaurant.Model.DB
 		 */
 		public DBConnection()
 		{
-			this.open();
+			open();
 		}
 
 		/*
@@ -31,19 +31,19 @@ namespace AppRestaurant.Model.DB
 		 */
 		public static DBConnection getInstance()
 		{
-			if (DBConnection.INSTANCE == null)
+			if (INSTANCE == null)
 			{
-				DBConnection.INSTANCE = new DBConnection();
+				INSTANCE = new DBConnection();
 			}
-			return DBConnection.INSTANCE;
+			return INSTANCE;
 		}
 
-		public Boolean open()
+		public bool open()
 		{
 			try
 			{
-				this.conn = new SqlConnection("Data Source=(local);Initial Catalog=AppRestaurant;Integrated Security=true");
-				this.conn.Open();
+				conn = new SqlConnection("Data Source=(local);Initial Catalog=AppRestaurant;Integrated Security=true");
+				conn.Open();
 			}
 			catch (SqlException e)
 			{
@@ -54,7 +54,7 @@ namespace AppRestaurant.Model.DB
 
 		public void close()
 		{
-			this.conn.Close();
+			conn.Close();
 		}
 
 		/*
@@ -64,7 +64,7 @@ namespace AppRestaurant.Model.DB
 		 */
 		public SqlConnection getConnection()
 		{
-			return this.conn;
+			return conn;
 		}
 	}
 }
