@@ -9,8 +9,14 @@ namespace AppRestaurant.Controller.Pipes
 {
     public abstract class StreamString
     {
+        /*
+		* Character set
+		*/
         private static UnicodeEncoding streamEncoding = new UnicodeEncoding();
 
+        /*
+		* Write a string using the character set and the writing pipe
+		*/
         protected static void writeString(Stream pipeWrite, string outString)
         {
             byte[] outBuffer = streamEncoding.GetBytes(outString);
@@ -27,16 +33,19 @@ namespace AppRestaurant.Controller.Pipes
             pipeWrite.Flush();
         }
 
-        protected static List<string> readString(Stream pipeRead)
+        /*
+		* Read a string using the character set and the reading pipe
+		*/
+        protected static string readString(Stream pipeRead)
         {
             int len;
-            var values = new List<string>();
+            string str;
             len = pipeRead.ReadByte() * 256;
             len += pipeRead.ReadByte();
             var inBuffer = new byte[len];
             pipeRead.Read(inBuffer, 0, len);
-            values.Add(streamEncoding.GetString(inBuffer));
-            return values;
+            str = streamEncoding.GetString(inBuffer);
+            return str;
         }
     }
 }

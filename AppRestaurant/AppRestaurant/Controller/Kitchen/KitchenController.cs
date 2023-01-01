@@ -31,10 +31,10 @@ namespace AppRestaurant.Controller.Kitchen
         private static Mutex orderQueueMut = new Mutex();
         private static ManualResetEvent orderQueueMre = new ManualResetEvent(false);
         private static Mutex notifyOrderQueueMut = new Mutex();
+
         public static Queue<Order> pendingOrderQueue { get; set; }
         private static Mutex pendingOrderQueueMut = new Mutex();
         private static ManualResetEvent pendingOrderQueueMre = new ManualResetEvent(false);
-        private static Mutex notifyPendingOrderQueueMut = new Mutex();
 
         public static Queue<Order> doneOrderQueue { get; set; }
         private static Mutex doneOrderQueueMut = new Mutex();
@@ -44,29 +44,23 @@ namespace AppRestaurant.Controller.Kitchen
         public static Queue<Recipe> recipeQueue { get; set; }
         private static Mutex recipeQueueMut = new Mutex();
         private static ManualResetEvent recipeQueueMre = new ManualResetEvent(false);
-        private static Mutex notifyRecipeQueueMut = new Mutex();
 
         public static Queue<Ingredient> ingredientQueue { get; set; }
-        private static Mutex ingredientQueueMut = new Mutex();
-        private static ManualResetEvent ingredientQueueMre = new ManualResetEvent(false);
-        private static Mutex notifyIngredientQueueMut = new Mutex();
-
         public static Queue<RecipeStep> RecipeStepQueue { get; set; }
-        private static Mutex RecipeStepQueueMut = new Mutex();
-        private static ManualResetEvent RecipeStepQueueMre = new ManualResetEvent(false);
-        private static Mutex notifyRecipeStepQueueMut = new Mutex();
 
         public static Queue<KitchenMaterial> materialWashQueue { get; set; }
         private static Mutex materialWashQueueMut = new Mutex();
         private static ManualResetEvent materialWashQueueMre = new ManualResetEvent(false);
         private static Mutex notifyMaterialWashMut = new Mutex();
 
-        public static ClientThread kitchenSimul;
+        private static ClientThread kitchenSimul;
+        private static List<string> values = new List<string>();
 
         public KitchenController(KitchenModel model, KitchenView view)
         {
             Model = model;
             View = view;
+            kitchenSimul = new ClientThread();
 
             orderQueue = new Queue<Order>();
             pendingOrderQueue = new Queue<Order>();
@@ -75,7 +69,6 @@ namespace AppRestaurant.Controller.Kitchen
             ingredientQueue = new Queue<Ingredient>();
             RecipeStepQueue = new Queue<RecipeStep>();
             materialWashQueue = new Queue<KitchenMaterial>();
-            kitchenSimul = new ClientThread();
         }
 
         public static void Start()
@@ -87,6 +80,12 @@ namespace AppRestaurant.Controller.Kitchen
                 ChefThread = new Thread(new ThreadStart(ChefTask));
                 ChefThread.Name = "Chef " + i;
                 ChefThread.Start();
+            }
+
+            values = kitchenSimul.ReadFromClient();
+            for (int i = 0; i < values.Count - 1; i++)
+            {
+                Console.WriteLine("Values split results : " + values[i].Split(',')[0] + " " + values[i].Split(',')[1]);
             }
 
             distantWaiterThread = new Thread(new ThreadStart(DistantWaiterTask));
@@ -412,7 +411,6 @@ namespace AppRestaurant.Controller.Kitchen
             {
                 Thread.Sleep(2000);
                 orderQueueMut.WaitOne();
-                kitchenSimul.ReadFromClient();
                 orderQueue.Enqueue(new Order(1, 5, 80.30, Model.recipes[0]));
                 orderQueueMre.Set();
                 orderQueueMut.ReleaseMutex();

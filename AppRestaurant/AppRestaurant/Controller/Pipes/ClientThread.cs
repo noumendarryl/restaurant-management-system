@@ -19,9 +19,12 @@ namespace AppRestaurant.Controller.Pipes
             values = new List<string>();
         }
 
+        /*
+		* Send a message to the server
+		*/
         public void WriteFromClient(string content)
         {
-            Console.WriteLine("Kitchen write pipe : " + ServerThread.pipeRead.GetClientHandleAsString());
+            Console.WriteLine("Client write pipe : " + ServerThread.pipeRead.GetClientHandleAsString());
             pipeWrite = new AnonymousPipeClientStream(PipeDirection.Out, ServerThread.pipeRead.GetClientHandleAsString());
            
             using (pipeWrite)
@@ -42,16 +45,21 @@ namespace AppRestaurant.Controller.Pipes
             }
         }
 
+        /*
+		* Read a message sent from the server
+		*/
         public List<string> ReadFromClient()
         {
-            Console.WriteLine("Kitchen read pipe : " + ServerThread.pipeWrite.GetClientHandleAsString());
+            Console.WriteLine("Client read pipe : " + ServerThread.pipeWrite.GetClientHandleAsString());
             pipeRead = new AnonymousPipeClientStream(PipeDirection.In, ServerThread.pipeWrite.GetClientHandleAsString());
             
             using (pipeRead)
             {
                 try
                 {
-                    values = readString(pipeRead);
+                    string temp = readString(pipeRead);
+                    for (int i = 0; i < temp.Split(';').Length; i++)
+                        values.Add(temp.Split(';')[i]);
                 }
                 catch (Exception ex)
                 {
@@ -63,8 +71,8 @@ namespace AppRestaurant.Controller.Pipes
                     pipeRead.Close();
                 }
 
-                if (values.Count > 0)
-                    Console.WriteLine("Received message from Dining room : " + values[0]);
+                for (int i = 0; i < values.Count - 1; i++)
+                    Console.WriteLine("Received message from Server : " + values[i]);
 
                 //Console.ReadLine();
                 return values;

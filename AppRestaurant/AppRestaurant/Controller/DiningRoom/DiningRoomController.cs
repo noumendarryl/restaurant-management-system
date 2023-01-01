@@ -30,6 +30,7 @@ namespace AppRestaurant.Controller.DiningRoom
         private static List<CustomerController> customerControllers;
         private static List<LineChiefController> lineChiefControllers;
 
+        static string content;
         static int customerCount = 0;
 
         private static Queue<CustomerGroup> CustomerQueue = new Queue<CustomerGroup>();
@@ -47,15 +48,14 @@ namespace AppRestaurant.Controller.DiningRoom
         public DiningRoomController(DiningRoomModel diningRoomModel)
         {
             DiningRoomModel = diningRoomModel;
+            diningRoomSimul = new ServerThread();
             hotelMasterController = new HotelMasterController(DiningRoomModel);
             lineChiefControllers = new List<LineChiefController>();
             observers = new List<IObserver<Order>>();
-            diningRoomSimul = new ServerThread();
         }
 
         public static void Run()
         {
-
             CustomersFactory factory = new CustomersFactory();
             factory.Subscribe(hotelMasterController);
 
@@ -93,9 +93,10 @@ namespace AppRestaurant.Controller.DiningRoom
                 foreach (KeyValuePair<Recipe, int> dic in comm.orderLine)
                 {
                     Console.WriteLine("======= " + dic.Key.RecipeTitle + " : " + dic.Value + " =======");
-                    diningRoomSimul.WriteFromServer(dic.Key.RecipeTitle + ";"+ dic.Value.ToString());
+                    content += dic.Key.RecipeTitle + ","+ dic.Value.ToString() + ";";
                 }
             }
+            diningRoomSimul.WriteFromServer(content);
         }
 
         public void TakeOrder()

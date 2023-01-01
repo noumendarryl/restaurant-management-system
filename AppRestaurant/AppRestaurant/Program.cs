@@ -25,9 +25,9 @@ namespace AppRestaurant
             DiningRoomController diningRoomController = new DiningRoomController(diningRoomModel);
             //ServerThread server = new ServerThread();
             //ClientThread client = new ClientThread();
-            //server.WriteFromServer("Hello from Dining room !");
+            //server.WriteFromServer("SYNC;Hello from Dining room !;END");
             //client.ReadFromClient();
-            //client.WriteFromClient("Hello from Kitchen !");
+            //client.WriteFromClient("SYNC;Hello from Kitchen !;END");
             //server.ReadFromServer();
 
             // Kitchen Initialization
