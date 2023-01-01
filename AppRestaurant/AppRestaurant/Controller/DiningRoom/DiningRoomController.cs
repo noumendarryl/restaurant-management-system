@@ -29,9 +29,9 @@ namespace AppRestaurant.Controller.DiningRoom
 
         private static List<CustomerController> customerControllers;
         private static List<LineChiefController> lineChiefControllers;
-        
+
         static int customerCount = 0;
-        
+
         private static Queue<CustomerGroup> CustomerQueue = new Queue<CustomerGroup>();
         private static ManualResetEvent customerQueueMre = new ManualResetEvent(false);
         private static Mutex customerQueueMtx = new Mutex();
@@ -42,6 +42,7 @@ namespace AppRestaurant.Controller.DiningRoom
         private static List<Thread> orderThreads = new List<Thread>();
 
         private static List<IObserver<Order>> observers;
+        private static ServerThread diningRoomSimul;
 
         public DiningRoomController(DiningRoomModel diningRoomModel)
         {
@@ -49,7 +50,9 @@ namespace AppRestaurant.Controller.DiningRoom
             hotelMasterController = new HotelMasterController(DiningRoomModel);
             lineChiefControllers = new List<LineChiefController>();
             observers = new List<IObserver<Order>>();
+            diningRoomSimul = new ServerThread();
         }
+
         public static void Run()
         {
 
@@ -85,14 +88,14 @@ namespace AppRestaurant.Controller.DiningRoom
             Thread.Sleep(1000);
             Console.WriteLine("========== " + OrderListing.Count + " Commande(s) ont ete prise. ==========");
 
-            foreach(Order comm in OrderListing)
+            foreach (Order comm in OrderListing)
             {
-                foreach(KeyValuePair<Recipe, int> dic in comm.orderLine)
+                foreach (KeyValuePair<Recipe, int> dic in comm.orderLine)
                 {
                     Console.WriteLine("======= " + dic.Key.RecipeTitle + " : " + dic.Value + " =======");
+                    diningRoomSimul.WriteFromServer(dic.Key.RecipeTitle + ";"+ dic.Value.ToString());
                 }
             }
-
         }
 
         public void TakeOrder()
@@ -117,7 +120,7 @@ namespace AppRestaurant.Controller.DiningRoom
             }
         }
 
-        public static void installCustomers(CustomersFactory factory,int nbCustomer)
+        public static void installCustomers(CustomersFactory factory, int nbCustomer)
         {
             for (int i = 0; i < nbCustomer; i++)
             {
@@ -131,17 +134,17 @@ namespace AppRestaurant.Controller.DiningRoom
             customerQueueMtx.WaitOne();
             int[] table = FindCustomerTable(customerController.Customer);
 
-            if(table != null)
-            {                
+            if (table != null)
+            {
                 OrderList.Enqueue(customerController.Order(DiningRoomModel.Squares[table[0]].Lines[table[1]].Tables[table[2]].MenuCard));
                 Order order = OrderList.Peek();
-                foreach(IObserver<Order> observer in observers)
+                foreach (IObserver<Order> observer in observers)
                 {
                     observer.OnNext(order);
                 }
                 customerController.Customer.CustomerState = CustomerState.Ordered;
                 Thread thread = Thread.CurrentThread;
-                Console.WriteLine("========="+thread.Name + " prise========");
+                Console.WriteLine("=========" + thread.Name + " prise========");
             }
 
             customerQueueMtx.ReleaseMutex();
@@ -158,7 +161,7 @@ namespace AppRestaurant.Controller.DiningRoom
                     int nbTable = DiningRoomModel.Squares[i].Lines[j].Tables.Count;
                     for (int k = 0; k < nbTable; k++)
                     {
-                        if (customer == DiningRoomModel.Squares[i].Lines[j].Tables[k].Group )
+                        if (customer == DiningRoomModel.Squares[i].Lines[j].Tables[k].Group)
                         {
                             //return DiningRoomModel.Squares[i].Lines[j].Tables[k];
                             return new int[3] { i, j, k };
@@ -171,7 +174,8 @@ namespace AppRestaurant.Controller.DiningRoom
 
         public IDisposable Subscribe(IObserver<Order> observer)
         {
-            if (!observers.Contains(observer)){
+            if (!observers.Contains(observer))
+            {
                 observers.Add(observer);
             }
             return new DRUnsubscriber<Order>(observers, observer);

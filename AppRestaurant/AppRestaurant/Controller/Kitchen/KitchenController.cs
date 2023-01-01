@@ -61,6 +61,8 @@ namespace AppRestaurant.Controller.Kitchen
         private static ManualResetEvent materialWashQueueMre = new ManualResetEvent(false);
         private static Mutex notifyMaterialWashMut = new Mutex();
 
+        public static ClientThread kitchenSimul;
+
         public KitchenController(KitchenModel model, KitchenView view)
         {
             Model = model;
@@ -73,6 +75,7 @@ namespace AppRestaurant.Controller.Kitchen
             ingredientQueue = new Queue<Ingredient>();
             RecipeStepQueue = new Queue<RecipeStep>();
             materialWashQueue = new Queue<KitchenMaterial>();
+            kitchenSimul = new ClientThread();
         }
 
         public static void Start()
@@ -409,6 +412,7 @@ namespace AppRestaurant.Controller.Kitchen
             {
                 Thread.Sleep(2000);
                 orderQueueMut.WaitOne();
+                kitchenSimul.ReadFromClient();
                 orderQueue.Enqueue(new Order(1, 5, 80.30, Model.recipes[0]));
                 orderQueueMre.Set();
                 orderQueueMut.ReleaseMutex();

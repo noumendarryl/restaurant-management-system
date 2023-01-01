@@ -255,7 +255,7 @@ namespace AppRestaurant
             this.richTextBox.Font = new System.Drawing.Font("Lexend", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox.Location = new System.Drawing.Point(5, 27);
             this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(159, 205);
+            this.richTextBox.Size = new System.Drawing.Size(159, 198);
             this.richTextBox.TabIndex = 1;
             this.richTextBox.Text = "";
             // 
@@ -368,9 +368,9 @@ namespace AppRestaurant
             this.panel7.Controls.Add(this.label8);
             this.panel7.Controls.Add(this.label7);
             this.panel7.ForeColor = System.Drawing.SystemColors.Window;
-            this.panel7.Location = new System.Drawing.Point(637, 1);
+            this.panel7.Location = new System.Drawing.Point(637, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(171, 33);
+            this.panel7.Size = new System.Drawing.Size(171, 34);
             this.panel7.TabIndex = 5;
             // 
             // label8

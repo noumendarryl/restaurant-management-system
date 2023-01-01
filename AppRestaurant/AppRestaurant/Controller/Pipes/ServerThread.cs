@@ -8,29 +8,28 @@ namespace AppRestaurant.Controller.Pipes
 {
     public class ServerThread : StreamString
     {
-        private static AnonymousPipeServerStream pipeRead;
-        private static AnonymousPipeServerStream pipeWrite;
+        public static AnonymousPipeServerStream pipeWrite;
+        public static AnonymousPipeServerStream pipeRead;
         private static List<string> result;
 
         public ServerThread()
         {
             pipeWrite = new AnonymousPipeServerStream(PipeDirection.Out, HandleInheritability.Inheritable);
             pipeRead = new AnonymousPipeServerStream(PipeDirection.In, HandleInheritability.Inheritable);
+            result = new List<string>();
         }
 
-        public void WriteFromServer()
+        public void WriteFromServer(string content)
         {
             using (pipeWrite)
             {
-                Thread writeThread = new Thread(new ParameterizedThreadStart(ClientThread.ReadFromClient));
-                writeThread.Start(pipeWrite.GetClientHandleAsString());
                 Console.WriteLine("Dining room write pipe : " + pipeWrite.GetClientHandleAsString());
 
                 try
                 {
-                    writeString(pipeWrite, "Hello from Dining room !");
+                    writeString(pipeWrite, content);
                 }
-                catch (IOException ex)
+                catch (Exception ex)
                 {
                     //TODO Exception handling/logging
                     Console.WriteLine(ex.Message);
@@ -46,16 +45,13 @@ namespace AppRestaurant.Controller.Pipes
         {
             using (pipeRead)
             {
-                Thread readThread = new Thread(new ParameterizedThreadStart(ClientThread.WriteFromClient));
-                result = new List<string>();
-                readThread.Start(pipeRead.GetClientHandleAsString());
                 Console.WriteLine("Dining room read pipe : " + pipeRead.GetClientHandleAsString());
 
                 try
                 {
                     result = readString(pipeRead);
                 }
-                catch (IOException ex)
+                catch (Exception ex)
                 {
                     //TODO Exception handling/logging
                     Console.WriteLine(ex.Message);
@@ -68,7 +64,7 @@ namespace AppRestaurant.Controller.Pipes
                 if (result.Count > 0)
                     Console.WriteLine("Received message from Kitchen : " + result[0]);
 
-                Console.ReadLine();
+                //Console.ReadLine();
                 return result;
             }
         }
