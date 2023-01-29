@@ -12,7 +12,7 @@ namespace AppRestaurant.Model.Kitchen.Materials
         public KitchenMaterial(string name, int quantity, Sprite sprite) : base(name, quantity)
         {
             Type = MaterialType.Kitchen;
-            setSprite(sprite);
+            Sprite = sprite;
         }
     }
 }

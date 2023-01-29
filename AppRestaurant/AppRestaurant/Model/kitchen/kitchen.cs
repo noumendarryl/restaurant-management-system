@@ -9,11 +9,11 @@ namespace AppRestaurant.Model.Kitchen
 {
     public class Kitchen
     {
-        public KitchenMaterial[,] map { get; set; }
+        public Material[,] map { get; set; }
 
         public Kitchen()
         {
-            map = new KitchenMaterial[18, 8];
+            map = new Material[18, 8];
         }
     }
 }

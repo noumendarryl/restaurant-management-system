@@ -23,12 +23,6 @@ namespace AppRestaurant
             // Dining Room Initialization
             DiningRoomModel diningRoomModel = new DiningRoomModel();
             DiningRoomController diningRoomController = new DiningRoomController(diningRoomModel);
-            //ServerThread server = new ServerThread();
-            //ClientThread client = new ClientThread();
-            //server.WriteFromServer("SYNC;Hello from Dining room !;END");
-            //client.ReadFromClient();
-            //client.WriteFromClient("SYNC;Hello from Kitchen !;END");
-            //server.ReadFromServer();
 
             // Kitchen Initialization
             KitchenModel kitchenModel = new KitchenModel();
@@ -36,9 +30,7 @@ namespace AppRestaurant
             KitchenController kitchenController = new KitchenController(kitchenModel, kitchenView);
 
             // Launching User Interfaces
-            Application.Run(KitchenView.mainApp);
-            Application.Run(KitchenView.setting);
-            Application.Run(KitchenView.simulationForm);
+            Application.Run(KitchenView.app);
         }
     }
 }

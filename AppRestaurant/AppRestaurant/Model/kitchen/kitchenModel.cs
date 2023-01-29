@@ -29,6 +29,11 @@ namespace AppRestaurant.Model.Kitchen
 		public int TIME_SCALE;
 
 		/*
+		* The time sleep.
+		*/
+		public int TIME_SLEEP;
+
+		/*
 		* The dao.
 		*/
 		public DAOEntity<Entity> dao { get; set; }
@@ -66,31 +71,31 @@ namespace AppRestaurant.Model.Kitchen
 		* The cooking fire 
 		*/
 		public int cookingFireNumber;
-		public KitchenMaterial cookingFire { get; set; }
+		public Material cookingFire { get; set; }
 
 		/*
 		* The oven 
 		*/
 		public int ovenNumber;
-		public KitchenMaterial oven { get; set; }
+		public Material oven { get; set; }
 
 		/*
 		* The blender
 		*/
 		public int blenderNumber;
-		public KitchenMaterial blender { get; set; }
+		public Material blender { get; set; }
 
 		/*
 		* The fridge
 		*/
 		public int fridgeNumber;
-		public KitchenMaterial fridge { get; set; }
+		public Material fridge { get; set; }
 
 		/*
 		* The knife
 		*/
 		public int knifeNumber;
-		public KitchenMaterial knife { get; set; }
+		public Material knife { get; set; }
 
 		public KitchenModel()
 		{
@@ -116,6 +121,9 @@ namespace AppRestaurant.Model.Kitchen
 					"Feuilleté au crabe",
 					20,
 					0,
+					4,
+					RecipeType.Entry,
+					200,
 					new List<Ingredient>
 					{
 						new Ingredient("pâte feuilletée", 5),

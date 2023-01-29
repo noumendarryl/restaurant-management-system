@@ -19,9 +19,15 @@ namespace AppRestaurant.Model.Kitchen.DAO
         private string recipeTitle;
         private int cookingTime;
         private int restingTime;
+        private int peopleCount;
+        private RecipeType type;
+        private double price;
         private List<Ingredient> ingredients;
         private List<RecipeStep> recipeSteps;
 
+        /*
+		 * Find a recipe according to its name
+		 */
         public Recipe find(string name)
         {
             ingredients = new List<Ingredient>();
@@ -40,6 +46,9 @@ namespace AppRestaurant.Model.Kitchen.DAO
                        recipeTitle = reader[1].ToString();
                        cookingTime = (int)reader[2];
                        restingTime = (int)reader[3];
+                       peopleCount = (int)reader[4];
+                       type = (RecipeType)reader[5];
+                       price = (double)reader[6];
                        ingredients = ((DAOEntity<Ingredient>)dao).find(idRecipe);
                        recipeSteps = ((DAOEntity<RecipeStep>)dao).find(idRecipe);
                     }
@@ -51,18 +60,28 @@ namespace AppRestaurant.Model.Kitchen.DAO
                 Console.WriteLine(e.Message);
             }
 
-            return new Recipe(recipeTitle, cookingTime, restingTime, ingredients, recipeSteps);
-        }
-
-        public void update(int id, int quantity)
-        {
-            // Not implemented
+            return new Recipe(recipeTitle, cookingTime, restingTime, peopleCount, type, price, ingredients, recipeSteps);
         }
 
         public List<Recipe> find(int id)
         {
             // Not implemented
             return null;
+        }
+
+        public void update(Recipe recipe)
+        {
+            // Not implemented
+        }
+
+        public void create(Recipe recipe)
+        {
+            // Not implemented
+        }
+
+        public void delete(int id)
+        {
+            // Not implemented
         }
     }
 }

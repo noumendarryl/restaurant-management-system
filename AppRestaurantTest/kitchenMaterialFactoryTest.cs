@@ -11,31 +11,31 @@ namespace AppRestaurantTest
         [TestMethod]
         public void CreateCookingFireTest()
         {
-            KitchenMaterial cookingFire = KitchenMaterialFactory.createCookingFire();
+            Material cookingFire = KitchenMaterialFactory.createCookingFire();
             Assert.AreEqual<String>(cookingFire.name, "cooking fire");
         }
 
         public void CreatePanTest()
         {
-            KitchenMaterial fridge = KitchenMaterialFactory.createFridge();
+            Material fridge = KitchenMaterialFactory.createFridge();
             Assert.AreEqual<String>(fridge.name, "Fridge");
     }
 
         public void CreateOvenTest()
         {
-            KitchenMaterial oven = KitchenMaterialFactory.createOven();
+            Material oven = KitchenMaterialFactory.createOven();
             Assert.AreEqual<String>(oven.name, "oven");
          }
 
         public void CreateBlenderTest()
         {
-            KitchenMaterial blender = KitchenMaterialFactory.createBlender();
+            Material blender = KitchenMaterialFactory.createBlender();
             Assert.AreEqual<String>(blender.name, "blender");
     
     }
         public void CreateKitchenKnifeTest()
         {
-            KitchenMaterial kitchenKnife = KitchenMaterialFactory.createKnife(2);
+            Material kitchenKnife = KitchenMaterialFactory.createKnife(2);
             Assert.AreEqual<String>(kitchenKnife.name, "kitchen knife");
         }
     }

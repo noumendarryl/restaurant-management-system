@@ -14,16 +14,11 @@ namespace AppRestaurant.Model.Kitchen.DAO
     {
         public DBAccess da;
         private SqlDataReader reader;
+        private DAOEntity<Entity> dao;
         private string name;
         private int duration;
         private KitchenMaterial material;
         private List<RecipeStep> recipeSteps;
-
-        public RecipeStep find(string code)
-        {
-            // Not Implemented
-            return null;
-        }
 
         /*
 		 * Get all the steps of a given recipe
@@ -31,7 +26,7 @@ namespace AppRestaurant.Model.Kitchen.DAO
         public List<RecipeStep> find(int id)
         {
             recipeSteps = new List<RecipeStep>();
-            da.createSqlCommand("SELECT nom, duree, materiel FROM dbo.Recette INNER JOIN dbo.Etapes ON (dbo.Recette.id_recette = dbo.Etapes.id_recette) WHERE dbo.Recette.id_recette = @id ORDER BY numero_etape ASC");
+            da.createSqlCommand("SELECT intitule, duree, nom_materiel FROM dbo.Recette INNER JOIN dbo.Etapes ON (dbo.Recette.id_recette = dbo.Etapes.id_recette) WHERE dbo.Recette.id_recette = @id ORDER BY numero_etape ASC");
             da.getCmd().Parameters.AddWithValue("@id_recette", id);
 
             try
@@ -41,9 +36,9 @@ namespace AppRestaurant.Model.Kitchen.DAO
                 {
                     while (reader.Read())
                     {
-                        name = reader[1].ToString();
-                        duration = (int)reader[2];
-                        material = (KitchenMaterial)reader[3];
+                        name = reader[0].ToString();
+                        duration = (int)reader[1];
+                        material = (KitchenMaterial)((DAOEntity<Material>)dao).find(reader[2].ToString());
                         recipeSteps.Add(new RecipeStep(name, duration, material));
                     }
                     reader.Close();
@@ -57,7 +52,23 @@ namespace AppRestaurant.Model.Kitchen.DAO
             return recipeSteps;
         }
 
-        public void update(int id, int quantity)
+        public RecipeStep find(string code)
+        {
+            // Not Implemented
+            return null;
+        }
+
+        public void update(RecipeStep recipeStep)
+        {
+            // Not implemented
+        }
+
+        public void create(RecipeStep recipeStep)
+        {
+            // Not implemented
+        }
+
+        public void delete(int id)
         {
             // Not implemented
         }

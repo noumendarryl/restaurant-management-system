@@ -12,9 +12,9 @@ namespace AppRestaurant.Model.Common
     {
         public string name { get; set; }
         public int duration { get; set; }
-        public KitchenMaterial material { get; set; }
+        public Material material { get; set; }
 
-        public RecipeStep(string name, int duration, KitchenMaterial material)
+        public RecipeStep(string name, int duration, Material material)
         {
             this.name = name;
             this.duration = duration;

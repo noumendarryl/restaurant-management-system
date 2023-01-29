@@ -215,8 +215,6 @@ create table Commande (
    prix                 double                  not null,
    constraint PK_COMMANDE primary key nonclustered (id_commande)
 );
-insert into Commande(num_table, nb_commandes, prix) values 
-(1, 2, 80.30), (2, 3, 100);
 go
 
 /*==============================================================*/
@@ -226,8 +224,9 @@ create table Etapes (
    id_etape             int              identity,
    id_recette           int              not null,
    nb_etape             int                  not null,
-   description          varchar(200)         not null,
+   intitule          varchar(200)         not null,
    duree                int                  not null,
+   nom_materiel    varchar(200)         not null,
    constraint PK_ETAPES primary key nonclustered (id_etape)
 );
 insert into Etapes(id_recette, nb_etape, description, duree) values 

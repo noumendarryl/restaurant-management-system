@@ -36,8 +36,24 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=6.2.1.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.6.2.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Icons8.UI, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Icons8.UI.0.2.0\lib\net40\Icons8.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Siticone.Desktop.UI, Version=2.1.1.0, Culture=neutral, PublicKeyToken=9683591576b7f0b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Siticone.Desktop.UI.2.1.1\lib\net40\Siticone.Desktop.UI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,20 +63,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WinFormAnimation, Version=1.6.0.4, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinFormAnimation.1.6.0.4\lib\net40\WinFormAnimation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppRestaurant.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AppRestaurant.Designer.cs">
-      <DependentUpon>AppRestaurant.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BookingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BookingForm.Designer.cs">
-      <DependentUpon>BookingForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controller\DiningRoom\Actors\CustomerController.cs" />
     <Compile Include="Controller\DiningRoom\Actors\HotelMasterController.cs" />
     <Compile Include="Controller\DiningRoom\Actors\LineChiefController.cs" />
@@ -76,6 +84,7 @@
     <Compile Include="Controller\Pipes\ClientThread.cs" />
     <Compile Include="Controller\Pipes\ServerThread.cs" />
     <Compile Include="Controller\Pipes\StreamString.cs" />
+    <Compile Include="Model\Common\Booking.cs" />
     <Compile Include="Model\Common\Equipment.cs" />
     <Compile Include="Model\Common\MenuCard.cs" />
     <Compile Include="Model\DiningRoom\Actors\Customer.cs" />
@@ -97,6 +106,7 @@
     <Compile Include="Model\Kitchen\DAO\DAOEntity.cs" />
     <Compile Include="Model\Kitchen\DAO\DAOIngredient.cs" />
     <Compile Include="Model\Kitchen\DAO\DAOMaterial.cs" />
+    <Compile Include="Model\Kitchen\DAO\DAOOrder.cs" />
     <Compile Include="Model\Kitchen\DAO\DAORecipe.cs" />
     <Compile Include="Model\Kitchen\DAO\DAORecipeStep.cs" />
     <Compile Include="Model\Kitchen\DAO\DAOStock.cs" />
@@ -105,17 +115,52 @@
     <Compile Include="Model\Kitchen\Items\KitchenItem.cs" />
     <Compile Include="Model\Kitchen\Items\MotionlessKitchenItem.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Setting.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Booking.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Setting.Designer.cs">
+    <Compile Include="View\Common\Booking.Designer.cs">
+      <DependentUpon>Booking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\Inventory.Designer.cs">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Monitoring.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\Monitoring.Designer.cs">
+      <DependentUpon>Monitoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\NewBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\NewBooking.Designer.cs">
+      <DependentUpon>NewBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Simulation.cs">
+    <Compile Include="View\Common\MainApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Simulation.Designer.cs">
-      <DependentUpon>Simulation.cs</DependentUpon>
+    <Compile Include="View\Common\MainApp.Designer.cs">
+      <DependentUpon>MainApp.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\DB\DBAccess.cs" />
     <Compile Include="Model\DB\DBConnection.cs" />
@@ -136,29 +181,53 @@
     <Compile Include="Model\Common\RecipeStep.cs" />
     <Compile Include="Model\Common\Sprite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Common\SignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\SignIn.Designer.cs">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Simulation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\Simulation.Designer.cs">
+      <DependentUpon>Simulation.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Kitchen\KitchenView.cs" />
-    <EmbeddedResource Include="AppRestaurant.resx">
-      <DependentUpon>AppRestaurant.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BookingForm.resx">
-      <DependentUpon>BookingForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Setting.resx">
+    <EmbeddedResource Include="View\Common\Booking.resx">
+      <DependentUpon>Booking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Inventory.resx">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Monitoring.resx">
+      <DependentUpon>Monitoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\NewBooking.resx">
+      <DependentUpon>NewBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Simulation.resx">
+    <EmbeddedResource Include="View\Common\MainApp.resx">
+      <DependentUpon>MainApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\SignIn.resx">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Simulation.resx">
       <DependentUpon>Simulation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -179,6 +248,15 @@
     <Content Include="Resources\Diningroomtile.png" />
     <Content Include="Resources\Diver\front.png" />
     <Content Include="Resources\DeputyChef\front.png" />
+    <None Include="Resources\Free_Sample_By_Wix__3_-removebg-preview.png" />
+    <Content Include="Resources\Icons\bookmark_32px_2.png" />
+    <Content Include="Resources\Icons\gripfire_32px_2.png" />
+    <Content Include="Resources\Icons\heart_with_pulse_32px_2.png" />
+    <Content Include="Resources\Icons\help_32px_2.png" />
+    <Content Include="Resources\Icons\home_page_32px.png" />
+    <Content Include="Resources\Icons\login_32px_2.png" />
+    <Content Include="Resources\Icons\settings_32px_2.png" />
+    <Content Include="Resources\Icons\shop_32px_2.png" />
     <Content Include="Resources\KitchenClerk\front.png" />
     <Content Include="Resources\KitchenMaterials\comptoir.png" />
     <Content Include="Resources\KitchenMaterials\cookingFire.png" />
@@ -188,6 +266,8 @@
     <Content Include="Resources\KitchenMaterials\oven.png" />
     <Content Include="Resources\Kitchentile.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="View\DiningRoom\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,22 +10,21 @@ namespace AppRestaurant.Model.Kitchen.Items
 {
     public class KitchenItem : Position
     {
-		public Sprite sprite;
+		private Sprite sprite;
 
 		/*
 		* Gets sprite value
 		*/
-		public Sprite getSprite()
+		public Sprite Sprite
 		{
-			return sprite;
-		}
-
-		/*
-		* Sets sprite value
-		*/
-		public void setSprite(Sprite value)
-		{
-			sprite = value;
+			get
+			{
+				return sprite;
+			}
+			set
+			{
+				sprite = value;
+			}
 		}
 	}
 }

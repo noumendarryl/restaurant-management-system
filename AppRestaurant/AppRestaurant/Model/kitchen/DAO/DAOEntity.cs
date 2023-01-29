@@ -8,35 +8,15 @@ namespace AppRestaurant.Model.Kitchen.DAO
 {
     public interface DAOEntity<E>
     {
-		/*
-		 * Find.
-		 *
-		 * @param code
-		 *          the code
-		 * @return the E
-		 */
-		 E find(string code);
+		E find(string code);
 
-		/*
-		 * Find.
-		 *
-		 * @param id
-		 *          the id
-		 * @return the E
-		 */
 		List<E> find(int id);
 
-		/*
-		 * Update.
-		 *
-		 * @param int
-		 *          the int
-		 *          
-		 * @param quantity
-		 *          the quantity
-		 *          
-		 * @return the E
-		 */
-		void update(int id, int quantity);
+		void create(E entity);
+
+		void update(E entity);
+
+		void delete(int id);
+
 	}
 }

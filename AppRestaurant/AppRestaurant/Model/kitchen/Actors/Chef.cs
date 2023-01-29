@@ -28,18 +28,18 @@ namespace AppRestaurant.Model.Kitchen.Actors
 
         public Chef()
         {
-            PosX = 0;
+            PosX = 12;
             PosY = 0;
 
             waiting.loadImage();
             working.loadImage();
 
-            setSprite(waiting);
+            Sprite = waiting;
         }
 
         public override void moveLeft()
         {
-            setSprite(waiting);
+            Sprite = waiting;
             base.moveLeft();
         }
     }

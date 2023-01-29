@@ -18,8 +18,8 @@ namespace AppRestaurant.Model.Kitchen.Factory
 		private static KitchenMaterial KNIFE;
 
 		private static string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-		private static string exeDir = System.IO.Path.GetDirectoryName(exePath);
-		private static DirectoryInfo binDir = System.IO.Directory.GetParent(System.IO.Directory.GetParent(exeDir).FullName);
+		private static string exeDir = Path.GetDirectoryName(exePath);
+		private static DirectoryInfo binDir = Directory.GetParent(Directory.GetParent(exeDir).FullName);
 
 		private static string spritePath = binDir.FullName + "\\Resources\\KitchenMaterials\\";
 
@@ -37,63 +37,63 @@ namespace AppRestaurant.Model.Kitchen.Factory
 
 		/*
 		 * Creates a cooking fire
-		 * @return The {@link cooking fire} {@link kitchenMaterial}.
+		 * @return The {@link cooking fire} {@link KitchenMaterial}.
 		 */
 		public static KitchenMaterial createCookingFire()
 		{
 			COOKING_FIRE = new KitchenMaterial("cooking fire", 5, cookingFire);
 			cookingFire.loadImage();
-			COOKING_FIRE.setSprite(cookingFire);
+			COOKING_FIRE.Sprite = cookingFire;
 			COOKING_FIRE.washable = false;
 			return COOKING_FIRE;
 		}
 
 		/*
 		 * Creates an oven
-		 * @return The {@link oven} {@link kitchenMaterial}.
+		 * @return The {@link oven} {@link KitchenMaterial}.
 		 */
 		public static KitchenMaterial createOven()
 		{
 			OVEN = new KitchenMaterial("oven", 5, oven);
 			oven.loadImage();
-			OVEN.setSprite(oven);
+			OVEN.Sprite = oven;
 			OVEN.washable = false;
 			return OVEN;
 		}
 
 		/*
 		 * Creates a fridge
-		 * @return The {@link fridge} {@link kitchenMaterial}.
+		 * @return The {@link fridge} {@link KitchenMaterial}.
 		 */
 		public static KitchenMaterial createFridge()
 		{
 			FRIDGE = new KitchenMaterial("fridge", 1, fridge);
 			fridge.loadImage();
-			FRIDGE.setSprite(fridge);
+			FRIDGE.Sprite = fridge;
 			return FRIDGE;
 		}
 
 		/*
 		 * Creates a blender
-		 * @return The {@link blender} {@link kitchenMaterial}.
+		 * @return The {@link blender} {@link KitchenMaterial}.
 		 */
 		public static KitchenMaterial createBlender()
 		{
 			BLENDER = new KitchenMaterial("blender", 1, blender);
 			//blender.loadImage();
-			//BLENDER.setSprite(blender);
+			//BLENDER.Sprite = blender;
 			return BLENDER;
 		}
 
 		/*
 		 * Creates a knife
-		 * @return The {@link knife} {@link kitchenMaterial}.
+		 * @return The {@link knife} {@link KitchenMaterial}.
 		 */
 		public static KitchenMaterial createKnife(int quantity)
 		{
 			KNIFE = new KitchenMaterial("kitchen knife", quantity, knife);
 			//knife.loadImage();
-			//KNIFE.setSprite(cookingFire);
+			//KNIFE.Sprite = cookingFire;
 			return KNIFE;
 		}
 	}

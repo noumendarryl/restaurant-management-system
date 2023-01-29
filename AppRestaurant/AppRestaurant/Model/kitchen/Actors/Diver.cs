@@ -36,30 +36,30 @@ namespace AppRestaurant.Model.Kitchen.Actors
 
             front.loadImage();
 
-            setSprite(front);
+            Sprite = front;
         }
 
         public override void moveUp()
         {
-            setSprite(front);
+            Sprite = front;
             base.moveUp();
         }
 
         public override void moveDown()
         {
-            setSprite(back);
+            Sprite = back;
             base.moveDown();
         }
 
         public override void moveLeft()
         {
-            setSprite(left);
+            Sprite = left;
             base.moveLeft();
         }
 
         public override void moveRight()
         {
-            setSprite(right);
+            Sprite = right;
             base.moveRight();
         }
     }

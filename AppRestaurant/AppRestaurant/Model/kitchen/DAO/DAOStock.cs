@@ -81,12 +81,46 @@ namespace AppRestaurant.Model.Kitchen.DAO
         }
 
         /*
-		 * Update stock quantity
+		 * Update the quantity of a stock
 		 */
-        public void update(int id, int quantity)
+        public void update(Stock stock)
         {
-            da.createSqlCommand("UPDATE dbo.Stock SET quantity = @newquantity WHERE id = @id");
-            da.getCmd().Parameters.AddWithValue("@newquantity", quantity);
+            da.createSqlCommand("UPDATE dbo.Stock SET quantite = @quantite WHERE id = @id");
+            da.getCmd().Parameters.AddWithValue("@quantite", stock.quantity);
+            da.getCmd().Parameters.AddWithValue("@id", stock.id);
+            da.executeNonQuery();
+            da.close();
+        }
+
+        /*
+		 * Create a new stock of ingredients
+		 */
+        public void create(Stock stock)
+        {
+            da.createSqlCommand("INSERT INTO dbo.Stock (nom, quantite, categorie) " +
+                    "VALUES (@nom, @quantite, @categorie)");
+
+            try
+            {
+                da.getCmd().Parameters.AddWithValue("@nom", stock.stockTitle);
+                da.getCmd().Parameters.AddWithValue("@quantite", stock.quantity);
+                da.getCmd().Parameters.AddWithValue("@categorie", stock.category);
+
+                da.executeNonQuery();
+                da.close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        /*
+		 * Delete a particular stock
+		 */
+        public void delete(int id)
+        {
+            da.createSqlCommand("DELETE FROM dbo.Stock WHERE id = @id");
             da.getCmd().Parameters.AddWithValue("@id", id);
             da.executeNonQuery();
             da.close();

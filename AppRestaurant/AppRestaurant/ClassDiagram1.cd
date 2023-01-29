@@ -24,15 +24,15 @@
   <Class Name="AppRestaurant.Setting" Collapsed="true">
     <Position X="37" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>/yQAABCAASAAABDAEACgAABCIAAIAgAEEEAAAwAAALA=</HashCode>
-      <FileName>Setting.cs</FileName>
+      <HashCode>/yQAABCAASAAABDAEACgAABCIAAIAgAEEAAAAwAAALA=</HashCode>
+      <FileName>View\Common\Setting.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AppRestaurant.Simulation" Collapsed="true">
     <Position X="28.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CHQAABCAACAAABBBAgCgAAACAMw7AgAggXAaIwAIQAA=</HashCode>
-      <FileName>Simulation.cs</FileName>
+      <HashCode>ACBIIgEAACAAlJAAAKCAQCIKAAAIAgYBgAAAAYBUAAA=</HashCode>
+      <FileName>View\Common\AppRestaurant.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AppRestaurant.Form1" Collapsed="true">
@@ -82,7 +82,7 @@
   <Class Name="AppRestaurant.Controller.DiningRoom.DiningRoomController" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="33.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>DABKQAAAGAAAABAAIBQCABAAAAACAAAIAAAAAQAAEAI=</HashCode>
+      <HashCode>HABKAAAAEAAAAAAAIBACABAAAAACgAAIAAAAAQAAEAI=</HashCode>
       <FileName>Controller\DiningRoom\DiningRoomController.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -197,10 +197,9 @@
   <Class Name="AppRestaurant.Model.DiningRoom.Actors.LineChief" Collapsed="true">
     <Position X="3.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\DiningRoom\Actors\LineChief.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppRestaurant.Model.DiningRoom.Actors.RoomClerk" Collapsed="true">
     <Position X="6" Y="1.75" Width="1.5" />
@@ -213,10 +212,9 @@
   <Class Name="AppRestaurant.Model.DiningRoom.Actors.Waiter" Collapsed="true">
     <Position X="8.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\DiningRoom\Actors\Waiter.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppRestaurant.Model.DiningRoom.DiningRoomModel" Collapsed="true">
     <Position X="35.25" Y="1.5" Width="1.5" />
@@ -270,20 +268,6 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="AppRestaurant.Model.kitchen.Chef" Collapsed="true">
-    <Position X="15" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAABAAEAABAAAAAAAAAAAAAAgAAoAAAAAACAACABgAA=</HashCode>
-      <FileName>Model\kitchen\Chef.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="AppRestaurant.Model.kitchen.CommonMaterial" Collapsed="true">
-    <Position X="19.5" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\kitchen\CommonMaterial.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="AppRestaurant.Model.kitchen.CommonMaterialFactory" Collapsed="true">
     <Position X="31.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
@@ -299,20 +283,6 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="AppRestaurant.Model.kitchen.DeputyChef" Collapsed="true">
-    <Position X="10.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAABAAEAABAAAABAAAAAAAAAAAAIAAAAAACAACABiAA=</HashCode>
-      <FileName>Model\kitchen\DeputyChef.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="AppRestaurant.Model.kitchen.Diver" Collapsed="true">
-    <Position X="12.75" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAABAAEAABAAAABAAAAAAAAAAAAIAAAAAACAACABiAA=</HashCode>
-      <FileName>Model\kitchen\Diver.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="AppRestaurant.Model.kitchen.Ingredient" Collapsed="true">
     <Position X="0.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
@@ -320,18 +290,11 @@
       <FileName>Model\kitchen\Ingredient.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AppRestaurant.Model.kitchen.kitchen" Collapsed="true">
+  <Class Name="AppRestaurant.Model.Kitchen.Kitchen" Collapsed="true">
     <Position X="30" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model\kitchen\kitchen.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="AppRestaurant.Model.kitchen.kitchenClerk" Collapsed="true">
-    <Position X="17.25" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAABAAEAABAAAABAAAAAAAAAAAAIAAAAAACAACABiAA=</HashCode>
-      <FileName>Model\kitchen\kitchenClerk.cs</FileName>
+      <FileName>Model\Kitchen\Kitchen.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AppRestaurant.Model.kitchen.kitchenItem" Collapsed="true">
@@ -355,11 +318,11 @@
       <FileName>Model\kitchen\kitchenMaterialFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AppRestaurant.Model.kitchen.kitchenModel" Collapsed="true">
+  <Class Name="AppRestaurant.Model.Kitchen.KitchenModel" Collapsed="true">
     <Position X="35.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CASoABAgAABEBIByAAAgAIAgAEEBQgAAEACAAgAAEEQ=</HashCode>
-      <FileName>Model\kitchen\kitchenModel.cs</FileName>
+      <HashCode>CASoABAgQABEBIByAAAgAIAgAEEBQgAAEACAAgAAEEQ=</HashCode>
+      <FileName>Model\Kitchen\KitchenModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AppRestaurant.Model.kitchen.Material" Collapsed="true">
@@ -367,13 +330,6 @@
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAACAAAAAAAAAAAA=</HashCode>
       <FileName>Model\kitchen\Material.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="AppRestaurant.Model.kitchen.MotionkitchenItem" Collapsed="true">
-    <Position X="14" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAABAAAAAAAACAAAgAAAAAAAAQAAAAAACEAAIAg=</HashCode>
-      <FileName>Model\kitchen\MotionkitchenItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AppRestaurant.Model.kitchen.MotionlesskitchenItem" Collapsed="true">
@@ -429,7 +385,7 @@
   <Class Name="AppRestaurant.Properties.Resources" Collapsed="true">
     <Position X="31.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+      <HashCode>AAAAAAAAAAAAABAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="AppRestaurant.Properties.Settings" Collapsed="true">

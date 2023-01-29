@@ -79,15 +79,25 @@ namespace AppRestaurant.Model.Kitchen.DAO
         }
 
         /*
-		 * Update ingredient quantity
+		 * Update the quantity of an ingredient
 		 */
-        public void update(int id, int quantity)
+        public void update(Ingredient ingredient)
         {
-           da.createSqlCommand("UPDATE dbo.Ingredients SET quantity = @quantity WHERE id = @id");
-           da.getCmd().Parameters.AddWithValue("@quantity", quantity);
-           da.getCmd().Parameters.AddWithValue("@id", id);
+           da.createSqlCommand("UPDATE dbo.Ingredients SET quantite = @quantite WHERE id = @id");
+           da.getCmd().Parameters.AddWithValue("@quantite", ingredient.quantity);
+           da.getCmd().Parameters.AddWithValue("@id", ingredient.id);
            da.executeNonQuery();
            da.close();
+        }
+
+        public void create(Ingredient ingredient)
+        {
+            // Not implemented
+        }
+
+        public void delete(int id)
+        {
+            // Not implemented
         }
     }
 }
