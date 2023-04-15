@@ -8,13 +8,17 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AppRestaurant.Model.DB;
 
 namespace AppRestaurant.View.Common
 {
     public partial class NewBooking : Form
     {
+        public DBAccess da;
+
         public NewBooking()
         {
+            //da = new DBAccess();
             InitializeComponent();
         }
 
@@ -34,6 +38,16 @@ namespace AppRestaurant.View.Common
         private void iconbutton6_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void siticoneButton1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void siticoneButton2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

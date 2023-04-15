@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 using AppRestaurant.Model.DB;
+using System.Windows.Forms;
 
 namespace AppRestaurant.Model.DB
 {
@@ -22,7 +23,7 @@ namespace AppRestaurant.Model.DB
 			}
 			catch (Exception err)
 			{
-				Console.WriteLine(err.Message);
+				MessageBox.Show(err.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -40,15 +41,15 @@ namespace AppRestaurant.Model.DB
 			}
 			catch (InvalidCastException err)
 			{
-				Console.WriteLine(err.Message);
+				MessageBox.Show(err.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			catch (InvalidOperationException err)
 			{
-				Console.WriteLine(err.Message);
+				MessageBox.Show(err.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			catch (SqlException err)
 			{
-				Console.WriteLine(err.Message);
+				MessageBox.Show(err.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 

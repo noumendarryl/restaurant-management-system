@@ -108,7 +108,7 @@ namespace AppRestaurant.View.Common
             this.siticoneDateTimePicker1.FillColor = System.Drawing.Color.Empty;
             this.siticoneDateTimePicker1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(74)))));
             this.siticoneDateTimePicker1.Font = new System.Drawing.Font("Lexend Light", 15F);
-            this.siticoneDateTimePicker1.ForeColor = System.Drawing.Color.White;
+            this.siticoneDateTimePicker1.ForeColor = System.Drawing.Color.Gainsboro;
             this.siticoneDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.siticoneDateTimePicker1.Location = new System.Drawing.Point(168, 238);
             this.siticoneDateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -118,7 +118,7 @@ namespace AppRestaurant.View.Common
             this.siticoneDateTimePicker1.Size = new System.Drawing.Size(273, 32);
             this.siticoneDateTimePicker1.TabIndex = 34;
             this.siticoneDateTimePicker1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.siticoneDateTimePicker1.Value = new System.DateTime(2023, 1, 29, 1, 50, 21, 0);
+            this.siticoneDateTimePicker1.Value = new System.DateTime(2023, 2, 1, 0, 24, 47, 0);
             // 
             // siticoneTextBox1
             // 
@@ -132,7 +132,7 @@ namespace AppRestaurant.View.Common
             this.siticoneTextBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.siticoneTextBox1.FocusedState.BorderColor = System.Drawing.Color.White;
             this.siticoneTextBox1.Font = new System.Drawing.Font("Lexend Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneTextBox1.ForeColor = System.Drawing.Color.White;
+            this.siticoneTextBox1.ForeColor = System.Drawing.Color.Gainsboro;
             this.siticoneTextBox1.HoverState.BorderColor = System.Drawing.Color.White;
             this.siticoneTextBox1.Location = new System.Drawing.Point(168, 70);
             this.siticoneTextBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
@@ -151,7 +151,7 @@ namespace AppRestaurant.View.Common
             this.siticoneNumericUpDown1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.siticoneNumericUpDown1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.siticoneNumericUpDown1.Font = new System.Drawing.Font("Lexend Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneNumericUpDown1.ForeColor = System.Drawing.Color.White;
+            this.siticoneNumericUpDown1.ForeColor = System.Drawing.Color.Gainsboro;
             this.siticoneNumericUpDown1.Location = new System.Drawing.Point(170, 155);
             this.siticoneNumericUpDown1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.siticoneNumericUpDown1.Name = "siticoneNumericUpDown1";
@@ -171,12 +171,14 @@ namespace AppRestaurant.View.Common
             this.siticoneButton2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(135)))), ((int)(((byte)(144)))));
             this.siticoneButton2.Font = new System.Drawing.Font("Lexend Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneButton2.ForeColor = System.Drawing.Color.White;
+            this.siticoneButton2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(135)))), ((int)(((byte)(144)))));
             this.siticoneButton2.Location = new System.Drawing.Point(310, 310);
             this.siticoneButton2.Name = "siticoneButton2";
             this.siticoneButton2.PressedDepth = 0;
             this.siticoneButton2.Size = new System.Drawing.Size(131, 51);
             this.siticoneButton2.TabIndex = 31;
             this.siticoneButton2.Text = "Save";
+            this.siticoneButton2.Click += new System.EventHandler(this.siticoneButton2_Click);
             // 
             // siticoneButton1
             // 
@@ -199,6 +201,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton1.TabIndex = 30;
             this.siticoneButton1.Text = "Cancel";
             this.siticoneButton1.UseTransparentBackground = true;
+            this.siticoneButton1.Click += new System.EventHandler(this.siticoneButton1_Click);
             // 
             // siticoneHtmlLabel4
             // 
@@ -220,7 +223,7 @@ namespace AppRestaurant.View.Common
             this.siticoneHtmlLabel3.Name = "siticoneHtmlLabel3";
             this.siticoneHtmlLabel3.Size = new System.Drawing.Size(137, 34);
             this.siticoneHtmlLabel3.TabIndex = 28;
-            this.siticoneHtmlLabel3.Text = "Nb of People :";
+            this.siticoneHtmlLabel3.Text = "No of People :";
             // 
             // siticoneHtmlLabel2
             // 
@@ -250,7 +253,7 @@ namespace AppRestaurant.View.Common
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(23, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(20, 11);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 25);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -262,7 +265,7 @@ namespace AppRestaurant.View.Common
             this.siticoneHtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.siticoneHtmlLabel1.Font = new System.Drawing.Font("Lexend Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneHtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(135)))), ((int)(((byte)(144)))));
-            this.siticoneHtmlLabel1.Location = new System.Drawing.Point(54, 7);
+            this.siticoneHtmlLabel1.Location = new System.Drawing.Point(51, 8);
             this.siticoneHtmlLabel1.Name = "siticoneHtmlLabel1";
             this.siticoneHtmlLabel1.Size = new System.Drawing.Size(84, 35);
             this.siticoneHtmlLabel1.TabIndex = 26;
@@ -273,6 +276,9 @@ namespace AppRestaurant.View.Common
             this.iconButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconButton8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconButton8.FlatAppearance.BorderSize = 0;
+            this.iconButton8.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconButton8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconButton8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.iconButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
             this.iconButton8.IconColor = System.Drawing.Color.White;
@@ -289,6 +295,9 @@ namespace AppRestaurant.View.Common
             this.iconButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconButton6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconButton6.FlatAppearance.BorderSize = 0;
+            this.iconButton6.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconButton6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconButton6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
             this.iconButton6.IconColor = System.Drawing.Color.White;

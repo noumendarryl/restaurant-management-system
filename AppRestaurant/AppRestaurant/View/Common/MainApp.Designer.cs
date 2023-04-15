@@ -52,7 +52,6 @@ namespace AppRestaurant.View.Common
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.siticoneHtmlLabel3 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.siticoneHtmlLabel2 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.siticoneHtmlLabel1 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.panelMenu.SuspendLayout();
@@ -98,6 +97,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton7.Font = new System.Drawing.Font("Lexend Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneButton7.ForeColor = System.Drawing.Color.White;
+            this.siticoneButton7.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton7.Image = ((System.Drawing.Image)(resources.GetObject("siticoneButton7.Image")));
             this.siticoneButton7.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton7.ImageOffset = new System.Drawing.Point(15, 0);
@@ -110,7 +110,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton7.Text = "Sign In";
             this.siticoneButton7.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton7.TextOffset = new System.Drawing.Point(15, 0);
-            this.siticoneButton7.Click += new System.EventHandler(this.siticoneButton7_Click);
+            this.siticoneButton7.Click += new System.EventHandler(this.SignIn);
             // 
             // siticoneButton6
             // 
@@ -126,6 +126,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton6.Font = new System.Drawing.Font("Lexend Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneButton6.ForeColor = System.Drawing.Color.White;
+            this.siticoneButton6.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton6.Image = ((System.Drawing.Image)(resources.GetObject("siticoneButton6.Image")));
             this.siticoneButton6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton6.ImageOffset = new System.Drawing.Point(15, 0);
@@ -138,7 +139,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton6.Text = "Help";
             this.siticoneButton6.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton6.TextOffset = new System.Drawing.Point(15, 0);
-            this.siticoneButton6.Click += new System.EventHandler(this.siticoneButton6_Click);
+            this.siticoneButton6.Click += new System.EventHandler(this.Help);
             // 
             // siticoneButton5
             // 
@@ -154,6 +155,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton5.Font = new System.Drawing.Font("Lexend Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneButton5.ForeColor = System.Drawing.Color.White;
+            this.siticoneButton5.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton5.Image = ((System.Drawing.Image)(resources.GetObject("siticoneButton5.Image")));
             this.siticoneButton5.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton5.ImageOffset = new System.Drawing.Point(15, 0);
@@ -166,7 +168,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton5.Text = "Booking";
             this.siticoneButton5.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton5.TextOffset = new System.Drawing.Point(15, 0);
-            this.siticoneButton5.Click += new System.EventHandler(this.siticoneButton5_Click);
+            this.siticoneButton5.Click += new System.EventHandler(this.Booking);
             // 
             // siticoneButton4
             // 
@@ -182,6 +184,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton4.Font = new System.Drawing.Font("Lexend Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneButton4.ForeColor = System.Drawing.Color.White;
+            this.siticoneButton4.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton4.Image = ((System.Drawing.Image)(resources.GetObject("siticoneButton4.Image")));
             this.siticoneButton4.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton4.ImageOffset = new System.Drawing.Point(15, 0);
@@ -194,7 +197,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton4.Text = "Inventory";
             this.siticoneButton4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton4.TextOffset = new System.Drawing.Point(15, 0);
-            this.siticoneButton4.Click += new System.EventHandler(this.siticoneButton4_Click);
+            this.siticoneButton4.Click += new System.EventHandler(this.Inventory);
             // 
             // siticoneButton3
             // 
@@ -210,6 +213,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton3.Font = new System.Drawing.Font("Lexend Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneButton3.ForeColor = System.Drawing.Color.White;
+            this.siticoneButton3.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton3.Image = ((System.Drawing.Image)(resources.GetObject("siticoneButton3.Image")));
             this.siticoneButton3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton3.ImageOffset = new System.Drawing.Point(15, 0);
@@ -222,7 +226,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton3.Text = "Setting";
             this.siticoneButton3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton3.TextOffset = new System.Drawing.Point(15, 0);
-            this.siticoneButton3.Click += new System.EventHandler(this.stiticoneButton3_Click);
+            this.siticoneButton3.Click += new System.EventHandler(this.Setting);
             // 
             // siticoneButton2
             // 
@@ -238,6 +242,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton2.Font = new System.Drawing.Font("Lexend Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneButton2.ForeColor = System.Drawing.Color.White;
+            this.siticoneButton2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton2.Image = ((System.Drawing.Image)(resources.GetObject("siticoneButton2.Image")));
             this.siticoneButton2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton2.ImageOffset = new System.Drawing.Point(15, 0);
@@ -250,7 +255,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton2.Text = "Monitoring";
             this.siticoneButton2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton2.TextOffset = new System.Drawing.Point(15, 0);
-            this.siticoneButton2.Click += new System.EventHandler(this.siticoneButton2_Click);
+            this.siticoneButton2.Click += new System.EventHandler(this.Monitoring);
             // 
             // siticoneButton1
             // 
@@ -266,6 +271,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton1.Font = new System.Drawing.Font("Lexend Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneButton1.ForeColor = System.Drawing.Color.White;
+            this.siticoneButton1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.siticoneButton1.Image = ((System.Drawing.Image)(resources.GetObject("siticoneButton1.Image")));
             this.siticoneButton1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton1.ImageOffset = new System.Drawing.Point(15, 0);
@@ -280,7 +286,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton1.Text = "Simulation";
             this.siticoneButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.siticoneButton1.TextOffset = new System.Drawing.Point(15, 0);
-            this.siticoneButton1.Click += new System.EventHandler(this.siticoneButton1_Click);
+            this.siticoneButton1.Click += new System.EventHandler(this.Simulation);
             // 
             // panel8
             // 
@@ -301,7 +307,7 @@ namespace AppRestaurant.View.Common
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.Click += new System.EventHandler(this.Home);
             // 
             // panel1
             // 
@@ -368,24 +374,30 @@ namespace AppRestaurant.View.Common
             this.iconButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconButton10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconButton10.FlatAppearance.BorderSize = 0;
+            this.iconButton10.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconButton10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconButton10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.iconButton10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton10.IconChar = FontAwesome.Sharp.IconChar.WindowRestore;
             this.iconButton10.IconColor = System.Drawing.Color.White;
             this.iconButton10.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton10.IconSize = 22;
-            this.iconButton10.Location = new System.Drawing.Point(710, 7);
+            this.iconButton10.Location = new System.Drawing.Point(710, 9);
             this.iconButton10.Name = "iconButton10";
             this.iconButton10.Size = new System.Drawing.Size(22, 20);
             this.iconButton10.TabIndex = 5;
             this.iconButton10.UseVisualStyleBackColor = true;
             this.iconButton10.Visible = false;
-            this.iconButton10.Click += new System.EventHandler(this.iconButton10_Click);
+            this.iconButton10.Click += new System.EventHandler(this.Normal);
             // 
             // iconButton8
             // 
             this.iconButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconButton8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconButton8.FlatAppearance.BorderSize = 0;
+            this.iconButton8.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconButton8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconButton8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.iconButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
             this.iconButton8.IconColor = System.Drawing.Color.White;
@@ -396,13 +408,16 @@ namespace AppRestaurant.View.Common
             this.iconButton8.Size = new System.Drawing.Size(25, 22);
             this.iconButton8.TabIndex = 4;
             this.iconButton8.UseVisualStyleBackColor = true;
-            this.iconButton8.Click += new System.EventHandler(this.iconButton8_Click);
+            this.iconButton8.Click += new System.EventHandler(this.Minimize);
             // 
             // iconButton7
             // 
             this.iconButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconButton7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconButton7.FlatAppearance.BorderSize = 0;
+            this.iconButton7.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconButton7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconButton7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
             this.iconButton7.IconColor = System.Drawing.Color.White;
@@ -413,13 +428,16 @@ namespace AppRestaurant.View.Common
             this.iconButton7.Size = new System.Drawing.Size(22, 20);
             this.iconButton7.TabIndex = 3;
             this.iconButton7.UseVisualStyleBackColor = true;
-            this.iconButton7.Click += new System.EventHandler(this.iconButton7_Click);
+            this.iconButton7.Click += new System.EventHandler(this.Maximize);
             // 
             // iconButton6
             // 
             this.iconButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconButton6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconButton6.FlatAppearance.BorderSize = 0;
+            this.iconButton6.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconButton6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconButton6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
             this.iconButton6.IconColor = System.Drawing.Color.White;
@@ -430,12 +448,11 @@ namespace AppRestaurant.View.Common
             this.iconButton6.Size = new System.Drawing.Size(24, 20);
             this.iconButton6.TabIndex = 2;
             this.iconButton6.UseVisualStyleBackColor = true;
-            this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
+            this.iconButton6.Click += new System.EventHandler(this.Exit);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.panel2.Controls.Add(this.siticoneHtmlLabel3);
             this.panel2.Controls.Add(this.siticoneHtmlLabel2);
             this.panel2.Controls.Add(this.siticoneHtmlLabel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -444,24 +461,13 @@ namespace AppRestaurant.View.Common
             this.panel2.Size = new System.Drawing.Size(764, 562);
             this.panel2.TabIndex = 2;
             // 
-            // siticoneHtmlLabel3
-            // 
-            this.siticoneHtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneHtmlLabel3.Font = new System.Drawing.Font("Lexend Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneHtmlLabel3.ForeColor = System.Drawing.Color.White;
-            this.siticoneHtmlLabel3.Location = new System.Drawing.Point(113, 297);
-            this.siticoneHtmlLabel3.Name = "siticoneHtmlLabel3";
-            this.siticoneHtmlLabel3.Size = new System.Drawing.Size(525, 48);
-            this.siticoneHtmlLabel3.TabIndex = 24;
-            this.siticoneHtmlLabel3.Text = "Let your life become easier with tastyl";
-            // 
             // siticoneHtmlLabel2
             // 
             this.siticoneHtmlLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.siticoneHtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.siticoneHtmlLabel2.Font = new System.Drawing.Font("Lexend Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneHtmlLabel2.ForeColor = System.Drawing.Color.MediumPurple;
-            this.siticoneHtmlLabel2.Location = new System.Drawing.Point(154, 241);
+            this.siticoneHtmlLabel2.Location = new System.Drawing.Point(138, 268);
             this.siticoneHtmlLabel2.Name = "siticoneHtmlLabel2";
             this.siticoneHtmlLabel2.Size = new System.Drawing.Size(452, 60);
             this.siticoneHtmlLabel2.TabIndex = 23;
@@ -473,7 +479,7 @@ namespace AppRestaurant.View.Common
             this.siticoneHtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.siticoneHtmlLabel1.Font = new System.Drawing.Font("Lexend Light", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneHtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.siticoneHtmlLabel1.Location = new System.Drawing.Point(257, 152);
+            this.siticoneHtmlLabel1.Location = new System.Drawing.Point(255, 178);
             this.siticoneHtmlLabel1.Name = "siticoneHtmlLabel1";
             this.siticoneHtmlLabel1.Size = new System.Drawing.Size(267, 104);
             this.siticoneHtmlLabel1.TabIndex = 22;
@@ -518,7 +524,6 @@ namespace AppRestaurant.View.Common
         private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel siticoneHtmlLabel6;
         private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel siticoneHtmlLabel1;
         private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel siticoneHtmlLabel2;
-        private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel siticoneHtmlLabel3;
         private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton5;
         private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton4;
         private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton3;

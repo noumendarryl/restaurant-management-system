@@ -38,5 +38,15 @@ namespace AppRestaurant.View.Common
                 siticoneHtmlLabel5.Visible = true;
             }
         }
+
+        private void siticoneHtmlLabel7_MouseEnter(object sender, EventArgs e)
+        {
+            siticoneHtmlLabel7.ForeColor = Color.FromArgb(255, 152, 0);
+        }
+
+        private void siticoneHtmlLabel7_MouseLeave(object sender, EventArgs e)
+        {
+            siticoneHtmlLabel7.ForeColor = Color.White;
+        }
     }
 }

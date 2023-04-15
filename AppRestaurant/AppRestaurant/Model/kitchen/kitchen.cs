@@ -13,7 +13,7 @@ namespace AppRestaurant.Model.Kitchen
 
         public Kitchen()
         {
-            map = new Material[18, 8];
+            map = new Material[18, 7];
         }
     }
 }

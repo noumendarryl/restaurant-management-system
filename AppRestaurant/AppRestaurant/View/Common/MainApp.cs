@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
 using Siticone.Desktop.UI.WinForms;
 using System.IO;
-using System.Collections.Generic;
 
 namespace AppRestaurant.View.Common
 {
@@ -17,13 +15,19 @@ namespace AppRestaurant.View.Common
         private Image defaultImage;
         private Form currentChildForm;
         private Timer timer;
+        private Simulation simulation;
+        private Setting setting;
+        private Monitoring monitoring;
 
-        public MainApp()
+        public MainApp(Simulation simulation, Setting setting, Monitoring monitoring)
         {
+            this.simulation = simulation;
+            this.setting = setting;
+            this.monitoring = monitoring;
             InitializeComponent();
             timer = new Timer();
             timer.Interval = 1000;
-            timer.Tick += new EventHandler(this.tick);
+            timer.Tick += new EventHandler(Tick);
             timer.Start();
             defaultImage = (Image)pictureBox2.Image.Clone();
             Text = string.Empty;
@@ -32,7 +36,7 @@ namespace AppRestaurant.View.Common
             MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
         }
 
-        private void tick(object sender, EventArgs e)
+        private void Tick(object sender, EventArgs e)
         {
             string date = DateTime.Now.Date.ToLongDateString();
             int hour = DateTime.Now.Hour;
@@ -120,11 +124,6 @@ namespace AppRestaurant.View.Common
 
         private void OpenChildForm(Form childForm)
         {
-            if (currentChildForm != null)
-            {
-                // Open a single form
-                currentChildForm.Close();
-            }
             currentChildForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
@@ -136,74 +135,74 @@ namespace AppRestaurant.View.Common
             siticoneHtmlLabel6.Text = childForm.Text;
         }
 
-        private void iconButton6_Click(object sender, EventArgs e)
+        private void Exit(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void iconButton7_Click(object sender, EventArgs e)
+        private void Maximize(object sender, EventArgs e)
         {
             //WindowState = FormWindowState.Maximized;
             //iconButton10.Visible = true;
         }
 
-        private void iconButton10_Click(object sender, EventArgs e)
+        private void Normal(object sender, EventArgs e)
         {
             //WindowState = FormWindowState.Normal;
             //iconButton7.Visible = true;
             //iconButton10.Visible = false;
         }
 
-        private void iconButton8_Click(object sender, EventArgs e)
+        private void Minimize(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
 
-        private void siticoneButton1_Click(object sender, EventArgs e)
+        private void Simulation(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1, "gripfire_32px_2.png");
-            OpenChildForm(new Simulation());
+            OpenChildForm(simulation);
         }
 
-        private void siticoneButton2_Click(object sender, EventArgs e)
+        private void Monitoring(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color2, "heart_with_pulse_32px_2.png");
-            OpenChildForm(new Monitoring());
+            OpenChildForm(monitoring);
         }
 
-        private void stiticoneButton3_Click(object sender, EventArgs e)
+        private void Setting(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3, "settings_32px_2.png");
-            OpenChildForm(new Setting(new Simulation()));
+            OpenChildForm(setting);
         }
 
-        private void siticoneButton4_Click(object sender, EventArgs e)
+        private void Inventory(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4, "shop_32px_2.png");
             OpenChildForm(new Inventory());
         }
 
-        private void siticoneButton5_Click(object sender, EventArgs e)
+        private void Booking(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color5, "bookmark_32px_2.png");
             OpenChildForm(new Booking());
         }
 
-        private void siticoneButton6_Click(object sender, EventArgs e)
+        private void Help(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color6, "help_32px_2.png");
             OpenChildForm(new Help());
         }
 
-        private void siticoneButton7_Click(object sender, EventArgs e)
+        private void SignIn(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color7, "login_32px_2.png");
             OpenChildForm(new SignIn());
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Home(object sender, EventArgs e)
         {
-            currentChildForm.Close();
+            currentChildForm.Hide();
             pictureBox2.Image = defaultImage;
             siticoneHtmlLabel6.Text = "Home";
             Reset();

@@ -113,11 +113,11 @@ namespace AppRestaurant.View.Common
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox1.Font = new System.Drawing.Font("Lexend Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Font = new System.Drawing.Font("Lexend Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Gainsboro;
             this.textBox1.Location = new System.Drawing.Point(171, 16);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(440, 24);
+            this.textBox1.Size = new System.Drawing.Size(440, 25);
             this.textBox1.TabIndex = 1;
             // 
             // panel3
@@ -182,11 +182,11 @@ namespace AppRestaurant.View.Common
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox2.Font = new System.Drawing.Font("Lexend Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.White;
+            this.textBox2.Font = new System.Drawing.Font("Lexend Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.Gainsboro;
             this.textBox2.Location = new System.Drawing.Point(171, 16);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(440, 24);
+            this.textBox2.Size = new System.Drawing.Size(440, 25);
             this.textBox2.TabIndex = 1;
             this.textBox2.UseSystemPasswordChar = true;
             // 
@@ -244,6 +244,9 @@ namespace AppRestaurant.View.Common
             this.siticoneHtmlLabel7.Size = new System.Drawing.Size(210, 34);
             this.siticoneHtmlLabel7.TabIndex = 10;
             this.siticoneHtmlLabel7.Text = "Create a new account";
+            this.siticoneHtmlLabel7.UseSystemCursors = true;
+            this.siticoneHtmlLabel7.MouseEnter += new System.EventHandler(this.siticoneHtmlLabel7_MouseEnter);
+            this.siticoneHtmlLabel7.MouseLeave += new System.EventHandler(this.siticoneHtmlLabel7_MouseLeave);
             // 
             // SignIn
             // 

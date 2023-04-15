@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AppRestaurant.Model.DB
 {
@@ -43,11 +44,12 @@ namespace AppRestaurant.Model.DB
 			try
 			{
 				conn = new SqlConnection("Data Source=(local);Initial Catalog=AppRestaurant;Integrated Security=true");
-				conn.Open();
+				if (conn.State == ConnectionState.Closed)
+					conn.Open();
 			}
 			catch (SqlException e)
 			{
-				Console.WriteLine(e.Message);
+				MessageBox.Show(e.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			return true;
 		}

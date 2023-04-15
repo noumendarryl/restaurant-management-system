@@ -14,7 +14,9 @@ namespace AppRestaurant
     public partial class Setting : Form
     {
         private Simulation simulation;
+        private Monitoring monitoring;
         public int simulationTimeScale { get; set; }
+        public int simulationTotalTime { get; set; }
         public int chefNumber { get; set; }
         public int deputyChefNumber { get; set; }
         public int kitchenClerkNumber { get; set; }
@@ -24,30 +26,32 @@ namespace AppRestaurant
         public int blenderNumber { get; set; }
         public int ovenNumber { get; set; }
 
-        public Setting(Simulation simulationForm)
+        public Setting(Simulation simulation, Monitoring monitoring)
         {
-            simulation = simulationForm;
+            this.simulation = simulation;
+            this.monitoring = monitoring;
             InitializeComponent();
         }
 
-        private void confirm(object sender, EventArgs e)
+        private void Confirm(object sender, EventArgs e)
         {
-            //simulationTimeScale = Convert.ToInt32(textBox1.Text);
+            simulationTimeScale = Convert.ToInt32(siticoneNumericUpDown3.Value);
+            simulationTotalTime = Convert.ToInt32(siticoneNumericUpDown2.Value);
 
-            //chefNumber = Convert.ToInt32(textBox2.Text);
-            //deputyChefNumber = Convert.ToInt32(textBox4.Text);
-            //kitchenClerkNumber = Convert.ToInt32(textBox3.Text);
-            //diverNumber = Convert.ToInt32(textBox5.Text);
+            chefNumber = Convert.ToInt32(siticoneNumericUpDown20.Value);
+            deputyChefNumber = Convert.ToInt32(siticoneNumericUpDown9.Value);
+            kitchenClerkNumber = Convert.ToInt32(siticoneNumericUpDown11.Value);
+            diverNumber = Convert.ToInt32(siticoneNumericUpDown16.Value);
 
-            //blenderNumber = Convert.ToInt32(textBox6.Text);
-            //ovenNumber = Convert.ToInt32(textBox7.Text);
-            //cookingFireNumber = Convert.ToInt32(textBox8.Text);
-            //fridgeNumber = Convert.ToInt32(textBox9.Text);
+            blenderNumber = Convert.ToInt32(siticoneNumericUpDown19.Value);
+            ovenNumber = Convert.ToInt32(siticoneNumericUpDown15.Value);
+            cookingFireNumber = Convert.ToInt32(siticoneNumericUpDown10.Value);
+            fridgeNumber = Convert.ToInt32(siticoneNumericUpDown18.Value);
 
-            //simulation.model.setEmployeeConfig(chefNumber, deputyChefNumber, kitchenClerkNumber, diverNumber);
-            //simulation.model.setMaterialConfig(cookingFireNumber, ovenNumber, blenderNumber, fridgeNumber);
-            //simulation.model.TIME_SCALE = simulationTimeScale * 1000;
-            Close();
+            simulation.model.TIME_SCALE = simulationTimeScale * 1000;
+            simulation.model.setEmployeeConfig(chefNumber, deputyChefNumber, kitchenClerkNumber, diverNumber);
+            simulation.model.setMaterialConfig(cookingFireNumber, ovenNumber, blenderNumber, fridgeNumber);
+            monitoring.setRestaurantStaff(chefNumber, deputyChefNumber, kitchenClerkNumber, diverNumber);
         }
 
         private void siticoneButton1_MouseEnter(object sender, EventArgs e)

@@ -30,6 +30,7 @@ namespace AppRestaurant
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.siticoneNumericUpDown18 = new Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown();
             this.panel23 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
@@ -57,7 +58,6 @@ namespace AppRestaurant
             this.siticoneHtmlLabel2 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.siticoneNumericUpDown20 = new Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown();
             this.siticoneNumericUpDown19 = new Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown();
-            this.siticoneNumericUpDown18 = new Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown();
             this.siticoneNumericUpDown17 = new Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown();
             this.siticoneNumericUpDown16 = new Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown();
             this.siticoneNumericUpDown15 = new Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown();
@@ -97,9 +97,9 @@ namespace AppRestaurant
             this.siticoneNumericUpDown2 = new Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown();
             this.siticoneButton1 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown15)).BeginInit();
@@ -127,6 +127,7 @@ namespace AppRestaurant
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(82)))));
+            this.panel2.Controls.Add(this.siticoneNumericUpDown18);
             this.panel2.Controls.Add(this.panel23);
             this.panel2.Controls.Add(this.panel22);
             this.panel2.Controls.Add(this.panel21);
@@ -154,7 +155,6 @@ namespace AppRestaurant
             this.panel2.Controls.Add(this.siticoneHtmlLabel2);
             this.panel2.Controls.Add(this.siticoneNumericUpDown20);
             this.panel2.Controls.Add(this.siticoneNumericUpDown19);
-            this.panel2.Controls.Add(this.siticoneNumericUpDown18);
             this.panel2.Controls.Add(this.siticoneNumericUpDown17);
             this.panel2.Controls.Add(this.siticoneNumericUpDown16);
             this.panel2.Controls.Add(this.siticoneNumericUpDown15);
@@ -168,6 +168,25 @@ namespace AppRestaurant
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(740, 287);
             this.panel2.TabIndex = 1;
+            // 
+            // siticoneNumericUpDown18
+            // 
+            this.siticoneNumericUpDown18.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneNumericUpDown18.BorderColor = System.Drawing.Color.White;
+            this.siticoneNumericUpDown18.BorderRadius = 2;
+            this.siticoneNumericUpDown18.BorderThickness = 0;
+            this.siticoneNumericUpDown18.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.siticoneNumericUpDown18.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(82)))));
+            this.siticoneNumericUpDown18.Font = new System.Drawing.Font("Lexend Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneNumericUpDown18.ForeColor = System.Drawing.Color.White;
+            this.siticoneNumericUpDown18.Location = new System.Drawing.Point(11, 243);
+            this.siticoneNumericUpDown18.Margin = new System.Windows.Forms.Padding(5);
+            this.siticoneNumericUpDown18.Name = "siticoneNumericUpDown18";
+            this.siticoneNumericUpDown18.Size = new System.Drawing.Size(134, 31);
+            this.siticoneNumericUpDown18.TabIndex = 49;
+            this.siticoneNumericUpDown18.TextOffset = new System.Drawing.Point(-6, 0);
+            this.siticoneNumericUpDown18.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(82)))));
+            this.siticoneNumericUpDown18.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(138)))), ((int)(((byte)(114)))));
             // 
             // panel23
             // 
@@ -270,22 +289,22 @@ namespace AppRestaurant
             this.siticoneHtmlLabel23.BackColor = System.Drawing.Color.Transparent;
             this.siticoneHtmlLabel23.Font = new System.Drawing.Font("Lexend Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneHtmlLabel23.ForeColor = System.Drawing.Color.White;
-            this.siticoneHtmlLabel23.Location = new System.Drawing.Point(603, 209);
+            this.siticoneHtmlLabel23.Location = new System.Drawing.Point(604, 211);
             this.siticoneHtmlLabel23.Name = "siticoneHtmlLabel23";
             this.siticoneHtmlLabel23.Size = new System.Drawing.Size(103, 32);
             this.siticoneHtmlLabel23.TabIndex = 43;
-            this.siticoneHtmlLabel23.Text = "Nb of Pans";
+            this.siticoneHtmlLabel23.Text = "No of Pans";
             // 
             // siticoneHtmlLabel22
             // 
             this.siticoneHtmlLabel22.BackColor = System.Drawing.Color.Transparent;
             this.siticoneHtmlLabel22.Font = new System.Drawing.Font("Lexend Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siticoneHtmlLabel22.ForeColor = System.Drawing.Color.White;
-            this.siticoneHtmlLabel22.Location = new System.Drawing.Point(388, 209);
+            this.siticoneHtmlLabel22.Location = new System.Drawing.Point(388, 211);
             this.siticoneHtmlLabel22.Name = "siticoneHtmlLabel22";
-            this.siticoneHtmlLabel22.Size = new System.Drawing.Size(156, 32);
+            this.siticoneHtmlLabel22.Size = new System.Drawing.Size(206, 32);
             this.siticoneHtmlLabel22.TabIndex = 42;
-            this.siticoneHtmlLabel22.Text = "Nb of Casseroles";
+            this.siticoneHtmlLabel22.Text = "No of CasseroleDishes";
             // 
             // siticoneHtmlLabel21
             // 
@@ -296,7 +315,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel21.Name = "siticoneHtmlLabel21";
             this.siticoneHtmlLabel21.Size = new System.Drawing.Size(181, 32);
             this.siticoneHtmlLabel21.TabIndex = 41;
-            this.siticoneHtmlLabel21.Text = "Nb of WoodSpoons";
+            this.siticoneHtmlLabel21.Text = "No of WoodSpoons";
             // 
             // siticoneHtmlLabel20
             // 
@@ -307,7 +326,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel20.Name = "siticoneHtmlLabel20";
             this.siticoneHtmlLabel20.Size = new System.Drawing.Size(126, 32);
             this.siticoneHtmlLabel20.TabIndex = 40;
-            this.siticoneHtmlLabel20.Text = "Nb of Fridges";
+            this.siticoneHtmlLabel20.Text = "No of Fridges";
             // 
             // siticoneHtmlLabel19
             // 
@@ -318,7 +337,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel19.Name = "siticoneHtmlLabel19";
             this.siticoneHtmlLabel19.Size = new System.Drawing.Size(115, 32);
             this.siticoneHtmlLabel19.TabIndex = 39;
-            this.siticoneHtmlLabel19.Text = "Nb of Ovens";
+            this.siticoneHtmlLabel19.Text = "No of Ovens";
             // 
             // siticoneHtmlLabel18
             // 
@@ -329,7 +348,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel18.Name = "siticoneHtmlLabel18";
             this.siticoneHtmlLabel18.Size = new System.Drawing.Size(183, 32);
             this.siticoneHtmlLabel18.TabIndex = 38;
-            this.siticoneHtmlLabel18.Text = "Nb of KitchenKnifes";
+            this.siticoneHtmlLabel18.Text = "No of KitchenKnifes";
             // 
             // siticoneHtmlLabel17
             // 
@@ -340,7 +359,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel17.Name = "siticoneHtmlLabel17";
             this.siticoneHtmlLabel17.Size = new System.Drawing.Size(177, 32);
             this.siticoneHtmlLabel17.TabIndex = 37;
-            this.siticoneHtmlLabel17.Text = "Nb of CookingFires";
+            this.siticoneHtmlLabel17.Text = "No of CookingFires";
             // 
             // siticoneHtmlLabel16
             // 
@@ -351,7 +370,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel16.Name = "siticoneHtmlLabel16";
             this.siticoneHtmlLabel16.Size = new System.Drawing.Size(137, 32);
             this.siticoneHtmlLabel16.TabIndex = 36;
-            this.siticoneHtmlLabel16.Text = "Nb of Blenders";
+            this.siticoneHtmlLabel16.Text = "No of Blenders";
             // 
             // siticoneHtmlLabel15
             // 
@@ -362,7 +381,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel15.Name = "siticoneHtmlLabel15";
             this.siticoneHtmlLabel15.Size = new System.Drawing.Size(115, 32);
             this.siticoneHtmlLabel15.TabIndex = 35;
-            this.siticoneHtmlLabel15.Text = "Nb of Divers";
+            this.siticoneHtmlLabel15.Text = "No of Divers";
             // 
             // siticoneHtmlLabel14
             // 
@@ -373,7 +392,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel14.Name = "siticoneHtmlLabel14";
             this.siticoneHtmlLabel14.Size = new System.Drawing.Size(181, 32);
             this.siticoneHtmlLabel14.TabIndex = 34;
-            this.siticoneHtmlLabel14.Text = "Nb of KitchenClerks";
+            this.siticoneHtmlLabel14.Text = "No of KitchenClerks";
             // 
             // siticoneHtmlLabel13
             // 
@@ -384,7 +403,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel13.Name = "siticoneHtmlLabel13";
             this.siticoneHtmlLabel13.Size = new System.Drawing.Size(175, 32);
             this.siticoneHtmlLabel13.TabIndex = 33;
-            this.siticoneHtmlLabel13.Text = "Nb of DeputyChefs";
+            this.siticoneHtmlLabel13.Text = "No of DeputyChefs";
             // 
             // siticoneHtmlLabel12
             // 
@@ -395,7 +414,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel12.Name = "siticoneHtmlLabel12";
             this.siticoneHtmlLabel12.Size = new System.Drawing.Size(110, 32);
             this.siticoneHtmlLabel12.TabIndex = 32;
-            this.siticoneHtmlLabel12.Text = "Nb of Chefs";
+            this.siticoneHtmlLabel12.Text = "No of Chefs";
             // 
             // siticoneHtmlLabel2
             // 
@@ -421,7 +440,7 @@ namespace AppRestaurant
             this.siticoneNumericUpDown20.Location = new System.Drawing.Point(11, 94);
             this.siticoneNumericUpDown20.Margin = new System.Windows.Forms.Padding(5);
             this.siticoneNumericUpDown20.Name = "siticoneNumericUpDown20";
-            this.siticoneNumericUpDown20.Size = new System.Drawing.Size(138, 30);
+            this.siticoneNumericUpDown20.Size = new System.Drawing.Size(134, 30);
             this.siticoneNumericUpDown20.TabIndex = 30;
             this.siticoneNumericUpDown20.TextOffset = new System.Drawing.Point(-6, 0);
             this.siticoneNumericUpDown20.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(82)))));
@@ -440,30 +459,11 @@ namespace AppRestaurant
             this.siticoneNumericUpDown19.Location = new System.Drawing.Point(11, 169);
             this.siticoneNumericUpDown19.Margin = new System.Windows.Forms.Padding(5);
             this.siticoneNumericUpDown19.Name = "siticoneNumericUpDown19";
-            this.siticoneNumericUpDown19.Size = new System.Drawing.Size(138, 31);
+            this.siticoneNumericUpDown19.Size = new System.Drawing.Size(134, 31);
             this.siticoneNumericUpDown19.TabIndex = 29;
             this.siticoneNumericUpDown19.TextOffset = new System.Drawing.Point(-6, 0);
             this.siticoneNumericUpDown19.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(82)))));
             this.siticoneNumericUpDown19.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(138)))), ((int)(((byte)(114)))));
-            // 
-            // siticoneNumericUpDown18
-            // 
-            this.siticoneNumericUpDown18.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneNumericUpDown18.BorderColor = System.Drawing.Color.White;
-            this.siticoneNumericUpDown18.BorderRadius = 2;
-            this.siticoneNumericUpDown18.BorderThickness = 0;
-            this.siticoneNumericUpDown18.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.siticoneNumericUpDown18.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(82)))));
-            this.siticoneNumericUpDown18.Font = new System.Drawing.Font("Lexend Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.siticoneNumericUpDown18.ForeColor = System.Drawing.Color.White;
-            this.siticoneNumericUpDown18.Location = new System.Drawing.Point(11, 246);
-            this.siticoneNumericUpDown18.Margin = new System.Windows.Forms.Padding(5);
-            this.siticoneNumericUpDown18.Name = "siticoneNumericUpDown18";
-            this.siticoneNumericUpDown18.Size = new System.Drawing.Size(140, 28);
-            this.siticoneNumericUpDown18.TabIndex = 28;
-            this.siticoneNumericUpDown18.TextOffset = new System.Drawing.Point(-6, 0);
-            this.siticoneNumericUpDown18.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(82)))));
-            this.siticoneNumericUpDown18.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(138)))), ((int)(((byte)(114)))));
             // 
             // siticoneNumericUpDown17
             // 
@@ -478,7 +478,7 @@ namespace AppRestaurant
             this.siticoneNumericUpDown17.Location = new System.Drawing.Point(177, 246);
             this.siticoneNumericUpDown17.Margin = new System.Windows.Forms.Padding(5);
             this.siticoneNumericUpDown17.Name = "siticoneNumericUpDown17";
-            this.siticoneNumericUpDown17.Size = new System.Drawing.Size(179, 28);
+            this.siticoneNumericUpDown17.Size = new System.Drawing.Size(177, 28);
             this.siticoneNumericUpDown17.TabIndex = 27;
             this.siticoneNumericUpDown17.TextOffset = new System.Drawing.Point(-6, 0);
             this.siticoneNumericUpDown17.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(82)))));
@@ -722,7 +722,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel11.Name = "siticoneHtmlLabel11";
             this.siticoneHtmlLabel11.Size = new System.Drawing.Size(114, 32);
             this.siticoneHtmlLabel11.TabIndex = 29;
-            this.siticoneHtmlLabel11.Text = "Nb of Ranks";
+            this.siticoneHtmlLabel11.Text = "No of Ranks";
             // 
             // siticoneHtmlLabel10
             // 
@@ -733,7 +733,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel10.Name = "siticoneHtmlLabel10";
             this.siticoneHtmlLabel10.Size = new System.Drawing.Size(167, 32);
             this.siticoneHtmlLabel10.TabIndex = 28;
-            this.siticoneHtmlLabel10.Text = "Nb of RoomClerks";
+            this.siticoneHtmlLabel10.Text = "No of RoomClerks";
             // 
             // siticoneHtmlLabel9
             // 
@@ -744,7 +744,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel9.Name = "siticoneHtmlLabel9";
             this.siticoneHtmlLabel9.Size = new System.Drawing.Size(128, 32);
             this.siticoneHtmlLabel9.TabIndex = 27;
-            this.siticoneHtmlLabel9.Text = "Nb of Waiters";
+            this.siticoneHtmlLabel9.Text = "No of Waiters";
             // 
             // siticoneHtmlLabel8
             // 
@@ -755,7 +755,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel8.Name = "siticoneHtmlLabel8";
             this.siticoneHtmlLabel8.Size = new System.Drawing.Size(117, 32);
             this.siticoneHtmlLabel8.TabIndex = 26;
-            this.siticoneHtmlLabel8.Text = "Nb of Tables";
+            this.siticoneHtmlLabel8.Text = "No of Tables";
             // 
             // siticoneHtmlLabel7
             // 
@@ -766,7 +766,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel7.Name = "siticoneHtmlLabel7";
             this.siticoneHtmlLabel7.Size = new System.Drawing.Size(177, 32);
             this.siticoneHtmlLabel7.TabIndex = 25;
-            this.siticoneHtmlLabel7.Text = "Nb of HeadWaiters";
+            this.siticoneHtmlLabel7.Text = "No of HeadWaiters";
             // 
             // siticoneHtmlLabel6
             // 
@@ -777,7 +777,7 @@ namespace AppRestaurant
             this.siticoneHtmlLabel6.Name = "siticoneHtmlLabel6";
             this.siticoneHtmlLabel6.Size = new System.Drawing.Size(121, 32);
             this.siticoneHtmlLabel6.TabIndex = 24;
-            this.siticoneHtmlLabel6.Text = "Nb of Butlers";
+            this.siticoneHtmlLabel6.Text = "No of Butlers";
             // 
             // siticoneHtmlLabel1
             // 
@@ -942,9 +942,9 @@ namespace AppRestaurant
             this.siticoneHtmlLabel4.ForeColor = System.Drawing.Color.White;
             this.siticoneHtmlLabel4.Location = new System.Drawing.Point(11, 124);
             this.siticoneHtmlLabel4.Name = "siticoneHtmlLabel4";
-            this.siticoneHtmlLabel4.Size = new System.Drawing.Size(193, 32);
+            this.siticoneHtmlLabel4.Size = new System.Drawing.Size(197, 32);
             this.siticoneHtmlLabel4.TabIndex = 22;
-            this.siticoneHtmlLabel4.Text = "Simulation Task Time";
+            this.siticoneHtmlLabel4.Text = "Simulation Total Time";
             // 
             // siticoneHtmlLabel3
             // 
@@ -999,6 +999,11 @@ namespace AppRestaurant
             this.siticoneNumericUpDown2.ForeColor = System.Drawing.Color.White;
             this.siticoneNumericUpDown2.Location = new System.Drawing.Point(11, 158);
             this.siticoneNumericUpDown2.Margin = new System.Windows.Forms.Padding(5);
+            this.siticoneNumericUpDown2.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.siticoneNumericUpDown2.Name = "siticoneNumericUpDown2";
             this.siticoneNumericUpDown2.Size = new System.Drawing.Size(201, 28);
             this.siticoneNumericUpDown2.TabIndex = 10;
@@ -1023,6 +1028,7 @@ namespace AppRestaurant
             this.siticoneButton1.Size = new System.Drawing.Size(740, 48);
             this.siticoneButton1.TabIndex = 3;
             this.siticoneButton1.Text = "Confirm";
+            this.siticoneButton1.Click += new System.EventHandler(this.Confirm);
             this.siticoneButton1.MouseEnter += new System.EventHandler(this.siticoneButton1_MouseEnter);
             this.siticoneButton1.MouseLeave += new System.EventHandler(this.siticoneButton1_MouseLeave);
             // 
@@ -1043,9 +1049,9 @@ namespace AppRestaurant
             this.Text = "Settings";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticoneNumericUpDown15)).EndInit();
@@ -1079,7 +1085,6 @@ namespace AppRestaurant
         private Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown siticoneNumericUpDown2;
         private Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown siticoneNumericUpDown20;
         private Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown siticoneNumericUpDown19;
-        private Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown siticoneNumericUpDown18;
         private Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown siticoneNumericUpDown17;
         private Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown siticoneNumericUpDown16;
         private Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown siticoneNumericUpDown15;
@@ -1139,5 +1144,6 @@ namespace AppRestaurant
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Panel panel21;
+        private Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown siticoneNumericUpDown18;
     }
 }

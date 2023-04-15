@@ -93,7 +93,7 @@ namespace AppRestaurant.Controller.DiningRoom
                 foreach (KeyValuePair<Recipe, int> dic in comm.orderLine)
                 {
                     Console.WriteLine("======= " + dic.Key.RecipeTitle + " : " + dic.Value + " =======");
-                    content += dic.Key.RecipeTitle + ","+ dic.Value.ToString() + ";";
+                    content += dic.Key.RecipeTitle + ","+ dic.Value.ToString() + "," + customerCount + "," + OrderListing.Count + ";";
                 }
             }
             diningRoomSimul.WriteFromServer(content);

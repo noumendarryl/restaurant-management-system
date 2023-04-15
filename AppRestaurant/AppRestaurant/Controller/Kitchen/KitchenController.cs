@@ -53,6 +53,8 @@ namespace AppRestaurant.Controller.Kitchen
         private static ManualResetEvent materialWashQueueMre = new ManualResetEvent(false);
         private static Mutex notifyMaterialWashMut = new Mutex();
 
+        public static int customerCount;
+        public static int OrderCount;
         private static ClientThread kitchenSimul;
         private static List<string> values = new List<string>();
 
@@ -85,7 +87,9 @@ namespace AppRestaurant.Controller.Kitchen
             values = kitchenSimul.ReadFromClient();
             for (int i = 0; i < values.Count - 1; i++)
             {
-                Console.WriteLine("Values split results : " + values[i].Split(',')[0] + " " + values[i].Split(',')[1]);
+                customerCount = Convert.ToInt32(values[i].Split(',')[2]);
+                OrderCount = Convert.ToInt32(values[i].Split(',')[3]);
+                Console.WriteLine("Values split results : " + values[i].Split(',')[0] + " " + values[i].Split(',')[1] + " " + customerCount + " " + OrderCount);
             }
 
             distantWaiterThread = new Thread(new ThreadStart(DistantWaiterTask));

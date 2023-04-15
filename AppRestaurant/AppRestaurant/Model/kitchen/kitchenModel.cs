@@ -34,6 +34,21 @@ namespace AppRestaurant.Model.Kitchen
 		public int TIME_SLEEP;
 
 		/*
+		* The simulation hour.
+		*/
+		public int Hour;
+
+		/*
+		* The simulation minute.
+		*/
+		public int Minute;
+
+		/*
+		* The simulation second.
+		*/
+		public int Second;
+
+		/*
 		* The dao.
 		*/
 		public DAOEntity<Entity> dao { get; set; }
@@ -99,6 +114,7 @@ namespace AppRestaurant.Model.Kitchen
 
 		public KitchenModel()
 		{
+			TIME_SLEEP = 2000;
 			kitchen = new Kitchen();
 			observers = new List<IObserver>();
 			//recipes = new List<Recipe>();
@@ -208,7 +224,7 @@ namespace AppRestaurant.Model.Kitchen
 
 			for (int i = 0; i < fridgeNumber; i++)
 			{
-				kitchen.map[i+16, 5] = fridge;
+				kitchen.map[i+15, 5] = fridge;
 			}
 		}
 
