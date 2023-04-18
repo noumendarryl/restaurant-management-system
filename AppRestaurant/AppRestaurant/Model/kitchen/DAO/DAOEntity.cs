@@ -3,20 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace AppRestaurant.Model.Kitchen.DAO
 {
-    public interface DAOEntity<E>
+     public abstract class DAOEntity<E>
     {
-		E find(string code);
+		private SqlConnection connection;
 
-		List<E> find(int id);
+		public DAOEntity(SqlConnection connection)
+        {
+			this.connection = connection;
+        }
 
-		void create(E entity);
+		protected SqlConnection getConnection()
+        {
+			return connection; 
+        }
+		
+		public abstract E find(string code);
+		
+		public abstract List<E> find(int id);
+		
+		public abstract void create(E entity);
 
-		void update(E entity);
+		public abstract void update(E entity);
 
-		void delete(int id);
+		public abstract void delete(int id);
 
 	}
 }

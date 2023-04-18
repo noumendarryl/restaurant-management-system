@@ -139,6 +139,7 @@ namespace AppRestaurant.View.Common
             this.iconButton6.Size = new System.Drawing.Size(48, 48);
             this.iconButton6.TabIndex = 7;
             this.iconButton6.UseVisualStyleBackColor = true;
+            this.iconButton6.Click += new System.EventHandler(this.slowDown);
             // 
             // iconButton5
             // 
@@ -157,6 +158,7 @@ namespace AppRestaurant.View.Common
             this.iconButton5.Size = new System.Drawing.Size(48, 48);
             this.iconButton5.TabIndex = 6;
             this.iconButton5.UseVisualStyleBackColor = true;
+            this.iconButton5.Click += new System.EventHandler(this.speedUp);
             // 
             // iconButton4
             // 
@@ -364,7 +366,7 @@ namespace AppRestaurant.View.Common
         private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel siticoneHtmlLabel3;
         private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel siticoneHtmlLabel2;
         private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel siticoneHtmlLabel1;
-        private Siticone.Desktop.UI.WinForms.SiticoneTrackBar siticoneTrackBar1;
+        public Siticone.Desktop.UI.WinForms.SiticoneTrackBar siticoneTrackBar1;
         private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel siticoneHtmlLabel4;
         public Siticone.Desktop.UI.WinForms.SiticoneTextBox siticoneTextBox1;
     }

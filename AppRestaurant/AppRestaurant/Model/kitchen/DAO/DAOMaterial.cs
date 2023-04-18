@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using AppRestaurant.Model.DB;
 using AppRestaurant.Model.Kitchen.Materials;
 
@@ -13,20 +14,27 @@ namespace AppRestaurant.Model.Kitchen.DAO
     {
         public DBAccess da;
         private SqlDataReader reader;
+        private SqlCommand command;
         private string materialName;
         private int quantity;
+
+        public DAOMaterial(SqlConnection connection) : base(connection)
+        {
+            
+        }
 
         /*
 		 * Find a material according to its name
 		 */
+        override
         public Material find(string name)
         {
-            da.createSqlCommand("SELECT * FROM dbo.Materiels WHERE nom = @nomMateriel");
-            da.getCmd().Parameters.AddWithValue("@nomMateriel", name);
+            command = new SqlCommand("SELECT * FROM dbo.Materiels WHERE nom = @nomMateriel", getConnection());
+            command.Parameters.AddWithValue("@nomMateriel", name);
 
             try
             {
-                reader = da.executeReader();
+                reader = command.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())
@@ -36,10 +44,11 @@ namespace AppRestaurant.Model.Kitchen.DAO
                     }
                     reader.Close();
                 }
+                getConnection().Close();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return new Material(materialName, quantity);
         }
@@ -47,26 +56,38 @@ namespace AppRestaurant.Model.Kitchen.DAO
         /*
 		 * Update the quantity of a given material
 		 */
+        override
         public void update(Material material)
         {
-            da.createSqlCommand("UPDATE dbo.Materiels SET quantite = @quantite WHERE nom = @nomMateriel");
-            da.getCmd().Parameters.AddWithValue("@quantite", material.quantity);
-            da.getCmd().Parameters.AddWithValue("@nomMateriel", material.name);
-            da.executeNonQuery();
-            da.close();
+            try
+            {
+                command = new SqlCommand("UPDATE dbo.Materiels SET quantite = @quantite WHERE nom = @nomMateriel");
+                command.Parameters.AddWithValue("@quantite", material.quantity);
+                command.Parameters.AddWithValue("@nomMateriel", material.name);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                getConnection().Close();
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        override
         public List<Material> find(int id)
         {
             // Not Implemented
             return null;
         }
 
+        override
         public void create(Material material)
         {
             // Not implemented
         }
 
+        override
         public void delete(int id)
         {
             // Not implemented

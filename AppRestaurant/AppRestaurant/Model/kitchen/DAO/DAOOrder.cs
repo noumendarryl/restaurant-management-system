@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using AppRestaurant.Model.Common;
 using AppRestaurant.Model.DB;
 
@@ -12,42 +13,54 @@ namespace AppRestaurant.Model.Kitchen.DAO
     public class DAOOrder : DAOEntity<Order>
     {
         public DBAccess da;
+        private SqlCommand command;
+
+        public DAOOrder(SqlConnection connection) : base(connection)
+        {
+
+        }
 
         /*
 		 * Create an order 
 		 */
+        override
         public void create(Order order)
         {
-            da.createSqlCommand("INSERT INTO dbo.Commande (num_table, nb_commandes, prix) " +
-                    "VALUES (@numeroTable, @nbCommandes, @prix)");
+            command = new SqlCommand("INSERT INTO dbo.Commande (titre, num_table, nb_commandes, prix) " +
+                    "VALUES (@titreCommande, @numeroTable, @nbCommandes, @prix)", getConnection());
 
             try
             {
-                da.getCmd().Parameters.AddWithValue("@numeroTable", order.tableNumber);
-                da.getCmd().Parameters.AddWithValue("@nbCommandes", order.nbOrders);
-                da.getCmd().Parameters.AddWithValue("@prix", order.price);
+                command.Parameters.AddWithValue("@titreCommande", order.title);
+                command.Parameters.AddWithValue("@numeroTable", order.tableNumber);
+                command.Parameters.AddWithValue("@nbCommandes", order.nbOrders);
+                command.Parameters.AddWithValue("@prix", order.price);
 
-                da.executeNonQuery();
-                da.close();
+                command.ExecuteNonQuery();
+                command.Dispose();
+                getConnection().Close();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
             }
         }
 
+        override
         public Order find(string code)
         {
             // Not implemented
             return null;
         }
 
+        override
         public List<Order> find(int id)
         {
             // Not implemented
             return null;
         }
 
+        override
         public void update(Order order)
         {
             // Not implemented
@@ -56,12 +69,21 @@ namespace AppRestaurant.Model.Kitchen.DAO
         /*
 		 * Delete a particular order
 		 */
+        override
         public void delete(int id)
         {
-            da.createSqlCommand("DELETE FROM dbo.Commande WHERE id = @id");
-            da.getCmd().Parameters.AddWithValue("@id", id);
-            da.executeNonQuery();
-            da.close();
+            try
+            {
+                command = new SqlCommand("DELETE FROM dbo.Commande WHERE id = @id", getConnection());
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                getConnection().Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

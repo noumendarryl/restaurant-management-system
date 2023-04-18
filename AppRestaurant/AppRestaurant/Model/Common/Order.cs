@@ -20,6 +20,7 @@ namespace AppRestaurant.Model.Common
     {
         private OrderStatus orderStatus;
         private Dictionary<Recipe, int> plats = new Dictionary<Recipe, int>();
+        public string title { get; set; }
         public int tableNumber { get; set; }
         public int nbOrders { get; set; }
         public double price { get; set; }
@@ -32,8 +33,9 @@ namespace AppRestaurant.Model.Common
             plats = new Dictionary<Recipe, int>();
         }
 
-        public Order(int tableNumber, int nbOrders, double price, Recipe recipe)
+        public Order(string title, int tableNumber, int nbOrders, double price, Recipe recipe)
         {
+            this.title = title;
             this.tableNumber = tableNumber;
             this.nbOrders = nbOrders;
             this.price = price;

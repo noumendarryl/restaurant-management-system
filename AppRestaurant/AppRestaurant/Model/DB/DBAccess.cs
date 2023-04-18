@@ -12,14 +12,14 @@ namespace AppRestaurant.Model.DB
 {
 	public class DBAccess
 	{
-		private DBConnection dbconn;
+		private DBConnection dbcon;
 		private SqlCommand cmd;
 
 		public DBAccess()
 		{
 			try
 			{
-				dbconn = DBConnection.getInstance();
+				dbcon = DBConnection.getInstance();
 			}
 			catch (Exception err)
 			{
@@ -29,7 +29,7 @@ namespace AppRestaurant.Model.DB
 
 		public void createSqlCommand(string query)
 		{
-			setCmd(new SqlCommand(query, dbconn.getConnection()));
+			setCmd(new SqlCommand(query, dbcon.getConnection()));
 		}
 
 		public void executeNonQuery()
@@ -70,7 +70,7 @@ namespace AppRestaurant.Model.DB
 
 		public void close()
 		{
-			dbconn.close();
+			dbcon.close();
 		}
 	}
 }

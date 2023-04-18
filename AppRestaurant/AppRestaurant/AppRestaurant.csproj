@@ -251,6 +251,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppRestaurantDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppRestaurantDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Controller\DiningRoom\Actors\CustomerController.cs" />
     <Compile Include="Controller\DiningRoom\Actors\HotelMasterController.cs" />
     <Compile Include="Controller\DiningRoom\Actors\LineChiefController.cs" />
@@ -409,6 +414,17 @@
     <EmbeddedResource Include="View\Common\Simulation.resx">
       <DependentUpon>Simulation.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="AppRestaurantDataSet.xsc">
+      <DependentUpon>AppRestaurantDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AppRestaurantDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AppRestaurantDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AppRestaurantDataSet.xss">
+      <DependentUpon>AppRestaurantDataSet.xsd</DependentUpon>
+    </None>
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

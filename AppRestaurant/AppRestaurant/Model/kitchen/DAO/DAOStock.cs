@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using AppRestaurant.Model.DB;
 using AppRestaurant.Model.Kitchen.Ingredients;
 
@@ -13,22 +14,29 @@ namespace AppRestaurant.Model.Kitchen.DAO
     {
         public DBAccess da;
         private SqlDataReader reader;
+        private SqlCommand command;
         private string name;
         private string category;
         private int quantity;
         private List<Stock> stocks;
 
+        public DAOStock(SqlConnection connection) : base(connection)
+        {
+            
+        }
+
         /*
 		 * Find a stock of ingredients according to its name
 		 */
+        override
         public Stock find(string stockTitle)
         {
-            da.createSqlCommand("SELECT * FROM dbo.Stock WHERE nom = @nomStock");
-            da.getCmd().Parameters.AddWithValue("@nomStock", stockTitle);
+            command = new SqlCommand("SELECT * FROM dbo.Stock WHERE nom = @nomStock", getConnection());
+            command.Parameters.AddWithValue("@nomStock", stockTitle);
 
             try
             {
-                reader = da.executeReader();
+                reader = command.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())
@@ -39,10 +47,11 @@ namespace AppRestaurant.Model.Kitchen.DAO
                     }
                     reader.Close();
                 }
+                getConnection().Close();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return new Stock(name, quantity, category);
@@ -51,15 +60,16 @@ namespace AppRestaurant.Model.Kitchen.DAO
         /*
 		 * Get a list of all ingredient stocks for a given recipe
 		 */
+        override
         public List<Stock> find(int id)
         {
             stocks = new List<Stock>();
-            da.createSqlCommand("SELECT nom, quantite, categorie FROM (dbo.Recette INNER JOIN dbo.utilise ON (dbo.Recette.id_recette = dbo.utilise.id_recette) INNER JOIN dbo.Stock ON ((dbo.utilise.id_ingredient = dbo.Stock.id_ingredient))) WHERE dbo.Recette.id_recette = @id");
-            da.getCmd().Parameters.AddWithValue("@id_recette", id);
+            command = new SqlCommand("SELECT nom, quantite, categorie FROM (dbo.Recette INNER JOIN dbo.utilise ON (dbo.Recette.id_recette = dbo.utilise.id_recette) INNER JOIN dbo.Stock ON ((dbo.utilise.id_ingredient = dbo.Stock.id_ingredient))) WHERE dbo.Recette.id_recette = @id", getConnection());
+            command.Parameters.AddWithValue("@id_recette", id);
 
             try
             {
-                reader = da.executeReader();
+                reader = command.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())
@@ -71,10 +81,11 @@ namespace AppRestaurant.Model.Kitchen.DAO
                     }
                     reader.Close();
                 }
+                getConnection().Close();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return stocks;
@@ -83,47 +94,68 @@ namespace AppRestaurant.Model.Kitchen.DAO
         /*
 		 * Update the quantity of a stock
 		 */
+        override
         public void update(Stock stock)
         {
-            da.createSqlCommand("UPDATE dbo.Stock SET quantite = @quantite WHERE id = @id");
-            da.getCmd().Parameters.AddWithValue("@quantite", stock.quantity);
-            da.getCmd().Parameters.AddWithValue("@id", stock.id);
-            da.executeNonQuery();
-            da.close();
+            try
+            {
+                command = new SqlCommand("UPDATE dbo.Stock SET quantite = @quantite WHERE id = @id", getConnection());
+                command.Parameters.AddWithValue("@quantite", stock.quantity);
+                command.Parameters.AddWithValue("@id", stock.id);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                getConnection().Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /*
 		 * Create a new stock of ingredients
+		 *
 		 */
+        override
         public void create(Stock stock)
         {
-            da.createSqlCommand("INSERT INTO dbo.Stock (nom, quantite, categorie) " +
-                    "VALUES (@nom, @quantite, @categorie)");
+            command = new SqlCommand("INSERT INTO dbo.Stock (nom, quantite, categorie) " +
+                    "VALUES (@nom, @quantite, @categorie)", getConnection());
 
             try
             {
-                da.getCmd().Parameters.AddWithValue("@nom", stock.stockTitle);
-                da.getCmd().Parameters.AddWithValue("@quantite", stock.quantity);
-                da.getCmd().Parameters.AddWithValue("@categorie", stock.category);
+                command.Parameters.AddWithValue("@nom", stock.stockTitle);
+                command.Parameters.AddWithValue("@quantite", stock.quantity);
+                command.Parameters.AddWithValue("@categorie", stock.category);
 
-                da.executeNonQuery();
-                da.close();
+                command.ExecuteNonQuery();
+                command.Dispose();
+                getConnection().Close();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /*
 		 * Delete a particular stock
 		 */
+        override
         public void delete(int id)
         {
-            da.createSqlCommand("DELETE FROM dbo.Stock WHERE id = @id");
-            da.getCmd().Parameters.AddWithValue("@id", id);
-            da.executeNonQuery();
-            da.close();
+            try
+            {
+                command = new SqlCommand("DELETE FROM dbo.Stock WHERE id = @id", getConnection());
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                getConnection().Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -41,13 +41,13 @@ namespace AppRestaurant.Model.Common
             this.cookingTime = cookingTime;
         }
 
-        public Recipe(string recipeTitle, int cookingTime, int restingTime, int peopleCount, RecipeType type, double price, List<Ingredient> ingredients, List<RecipeStep> recipeSteps)
+        public Recipe(string recipeTitle, int cookingTime, int restingTime, int peopleCount, double price, List<Ingredient> ingredients, List<RecipeStep> recipeSteps)
         {
             this.recipeTitle = recipeTitle;
             this.cookingTime = cookingTime;
             this.restingTime = restingTime;
             this.peopleCount = peopleCount;
-            this.type = type;
+            //this.type = type;
             this.price = price;
             this.ingredients = ingredients;
             this.recipeSteps = recipeSteps;

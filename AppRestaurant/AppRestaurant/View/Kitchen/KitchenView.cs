@@ -6,6 +6,7 @@ using AppRestaurant.Model.Kitchen.Materials;
 using AppRestaurant.View.Common;
 using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
 
 namespace AppRestaurant.View.Kitchen
 {
@@ -17,13 +18,21 @@ namespace AppRestaurant.View.Kitchen
         public static Setting setting { get; set; }
         public static Simulation simulation { get; set; }
         public static Monitoring monitoring { get; set; }
+        public static Inventory inventory { get; set; }
+        public static Booking booking { get; set; }
+        public StreamWriter writer { get; set; }
+        public string applicationPath { get; set; }
+        public string logFilePath { get; set; }
+        public DateTime dateTime { get; set; }
 
         public KitchenView(KitchenModel model)
         {
             simulation = new Simulation(model);
             monitoring = new Monitoring();
+            inventory = new Inventory();
+            booking = new Booking();
             setting = new Setting(simulation, monitoring);
-            app = new MainApp(simulation, setting, monitoring);
+            app = new MainApp(simulation, setting, monitoring, inventory, booking);
         }
 
         void IObserver.UpdateWithMoves(int oldX, int oldY, int newX, int newY)
@@ -84,7 +93,21 @@ namespace AppRestaurant.View.Kitchen
             simulation.Invoke((MethodInvoker)delegate
             {
                 simulation.siticoneTextBox1.AppendText(str + "\n");
+                saveLogs(str);
             });
+        }
+
+        private void saveLogs(string log)
+        {
+            // The directory that your program is installed in
+            applicationPath = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
+            logFilePath = Path.Combine(applicationPath, "SimulationLogs.txt");
+            writer = new StreamWriter(logFilePath, true);
+            dateTime = DateTime.Now;
+
+            writer.WriteLine(dateTime + "    " + log.ToString());
+
+            writer.Close();
         }
     }
 }

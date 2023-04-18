@@ -49,9 +49,19 @@ namespace AppRestaurant.Model.Kitchen
 		public int Second;
 
 		/*
-		* The dao.
+		* The daoRecipe.
 		*/
-		public DAOEntity<Entity> dao { get; set; }
+		public DAOEntity<Recipe> daoRecipe { get; set; }
+
+		/*
+		* The daoIngredient.
+		*/
+		public DAOEntity<Ingredient> daoIngredient { get; set; }
+
+		/*
+		* The daoOrder.
+		*/
+		public DAOEntity<Order> daoOrder { get; set; }
 
 		/*
 		* The chef
@@ -117,47 +127,23 @@ namespace AppRestaurant.Model.Kitchen
 			TIME_SLEEP = 2000;
 			kitchen = new Kitchen();
 			observers = new List<IObserver>();
-			//recipes = new List<Recipe>();
+            recipes = new List<Recipe>();
+            daoRecipe = new DAORecipe(DBConnection.getInstance().getConnection());
+            daoIngredient = new DAOIngredient(DBConnection.getInstance().getConnection());
+            daoOrder = new DAOOrder(DBConnection.getInstance().getConnection());
 
-			cookingFire = KitchenMaterialFactory.createCookingFire();
+            cookingFire = KitchenMaterialFactory.createCookingFire();
 			oven = KitchenMaterialFactory.createOven();
 			blender = KitchenMaterialFactory.createBlender();
 			fridge = KitchenMaterialFactory.createFridge();
 
 			setMaterialConfig(cookingFireNumber, ovenNumber, blenderNumber, fridgeNumber);
-
-			//recipes.Add(((DAOEntity<Recipe>)dao).find("Feuilleté au crabe"));
-			//recipes.Add(((DAOEntity<Recipe>)dao).find("Foie gras au muscat"));
-			//recipes.Add(((DAOEntity<Recipe>)dao).find("Tiramisu"));
-
-			recipes = new List<Recipe>
-			{
-				new Recipe
-				(
-					"Feuilleté au crabe",
-					20,
-					0,
-					4,
-					RecipeType.Entry,
-					200,
-					new List<Ingredient>
-					{
-						new Ingredient("pâte feuilletée", 5),
-						new Ingredient("oeuf", 10),
-						new Ingredient("sel", 3),
-						new Ingredient("poivre", 6)
-					},
-					new List<RecipeStep>
-					{
-						new RecipeStep("Préchauffer le four à 230°", 5, oven),
-						new RecipeStep("Mélanger crabe, citron, chapelure, herbes", 1, cookingFire),
-						new RecipeStep("Lier le tout avec un oeuf", 1, fridge)
-					}
-				),
-			};
-
 			setEmployeeConfig(chefNumber, deputyChefNumber, kitchenClerkNumber, diverNumber);
-		}
+
+            //recipes.Add(daoRecipe.find("Feuilleté au crabe"));
+            //recipes.Add(daoRecipe.find("Blanquette de veau"));
+            recipes.Add(daoRecipe.find("Tiramisu"));
+        }
 
 		public void setEmployeeConfig(int chefNumber, int deputyChefNumber, int kitchenClerkNumber, int diverNumber)
 		{

@@ -31,6 +31,7 @@ namespace AppRestaurant.View.Common
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewBooking));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.siticoneButton3 = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -56,6 +57,7 @@ namespace AppRestaurant.View.Common
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.panel1.Controls.Add(this.siticoneButton3);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
@@ -74,6 +76,26 @@ namespace AppRestaurant.View.Common
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(466, 373);
             this.panel1.TabIndex = 0;
+            // 
+            // siticoneButton3
+            // 
+            this.siticoneButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.siticoneButton3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.siticoneButton3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.siticoneButton3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.siticoneButton3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.siticoneButton3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(135)))), ((int)(((byte)(144)))));
+            this.siticoneButton3.Font = new System.Drawing.Font("Lexend Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.siticoneButton3.ForeColor = System.Drawing.Color.White;
+            this.siticoneButton3.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(135)))), ((int)(((byte)(144)))));
+            this.siticoneButton3.Location = new System.Drawing.Point(310, 310);
+            this.siticoneButton3.Name = "siticoneButton3";
+            this.siticoneButton3.PressedDepth = 0;
+            this.siticoneButton3.Size = new System.Drawing.Size(131, 51);
+            this.siticoneButton3.TabIndex = 37;
+            this.siticoneButton3.Text = "Edit";
+            this.siticoneButton3.Visible = false;
+            this.siticoneButton3.Click += new System.EventHandler(this.Edit);
             // 
             // panel5
             // 
@@ -178,7 +200,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton2.Size = new System.Drawing.Size(131, 51);
             this.siticoneButton2.TabIndex = 31;
             this.siticoneButton2.Text = "Save";
-            this.siticoneButton2.Click += new System.EventHandler(this.siticoneButton2_Click);
+            this.siticoneButton2.Click += new System.EventHandler(this.Save);
             // 
             // siticoneButton1
             // 
@@ -201,7 +223,7 @@ namespace AppRestaurant.View.Common
             this.siticoneButton1.TabIndex = 30;
             this.siticoneButton1.Text = "Cancel";
             this.siticoneButton1.UseTransparentBackground = true;
-            this.siticoneButton1.Click += new System.EventHandler(this.siticoneButton1_Click);
+            this.siticoneButton1.Click += new System.EventHandler(this.Cancel);
             // 
             // siticoneHtmlLabel4
             // 
@@ -289,6 +311,7 @@ namespace AppRestaurant.View.Common
             this.iconButton8.Size = new System.Drawing.Size(25, 26);
             this.iconButton8.TabIndex = 23;
             this.iconButton8.UseVisualStyleBackColor = true;
+            this.iconButton8.Click += new System.EventHandler(this.Minimize);
             // 
             // iconButton6
             // 
@@ -308,7 +331,7 @@ namespace AppRestaurant.View.Common
             this.iconButton6.Size = new System.Drawing.Size(24, 20);
             this.iconButton6.TabIndex = 21;
             this.iconButton6.UseVisualStyleBackColor = true;
-            this.iconButton6.Click += new System.EventHandler(this.iconbutton6_Click);
+            this.iconButton6.Click += new System.EventHandler(this.Exit);
             // 
             // NewBooking
             // 
@@ -342,14 +365,15 @@ namespace AppRestaurant.View.Common
         private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel siticoneHtmlLabel4;
         private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel siticoneHtmlLabel3;
         private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel siticoneHtmlLabel2;
-        private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton2;
+        public Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton2;
         private Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton1;
-        private Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker siticoneDateTimePicker1;
-        private Siticone.Desktop.UI.WinForms.SiticoneTextBox siticoneTextBox1;
-        private Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown siticoneNumericUpDown1;
+        public Siticone.Desktop.UI.WinForms.SiticoneDateTimePicker siticoneDateTimePicker1;
+        public Siticone.Desktop.UI.WinForms.SiticoneTextBox siticoneTextBox1;
+        public Siticone.Desktop.UI.WinForms.SiticoneNumericUpDown siticoneNumericUpDown1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        public Siticone.Desktop.UI.WinForms.SiticoneButton siticoneButton3;
     }
 }

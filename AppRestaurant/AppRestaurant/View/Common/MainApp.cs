@@ -18,12 +18,16 @@ namespace AppRestaurant.View.Common
         private Simulation simulation;
         private Setting setting;
         private Monitoring monitoring;
+        private Inventory inventory;
+        private Booking booking;
 
-        public MainApp(Simulation simulation, Setting setting, Monitoring monitoring)
+        public MainApp(Simulation simulation, Setting setting, Monitoring monitoring, Inventory inventory, Booking booking)
         {
             this.simulation = simulation;
             this.setting = setting;
             this.monitoring = monitoring;
+            this.inventory = inventory;
+            this.booking = booking;
             InitializeComponent();
             timer = new Timer();
             timer.Interval = 1000;
@@ -179,13 +183,13 @@ namespace AppRestaurant.View.Common
         private void Inventory(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4, "shop_32px_2.png");
-            OpenChildForm(new Inventory());
+            OpenChildForm(inventory);
         }
 
         private void Booking(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color5, "bookmark_32px_2.png");
-            OpenChildForm(new Booking());
+            OpenChildForm(booking);
         }
 
         private void Help(object sender, EventArgs e)

@@ -1,12 +1,6 @@
 ﻿using System;
-using System.IO;
-using System.IO.Pipes;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
-
 using AppRestaurant.Model.DiningRoom;
 using AppRestaurant.Model.DiningRoom.Actors;
 using AppRestaurant.Model.DiningRoom.Factory;
@@ -14,9 +8,6 @@ using AppRestaurant.Model.Common;
 using AppRestaurant.Controller.DiningRoom.Actors;
 using AppRestaurant.Controller.DiningRoom.Strategy;
 using AppRestaurant.Controller.DiningRoom.Observer;
-using AppRestaurant.Model.DiningRoom.Elements;
-using AppRestaurant.Model.Kitchen;
-using AppRestaurant.Controller.Kitchen;
 using AppRestaurant.Controller.Pipes;
 
 namespace AppRestaurant.Controller.DiningRoom

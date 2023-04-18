@@ -15,7 +15,7 @@ namespace AppRestaurant.Model.DB
 		private static DBConnection INSTANCE = null;
 
 		/* The connection. */
-		private SqlConnection conn;
+		private SqlConnection con;
 
 		/*
 		 * Instantiates a new DB connection.
@@ -43,9 +43,9 @@ namespace AppRestaurant.Model.DB
 		{
 			try
 			{
-				conn = new SqlConnection("Data Source=(local);Initial Catalog=AppRestaurant;Integrated Security=true");
-				if (conn.State == ConnectionState.Closed)
-					conn.Open();
+				con = new SqlConnection("Data Source=51.159.177.162,9097;Initial Catalog=Tastyl;Persist Security Info=True;User ID=superadmin;Password=Admin123");
+				if (con.State == ConnectionState.Closed)
+					con.Open();
 			}
 			catch (SqlException e)
 			{
@@ -56,7 +56,7 @@ namespace AppRestaurant.Model.DB
 
 		public void close()
 		{
-			conn.Close();
+			con.Close();
 		}
 
 		/*
@@ -66,7 +66,7 @@ namespace AppRestaurant.Model.DB
 		 */
 		public SqlConnection getConnection()
 		{
-			return conn;
+			return con;
 		}
 	}
 }

@@ -33,6 +33,7 @@ namespace AppRestaurant.View.Common
         public int minutes { get; set; }
         public int seconds { get; set; }
         public int totalSeconds { get; set; }
+        public int TIME_FRAME { get; set; }
 
         public Simulation(KitchenModel model)
         {
@@ -45,7 +46,7 @@ namespace AppRestaurant.View.Common
             InitializeComponent();
         }
 
-        private void displayTime()
+        public void displayTime(int totalSeconds)
         {
             if (totalSeconds > 0)
             {
@@ -55,7 +56,7 @@ namespace AppRestaurant.View.Common
             siticoneHtmlLabel3.Text = string.Format("{0}:{1}:{2}", hours.ToString().PadLeft(2, '0'), minutes.ToString().PadLeft(2, '0'), seconds.ToString().PadLeft(2, '0'));
         }
 
-        private void onTimeEvent(object sender, ElapsedEventArgs e)
+        public void onTimeEvent(object sender, ElapsedEventArgs e)
         {
             Invoke(new Action(() =>
             {
@@ -87,19 +88,36 @@ namespace AppRestaurant.View.Common
 
         private void updateSlider()
         {
-            if (currentTotalSeconds != totalSeconds)
+            if (currentTotalSeconds != TIME_FRAME || currentTotalSeconds != KitchenView.setting.simulationTotalTime)
             {
                 siticoneTrackBar1.Value = currentTotalSeconds;
-            } else
-            {
-                siticoneTrackBar1.Value = totalSeconds;
+            } 
+            else {
+                KitchenController.Suspend();
                 timer.Stop();
+                iconButton4.Visible = false;
+                iconButton7.Visible = true;
             }
         }
 
         private void siticoneTrackBar1_ValueChanged(object sender, EventArgs e)
         {
             currentTotalSeconds = siticoneTrackBar1.Value;
+            totalSeconds = TIME_FRAME - currentTotalSeconds;
+        }
+
+        private void speedUp(object sender, EventArgs e)
+        {
+            model.TIME_SCALE -= 500;
+            currentTotalSeconds = currentTotalSeconds + 300;
+            totalSeconds = totalSeconds - 300;
+        }
+
+        private void slowDown(object sender, EventArgs e)
+        {
+            model.TIME_SCALE += 500;
+            currentTotalSeconds = currentTotalSeconds - 300;
+            totalSeconds = totalSeconds + 300;
         }
 
         private void Start(object sender, EventArgs e)
@@ -107,9 +125,14 @@ namespace AppRestaurant.View.Common
             DiningRoomController.Run();
             KitchenController.Start();
             timer.Start();
+            KitchenView.monitoring.fillStats(KitchenController.customerCount, KitchenController.OrderCount);
+            KitchenView.inventory.loadMaterials();
+            KitchenView.inventory.loadIngredients();
+            KitchenView.inventory.loadStock();
+            KitchenView.inventory.loadOrders();
+            KitchenView.booking.loadBookings();
             iconButton3.Visible = false;
             iconButton4.Visible = true;
-            KitchenView.monitoring.fillStats(KitchenController.customerCount, KitchenController.OrderCount);
         }
 
         [Obsolete]
@@ -142,7 +165,7 @@ namespace AppRestaurant.View.Common
                     string[] lines = File.ReadAllLines(saveFilePath);
 
                     KitchenView.setting.simulationTimeScale = Convert.ToInt32(lines.ElementAt(0));
-                    totalSeconds = Convert.ToInt32(lines.ElementAt(1));
+                    TIME_FRAME = Convert.ToInt32(lines.ElementAt(1));
 
                     KitchenView.setting.chefNumber = Convert.ToInt32(lines.ElementAt(2));
                     KitchenView.setting.deputyChefNumber = Convert.ToInt32(lines.ElementAt(3));
@@ -155,7 +178,8 @@ namespace AppRestaurant.View.Common
                     KitchenView.setting.fridgeNumber = Convert.ToInt32(lines.ElementAt(9));
 
                     model.TIME_SCALE = KitchenView.setting.simulationTimeScale * 1000;
-                    displayTime();
+                    totalSeconds = TIME_FRAME;
+                    displayTime(totalSeconds);
                     siticoneTrackBar1.Maximum = totalSeconds;
                     model.setEmployeeConfig(KitchenView.setting.chefNumber, KitchenView.setting.deputyChefNumber, KitchenView.setting.kitchenClerkNumber, KitchenView.setting.diverNumber);
                     model.setMaterialConfig(KitchenView.setting.cookingFireNumber, KitchenView.setting.ovenNumber, KitchenView.setting.blenderNumber, KitchenView.setting.fridgeNumber);
